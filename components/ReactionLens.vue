@@ -71,9 +71,9 @@ const active = ref('particles')
 }
 
 nav {
-  border-bottom: 1px solid var(--line);
   display: flex;
   gap: 0.35rem;
+  margin-bottom: 0.55rem;
 }
 
 nav button {
@@ -98,7 +98,7 @@ nav button:focus-visible {
 .lens-stage {
   align-items: center;
   background: var(--warm-field);
-  border-radius: 0 0 var(--field-radius) var(--field-radius);
+  border-radius: var(--field-radius);
   display: flex;
   justify-content: center;
   min-height: 375px;

@@ -98,10 +98,11 @@ function move(direction: number) {
 
 header {
   align-items: center;
-  border-bottom: 1px solid var(--line);
+  background: var(--paper-deep);
+  border-radius: var(--field-radius);
   display: flex;
   justify-content: space-between;
-  padding-bottom: 0.8rem;
+  padding: 0.7rem 0.9rem;
 }
 
 header span {
@@ -189,11 +190,10 @@ header strong {
 
 footer {
   align-items: center;
-  border-top: 1px solid var(--line);
   display: grid;
   gap: 12px;
   grid-template-columns: 1fr auto 1fr;
-  padding-top: 0.85rem;
+  padding-top: 0.45rem;
 }
 
 button {

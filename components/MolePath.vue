@@ -58,10 +58,11 @@ const prompt = computed(() => prompts[activeStep.value])
 
 .path-header {
   align-items: baseline;
-  border-bottom: 1px solid var(--line);
+  background: var(--paper-deep);
+  border-radius: var(--field-radius);
   display: flex;
   justify-content: space-between;
-  padding-bottom: 0.85rem;
+  padding: 0.72rem 0.9rem;
 }
 
 .path-header p {
@@ -142,11 +143,10 @@ const prompt = computed(() => prompts[activeStep.value])
 
 .path-controls {
   align-items: center;
-  border-top: 1px solid var(--line);
   display: grid;
   gap: 18px;
   grid-template-columns: 90px 1fr 110px;
-  padding-top: 0.85rem;
+  padding-top: 0.45rem;
 }
 
 .path-controls p {

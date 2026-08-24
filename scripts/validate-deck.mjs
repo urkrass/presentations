@@ -53,9 +53,25 @@ check('stable 1280 canvas', /canvasWidth:\s*1280/.test(slides))
 check('no markdown tables', !/^\s*\|.+\|\s*$/m.test(stripInvisible(slides)))
 check('no HTML tables', !/<\/?table\b/i.test(stripInvisible(slides)))
 check('no visible flip/back labels', !/>\s*(flip|back|flip back)\s*</i.test(stripScriptsAndStyles(`${slides}\n${componentText}`)))
-check('speaker notes present', (slides.match(/Presenter notes:/g) ?? []).length >= 20)
-check('source blocks present', (slides.match(/\[Sources\]/g) ?? []).length >= 6)
+check('speaker notes present', (slides.match(/Presenter notes:/g) ?? []).length >= 32)
+check('source blocks present', (slides.match(/\[Sources\]/g) ?? []).length >= 20)
 check('mole path is explicit', /mass A[\s\S]*moles A[\s\S]*moles B[\s\S]*mass B/i.test(slides))
+
+const slideClasses = [...slides.matchAll(/^class:\s*([^\r\n]+)/gm)].map((match) => match[1].trim())
+const distinctSlideClasses = new Set(slideClasses.filter((name) => name !== 'chemistry-deck'))
+check('varied slide archetypes', distinctSlideClasses.size >= 12, `${distinctSlideClasses.size} found`)
+
+const interactiveUses = [...slides.matchAll(/<([A-Z][A-Za-z0-9]+)\s*\/>/g)].map((match) => match[1])
+check('practice is not dominant', interactiveUses.length <= 5, `${interactiveUses.length} interactive slides`)
+
+const theoryTerms = ['formula unit', 'state symbol', 'conservation', 'molar mass', 'solute', 'solvent', 'mole ratio', 'limiting reactant']
+check('theory breadth', theoryTerms.every((term) => slides.toLowerCase().includes(term)), theoryTerms.join(', '))
+check('historical figures present', ['Lavoisier', 'Dalton', 'Avogadro', 'Haber', 'Bosch'].every((name) => slides.includes(name)))
+check('real-case breadth', ['fertiliser', 'catalytic converter', 'antacid', 'limestone'].every((term) => slides.toLowerCase().includes(term)))
+check(
+  'no decorative horizontal rules',
+  !/<hr\b/i.test(slides) && !/border-(?:top|bottom)\s*:\s*(?!0(?:\s*;|\s*$))/im.test(`${css}\n${componentText}`),
+)
 
 for (const file of componentFiles) {
   const source = read(file)

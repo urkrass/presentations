@@ -150,24 +150,21 @@ const CoefficientControl = defineComponent({
 }
 
 .atom-ledger {
-  border-top: 1px solid var(--line);
   display: grid;
+  gap: 14px;
   grid-template-columns: 1fr 1fr;
   margin-top: 1.15rem;
 }
 
 .atom-ledger > div {
   align-items: center;
-  border-left: 1px solid var(--line-soft);
+  background: var(--paper-deep);
+  border-radius: var(--field-radius);
   display: grid;
   gap: 18px;
   grid-template-columns: 1fr auto auto auto;
   min-height: 78px;
   padding: 0 1.2rem;
-}
-
-.atom-ledger > div:first-child {
-  border-left: 0;
 }
 
 .atom-ledger span {

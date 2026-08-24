@@ -71,7 +71,6 @@ function dotStyle(index: number) {
 .vessel {
   background: rgba(251, 250, 246, 0.7);
   border: 3px solid var(--line);
-  border-top: 0;
   height: 330px;
   overflow: hidden;
   position: relative;
@@ -134,19 +133,20 @@ function dotStyle(index: number) {
 }
 
 .dilution-reading {
-  border-top: 2px solid var(--accent);
   display: grid;
+  gap: 12px;
   grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 .dilution-reading p {
   align-items: center;
-  border-bottom: 1px solid var(--line-soft);
+  background: var(--paper-deep);
+  border-radius: var(--field-radius);
   display: grid;
   gap: 8px 20px;
   grid-template-columns: 0.85fr 1.15fr;
   margin: 0;
-  padding: 0.8rem 0;
+  padding: 0.8rem 1rem;
 }
 
 .dilution-reading span {
@@ -168,8 +168,6 @@ function dotStyle(index: number) {
 
 .dilution-reading .result {
   background: var(--green-field);
-  margin-left: -1rem;
-  padding-left: 1rem;
 }
 
 .dilution-reading .result span,
