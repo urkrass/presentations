@@ -61,10 +61,10 @@ class: thesis-slide
 
 # Three lessons, one question
 
-<div class="route-map">
-  <article><span>Lesson 1</span><strong>Animal information</strong><p>Organisation, emergence, nervous and endocrine signalling, neurons, reflexes, and coordination.</p><small>45 minutes</small></article>
-  <article><span>Lesson 2</span><strong>Regulation</strong><p>Melatonin, epinephrine, endocrine command centres, feedback, ventilation, circulation, and the ENS.</p><small>45 minutes</small></article>
-  <article><span>Lesson 3 · HL</span><strong>Plant information</strong><p>Tropisms, phytohormones, auxin transport and growth, hormone ratios, ethylene, and investigation design.</p><small>45 minutes + practical extension</small></article>
+<div class="lesson-rhythm">
+  <article><span>01</span><div><small>Lesson 1 · 45 min</small><strong>Animal information</strong><p>How receptors, neurons, reflexes, and the cerebellum turn a stimulus into coordinated movement.</p></div></article>
+  <article><span>02</span><div><small>Lesson 2 · 45 min</small><strong>Regulation</strong><p>How endocrine signals and feedback coordinate timing, circulation, ventilation, and the gut.</p></div></article>
+  <article><span>03</span><div><small>Lesson 3 · HL · 45 min + investigation</small><strong>Plant information</strong><p>How directional signals and hormone balance control growth, tropisms, and ripening.</p></div></article>
 </div>
 
 <p class="question-line">How does a signal become a response that is appropriate in direction, size, and duration?</p>
@@ -515,12 +515,7 @@ class: section-slide
 
 # Jet lag is a mismatch between clocks
 
-<div class="case-sequence">
-  <div><span>Travel</span><strong>Cross time zones quickly</strong><p>the external light–dark cycle shifts at once</p></div><b>→</b>
-  <div><span>Mismatch</span><strong>Internal rhythm still follows the old time</strong><p>melatonin rises at an inconvenient local hour</p></div><b>→</b>
-  <div><span>Symptoms</span><strong>Sleepiness, poor alertness, disturbed sleep</strong><p>behaviour and local time disagree</p></div><b>→</b>
-  <div><span>Reset</span><strong>Repeated light cues re-entrain the clock</strong><p>the rhythm shifts over several days</p></div>
-</div>
+<JetLagShift />
 
 <!--
 [Timing] 4 minutes
@@ -534,11 +529,11 @@ class: section-slide
 
 # Epinephrine turns a threat into whole-body readiness
 
-<div class="case-sequence">
-  <div><span>Threat</span><strong>Hypothalamus detects stress</strong><p>context is interpreted as demanding action</p></div><b>→</b>
-  <div><span>Neural route</span><strong>Autonomic impulses reach adrenal glands</strong><p>a nervous signal starts an endocrine response</p></div><b>→</b>
-  <div><span>Hormone</span><strong>Adrenal medulla releases epinephrine</strong><p>blood distributes the chemical message</p></div><b>→</b>
-  <div><span>Response</span><strong>Heart, lungs, liver, vessels, and senses change</strong><p>oxygen and fuel reach active tissues rapidly</p></div>
+<div class="epinephrine-cascade">
+  <div class="epi-trigger"><span>threat interpreted</span><strong>HYPOTHALAMUS</strong></div><b>→</b>
+  <div class="epi-route"><span>fast neural route</span><strong>autonomic impulses</strong></div><b>→</b>
+  <div class="epi-source"><span>endocrine release</span><strong>ADRENAL MEDULLA</strong><p>epinephrine enters blood</p></div>
+  <div class="epi-targets"><span>distributed response</span><p><strong>heart</strong> beats faster</p><p><strong>lungs</strong> ventilate more</p><p><strong>liver</strong> releases fuel</p><p><strong>vessels</strong> redirect flow</p></div>
 </div>
 
 <!--
@@ -553,16 +548,13 @@ class: section-slide
 
 # The hypothalamus and pituitary form a command axis
 
-<div class="endocrine-command">
-  <div class="command-core">
-    <div><span>nervous–endocrine link</span><strong>Hypothalamus</strong></div><b>↓</b>
-    <div><span>relay gland</span><strong>Pituitary</strong></div>
-  </div>
-  <div class="command-targets">
-    <p><span>Growth axis</span><strong>Growth hormone supports growth of bone and muscle.</strong></p>
-    <p><span>Thyroid axis</span><strong>TSH stimulates thyroid hormone release.</strong></p>
-    <p><span>Adrenal axis</span><strong>ACTH stimulates the adrenal cortex to release cortisol.</strong></p>
-    <p><span>Reproductive axis</span><strong>FSH and LH regulate gonads and reproductive hormones.</strong></p>
+<div class="axis-tree">
+  <div class="axis-core"><span>nervous–endocrine link</span><strong>HYPOTHALAMUS</strong><b>↓ instructions + ↑ feedback</b><strong>PITUITARY</strong></div>
+  <div class="axis-branches">
+    <p><span>GH</span><strong>bone + muscle growth</strong></p>
+    <p><span>TSH</span><strong>thyroid hormone release</strong></p>
+    <p><span>ACTH</span><strong>cortisol release</strong></p>
+    <p><span>FSH + LH</span><strong>gonad regulation</strong></p>
   </div>
 </div>
 
@@ -634,16 +626,7 @@ class: section-slide
 
 # Exercise couples respiration, circulation, and neural feedback
 
-<div class="exercise-model">
-  <div class="exercise-context"><span>one perturbation</span><strong>Working muscle changes several internal variables at once.</strong><p>The response must coordinate ventilation, circulation, and fuel delivery rather than regulate one organ in isolation.</p></div>
-  <div class="exercise-chain">
-    <p><span>Cellular respiration</span><strong>Working muscles use more O₂ and produce more CO₂.</strong></p>
-    <p><span>Blood chemistry</span><strong>Dissolved CO₂ increases; blood pH decreases slightly.</strong></p>
-    <p><span>Detection</span><strong>Chemoreceptors signal the medulla.</strong></p>
-    <p><span>Ventilation</span><strong>Diaphragm and intercostal activity increases to remove CO₂.</strong></p>
-    <p><span>Circulation</span><strong>Heart rate rises to deliver O₂ and transport CO₂ away.</strong></p>
-  </div>
-</div>
+<ExerciseTrace />
 
 <!--
 [Timing] 5 minutes
@@ -680,12 +663,7 @@ class: section-slide
 
 # Real case: why standing up can make you briefly dizzy
 
-<div class="case-sequence">
-  <div><span>Change</span><strong>Gravity shifts blood downward</strong><p>arterial pressure near the head can fall briefly</p></div><b>→</b>
-  <div><span>Sensor</span><strong>Baroreceptors feel less stretch</strong><p>carotid sinus and aortic arch report the change</p></div><b>→</b>
-  <div><span>Integrator</span><strong>Medulla increases sympathetic output</strong><p>parasympathetic output is reduced</p></div><b>→</b>
-  <div><span>Correction</span><strong>Heart output rises and vessels constrict</strong><p>pressure moves back toward its working range</p></div>
-</div>
+<StandingTrace />
 
 <!--
 [Timing] 4 minutes
@@ -837,13 +815,18 @@ class: section-slide
 
 # Acid growth links auxin reception to cell elongation
 
-<div class="acid-growth">
-  <div><span>1</span><strong>Auxin binds receptor</strong><p>at the plasma membrane</p></div><b>→</b>
-  <div><span>2</span><strong>H⁺-ATPase activates</strong><p>protons are pumped into the cell wall</p></div><b>→</b>
-  <div><span>3</span><strong>Wall pH falls</strong><p>the apoplast becomes more acidic</p></div><b>→</b>
-  <div><span>4</span><strong>Expansins loosen links</strong><p>cellulose network becomes more extensible</p></div><b>→</b>
-  <div><span>5</span><strong>K⁺ and water enter</strong><p>water potential falls; turgor rises</p></div><b>→</b>
-  <div><span>6</span><strong>Cell elongates</strong><p>the loosened wall stretches</p></div>
+<div class="acid-growth-story">
+  <div class="growth-row">
+    <div><span>1</span><strong>Auxin binds its receptor</strong><p>at the plasma membrane</p></div><b>→</b>
+    <div><span>2</span><strong>H⁺-ATPase activates</strong><p>protons are pumped into the cell wall</p></div><b>→</b>
+    <div><span>3</span><strong>Wall pH falls</strong><p>the apoplast becomes more acidic</p></div>
+  </div>
+  <p class="growth-turn"><span>chemical change</span> creates a mechanical opportunity ↓</p>
+  <div class="growth-row">
+    <div><span>4</span><strong>Expansins loosen links</strong><p>the cellulose network becomes more extensible</p></div><b>→</b>
+    <div><span>5</span><strong>K⁺ and water enter</strong><p>water potential falls; turgor rises</p></div><b>→</b>
+    <div><span>6</span><strong>The cell elongates</strong><p>turgor stretches the loosened wall</p></div>
+  </div>
 </div>
 
 <!--
@@ -886,10 +869,11 @@ class: section-slide
 
 # Tissue outcome follows the auxin : cytokinin balance
 
-<div class="ratio-field">
-  <article><span>High auxin · low cytokinin</span><strong>Root formation</strong><div class="ratio-bar" style="--auxin: 82%; --cytokinin: 18%"><i></i><i></i></div><p>Useful for root induction in tissue culture.</p></article>
-  <article><span>Balanced ratio</span><strong>Callus formation</strong><div class="ratio-bar" style="--auxin: 50%; --cytokinin: 50%"><i></i><i></i></div><p>Undifferentiated tissue proliferates.</p></article>
-  <article><span>Low auxin · high cytokinin</span><strong>Shoot formation</strong><div class="ratio-bar" style="--auxin: 18%; --cytokinin: 82%"><i></i><i></i></div><p>Useful for shoot multiplication.</p></article>
+<div class="ratio-landscape">
+  <div class="ratio-zone roots"><span>high auxin</span><strong>ROOTS</strong><p>root induction</p></div>
+  <div class="ratio-zone callus"><span>balanced</span><strong>CALLUS</strong><p>undifferentiated tissue</p></div>
+  <div class="ratio-zone shoots"><span>high cytokinin</span><strong>SHOOTS</strong><p>shoot multiplication</p></div>
+  <div class="ratio-axis"><span>auxin influence</span><b>relative hormone balance</b><span>cytokinin influence</span></div>
 </div>
 
 <!--
@@ -1017,10 +1001,11 @@ class: section-slide
 
 # One core model, three signalling architectures
 
-<div class="synthesis-map">
-  <article><span>Nervous</span><strong>Fast route through specialised cells</strong><p>Receptor → sensory neuron → CNS → motor neuron → effector.</p></article>
-  <article><span>Endocrine</span><strong>Distributed route through blood</strong><p>Stimulus → endocrine control → hormone → receptor-bearing target tissue.</p></article>
-  <article><span>Plant · HL</span><strong>Directional chemical control of growth</strong><p>Stimulus → hormone redistribution or synthesis → differential cellular response.</p></article>
+<div class="architecture-weave">
+  <div class="shared-model"><span>shared logic</span><strong>DETECT</strong><b>→</b><strong>TRANSMIT</strong><b>→</b><strong>INTEGRATE</strong><b>→</b><strong>RESPOND</strong></div>
+  <div class="architecture-path nervous-path"><span>Nervous</span><p>receptor</p><b>→</b><p>sensory neuron</p><b>→</b><p>CNS</p><b>→</b><p>motor neuron + effector</p></div>
+  <div class="architecture-path endocrine-path"><span>Endocrine</span><p>stimulus</p><b>→</b><p>endocrine control</p><b>→</b><p>blood-borne hormone</p><b>→</b><p>receptor-bearing target</p></div>
+  <div class="architecture-path plant-path"><span>Plant · HL</span><p>stimulus</p><b>→</b><p>hormone redistribution</p><b>→</b><p>tissue context</p><b>→</b><p>differential growth</p></div>
 </div>
 
 <p class="question-line">All three detect change, transmit information, integrate context, and regulate response—using different materials and timescales.</p>

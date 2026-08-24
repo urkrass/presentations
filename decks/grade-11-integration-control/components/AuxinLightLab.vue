@@ -10,41 +10,26 @@ const auxinSide = computed(() => lightSide.value === 'left' ? 'right' : 'left')
     <figure class="plant-stage" :class="`light-${lightSide}`">
       <img :src="'images/onions-light.jpg'" alt="Onion shoots bending toward a directional light source" />
       <span class="light-position">{{ lightSide === 'left' ? 'LIGHT →' : '← LIGHT' }}</span>
-      <figcaption>Prediction: auxin accumulates on the <strong>{{ auxinSide }}</strong>, shaded side.</figcaption>
+      <figcaption>Light is on the <strong>{{ lightSide }}</strong>; auxin accumulates on the <strong>{{ auxinSide }}</strong>, shaded side.</figcaption>
     </figure>
     <div class="lab-copy">
-      <p class="kicker">Change the light direction</p>
-      <div class="light-controls">
-        <button v-for="side in ['left','right']" :key="side" type="button" :class="{ active: lightSide === side }" @click="lightSide = side as any">{{ side }}</button>
+      <div class="lab-heading">
+        <p class="kicker">Reverse the stimulus</p>
+        <div class="light-controls" aria-label="Choose light direction">
+          <button v-for="side in ['left','right']" :key="side" type="button" :class="{ active: lightSide === side }" @click="lightSide = side as any">light from {{ side }}</button>
+        </div>
       </div>
-      <div class="causal-chain">
-        <p><span>1</span><strong>Lateral light</strong><small>redistributes auxin toward the shaded side.</small></p>
-        <p><span>2</span><strong>Differential elongation</strong><small>cells on the shaded side elongate more rapidly.</small></p>
-        <p><span>3</span><strong>Curvature</strong><small>the shoot bends toward the light source.</small></p>
+      <div class="causal-path">
+        <div><span>01</span><p><strong>Lateral light</strong><small>is detected at the shoot tip.</small></p></div>
+        <b aria-hidden="true">↓</b>
+        <div><span>02</span><p><strong>Auxin redistributes</strong><small>toward the shaded side—rather than simply being made there.</small></p></div>
+        <b aria-hidden="true">↓</b>
+        <div><span>03</span><p><strong>Unequal elongation</strong><small>makes the shaded side grow faster, curving the shoot toward light.</small></p></div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.auxin-lab { min-height: 420px; display: grid; grid-template-columns: 1fr 1.12fr; gap: 35px; }
-.plant-stage { position: relative; margin: 0; overflow: hidden; border-radius: 7px; background: var(--green-field); }
-.plant-stage img { width: 100%; height: 350px; object-fit: cover; object-position: center; transition: transform 280ms ease; }
-.plant-stage.light-right img { transform: scaleX(-1); }
-.light-position { position: absolute; top: 18px; left: 18px; padding: 9px 12px; border-radius: 4px; background: rgba(251,250,246,.92); color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .08em; }
-.light-right .light-position { left: auto; right: 18px; }
-.plant-stage figcaption { min-height: 70px; margin: 0; padding: 14px 18px; color: var(--charcoal); font-size: 15px; line-height: 1.45; }
-.plant-stage figcaption strong { color: var(--accent); }
-.lab-copy { display: grid; align-content: center; gap: 18px; }
-.kicker { margin: 0; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.light-controls { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
-.light-controls button { border: 0; border-radius: 5px; padding: 14px; background: var(--paper-deep); color: var(--ink); font-weight: 800; text-transform: capitalize; cursor: pointer; }
-.light-controls button.active { background: var(--accent); color: white; }
-.causal-chain { display: grid; gap: 10px; }
-.causal-chain p { margin: 0; min-height: 80px; padding: 14px 17px; display: grid; grid-template-columns: 28px 1fr; gap: 3px 12px; align-content: center; border-radius: 6px; background: var(--green-field); }
-.causal-chain p:nth-child(2) { background: var(--warm-field); }
-.causal-chain p:nth-child(3) { background: var(--blue-field); }
-.causal-chain span { grid-row: 1 / span 2; color: var(--accent); font-weight: 800; }
-.causal-chain strong { font: 700 20px/1.28 var(--serif); }
-.causal-chain small { color: var(--muted); font-size: 14px; line-height: 1.4; }
+.auxin-lab{min-height:430px;display:grid;grid-template-columns:1.02fr .98fr;gap:44px}.plant-stage{position:relative;height:430px;margin:0;overflow:hidden;border-radius:5px;background:var(--green-field)}.plant-stage img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 280ms ease}.plant-stage.light-right img{transform:scaleX(-1)}.light-position{position:absolute;top:18px;left:18px;padding:9px 12px;border-radius:3px;background:rgba(251,250,246,.92);color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.08em}.light-right .light-position{left:auto;right:18px}.plant-stage figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:15px 18px;background:rgba(24,32,31,.82);color:white;font-size:14px}.plant-stage figcaption strong{color:#f5cfad}.lab-copy{display:grid;align-content:center;gap:30px}.lab-heading{display:grid;gap:13px}.kicker{margin:0;color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.light-controls{display:flex;gap:22px}.light-controls button{padding:8px 0;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--muted);font-weight:800;text-transform:capitalize;cursor:pointer}.light-controls button.active{color:var(--accent);border-color:var(--accent)}.causal-path{display:grid;gap:5px}.causal-path>div{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start}.causal-path span{color:var(--accent);font:700 30px/1 var(--serif)}.causal-path p{margin:0;display:grid;gap:4px}.causal-path strong{font:700 25px/1.14 var(--serif)}.causal-path small{color:var(--muted);font-size:15px;line-height:1.4}.causal-path>b{margin-left:16px;color:var(--accent-2);font:700 23px/1 var(--serif)}
 </style>
