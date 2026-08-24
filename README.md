@@ -21,11 +21,15 @@ npm run dev
 
 Open `http://localhost:3030`.
 
-Run the visual laboratory on its own at `http://localhost:3060`:
+Build and preview the visual laboratory on its own at `http://localhost:3060/experiments/visual-lab/`:
 
 ```bash
 npm run dev:experiments
 ```
+
+This command uses the validated static build route so it also works around Slidev/Vite's Windows conditional-style path issue in deeply nested workspaces.
+
+The combined static build exposes the same deck at `http://localhost:3030/experiments/visual-lab/`. The experiment remains deliberately absent from the grade selector.
 
 ## Validate and build
 
@@ -38,6 +42,12 @@ npm run export:experiments
 ```
 
 The combined build compiles all three production decks and the isolated experiment deck into `dist/`, then adds the root grade menu. The experiment route is direct-access only and is not shown to students on the menu.
+
+## Visual laboratory notes
+
+[Technical findings](decks/visual-lab/FINDINGS.md) records the 14 studies, browser checks, screenshots, bundle comparison, PDF behaviour and production recommendations. `npm run export:experiments` produces `output/visual-lab-with-clicks.pdf`; each deterministic click state becomes a separate page.
+
+Experiment-only dependencies are GSAP 3 (its [standard no-charge license](https://gsap.com/standard-license/)), the ISC-licensed D3 array/scale/shape modules, MIT-licensed TresJS and Three.js, Apache-2.0 Playwright Chromium, and MIT-licensed pdf-lib. They are used only by the isolated deck or its validation/export tooling. The large TresJS/Three.js scene is dynamically imported and does not enter the Grade 7, 8 or 11 bundles.
 
 ## Design
 

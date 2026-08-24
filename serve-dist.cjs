@@ -4,6 +4,7 @@ const path = require('node:path')
 
 const root = path.resolve(__dirname, 'dist')
 const port = Number(process.env.PRESENTATIONS_PORT || 3030)
+const startRoute = process.env.PRESENTATIONS_START_ROUTE || '/'
 
 const types = {
   '.html': 'text/html; charset=utf-8',
@@ -70,5 +71,5 @@ http.createServer((request, response) => {
     sendFile(response, fallbackFile(pathname))
   })
 }).listen(port, '127.0.0.1', () => {
-  console.log(`Static Slidev deck on http://localhost:${port}/`)
+  console.log(`Static Slidev deck on http://localhost:${port}${startRoute}`)
 })

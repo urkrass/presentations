@@ -1,100 +1,101 @@
 <script setup lang="ts">
 import { useSlideContext } from '@slidev/client'
-import { gsap } from 'gsap'
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
-import { computed, ref } from 'vue'
-import { useGsapSlideTimeline } from '../composables/useGsapSlideTimeline'
+import { computed, onMounted, ref } from 'vue'
 
-gsap.registerPlugin(MotionPathPlugin)
-
-const root = ref<HTMLElement | null>(null)
+const reactionSvg = ref<SVGSVGElement | null>(null)
+const renderState = ref<'loading' | 'ready' | 'error'>('loading')
+const renderError = ref('')
 const { $clicks } = useSlideContext()
 const stage = computed(() => Math.max(0, Math.min(4, Number($clicks.value) || 0)))
-const stageCopy = computed(() => [
-  'The balanced equation is a promise: every atom must still exist after the reaction.',
-  'Count first. Four hydrogen atoms and two oxygen atoms enter the ledger.',
-  'Collision changes neighbours, not identity. Watch the same six atoms converge.',
-  'Bonds rearrange. No atom appears, disappears, or changes element.',
-  'Two water molecules leave: H = 4 and O = 2 on both sides.',
-][stage.value])
 
-const atoms = [
-  { id: 'h1', symbol: 'H', kind: 'hydrogen' },
-  { id: 'h2', symbol: 'H', kind: 'hydrogen' },
-  { id: 'h3', symbol: 'H', kind: 'hydrogen' },
-  { id: 'h4', symbol: 'H', kind: 'hydrogen' },
-  { id: 'o1', symbol: 'O', kind: 'oxygen' },
-  { id: 'o2', symbol: 'O', kind: 'oxygen' },
+const reactionSmiles = '[H:1][H:2].[H:3][H:4].[O:5]=[O:6]>>[H:1][O:5][H:2].[H:3][O:6][H:4]'
+const stages = [
+  { heading: 'read the reaction', copy: 'The mapped reaction string is the source of truth for every atom and bond.' },
+  { heading: 'count the reactants', copy: 'Two hydrogen molecules contain four H atoms; one oxygen molecule contains two O atoms.' },
+  { heading: 'compare connectivity', copy: 'The renderer derives the molecular bonds from the reaction SMILES instead of using positioned CSS shapes.' },
+  { heading: 'count the products', copy: 'Two water molecules contain the same four H atoms and two O atoms.' },
+  { heading: 'audit complete', copy: 'Hydrogen is 4 → 4 and oxygen is 2 → 2. The balanced equation conserves both elements.' },
 ]
 
-const reactants: Record<string, [number, number]> = {
-  h1: [78, 78], h2: [132, 78], h3: [78, 244], h4: [132, 244], o1: [410, 146], o2: [482, 146],
-}
-const collision: Record<string, [number, number]> = {
-  h1: [258, 104], h2: [316, 138], h3: [270, 216], h4: [335, 225], o1: [324, 78], o2: [372, 188],
-}
-const products: Record<string, [number, number]> = {
-  h1: [340, 106], h2: [430, 106], o1: [385, 158], h3: [490, 228], h4: [580, 228], o2: [535, 280],
-}
+onMounted(async () => {
+  if (!reactionSvg.value) return
 
-useGsapSlideTimeline({
-  root,
-  steps: 4,
-  build: () => {
-    for (const atom of atoms) {
-      const [x, y] = reactants[atom.id]
-      gsap.set(`[data-atom="${atom.id}"]`, { x, y, scale: 1, opacity: 1 })
-    }
-    gsap.set('.product-halo', { opacity: 0, scale: 0.8 })
-    const timeline = gsap.timeline({ paused: true, defaults: { duration: 0.6, ease: 'power2.inOut' } })
-    timeline.addLabel('step-0', 0)
-    timeline.to('.atom-disc', { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, stagger: 0.04 })
-    timeline.addLabel('step-1')
-    for (const atom of atoms) {
-      const [x, y] = collision[atom.id]
-      timeline.to(`[data-atom="${atom.id}"]`, {
-        motionPath: { path: [{ x: reactants[atom.id][0], y: reactants[atom.id][1] }, { x, y }], curviness: 1.4 },
-      }, '<')
-    }
-    timeline.addLabel('step-2')
-    timeline.to('.atom-disc', { scale: 0.94, duration: 0.16, yoyo: true, repeat: 1, stagger: 0.025 })
-    timeline.addLabel('step-3')
-    for (const atom of atoms) {
-      const [x, y] = products[atom.id]
-      timeline.to(`[data-atom="${atom.id}"]`, { x, y, scale: 1 }, '<')
-    }
-    timeline.to('.product-halo', { opacity: 1, scale: 1, duration: 0.35 }, '<0.25')
-    timeline.addLabel('step-4')
-    return timeline
-  },
+  try {
+    const { default: SmilesDrawer } = await import('smiles-drawer')
+    const drawer = new SmilesDrawer.SmiDrawer({
+      width: 1040,
+      height: 280,
+      bondLength: 54,
+      bondThickness: 1.6,
+      bondSpacing: 8,
+      fontSizeLarge: 18,
+      fontSizeSmall: 6,
+      padding: 24,
+      compactDrawing: false,
+      explicitHydrogens: true,
+      themes: {
+        lab: {
+          FOREGROUND: '#252421',
+          BACKGROUND: '#f3f0e8',
+          C: '#252421',
+          O: '#a84a36',
+          N: '#2f6080',
+          F: '#486b58',
+          CL: '#486b58',
+          BR: '#a8732a',
+          I: '#6c557b',
+          P: '#a8732a',
+          S: '#a8732a',
+          B: '#a8732a',
+          SI: '#6e6a62',
+          H: '#2f6080',
+        },
+      },
+    }, {
+      scale: 1.35,
+      spacing: 24,
+      plus: { size: 14, thickness: 1.4 },
+      arrow: { length: 190, headSize: 8, thickness: 1.4, margin: 5 },
+    })
+
+    drawer.draw(
+      reactionSmiles,
+      reactionSvg.value,
+      'lab',
+      () => { renderState.value = 'ready' },
+      (error: Error) => {
+        renderState.value = 'error'
+        renderError.value = error.message
+      },
+    )
+  }
+  catch (error) {
+    renderState.value = 'error'
+    renderError.value = error instanceof Error ? error.message : 'The chemistry renderer could not load.'
+  }
 })
 </script>
 
 <template>
-  <section ref="root" class="particle-ledger" aria-label="Persistent atom ledger for the formation of water">
-    <div class="reaction-stage">
-      <div class="reaction-zones" aria-hidden="true">
-        <span>reactants</span><span>products</span>
-      </div>
-      <i class="product-halo halo-one" /><i class="product-halo halo-two" />
-      <div
-        v-for="atom in atoms"
-        :key="atom.id"
-        class="atom-disc"
-        :class="atom.kind"
-        :data-atom="atom.id"
-        :aria-label="`${atom.symbol} atom ${atom.id.slice(1)}`"
-      >{{ atom.symbol }}</div>
+  <section class="chemistry-renderer" :data-stage="stage" :data-renderer-state="renderState" aria-label="Library-rendered balanced reaction for forming water">
+    <div class="chemistry-source">
+      <span>mapped reaction SMILES</span>
+      <code>{{ reactionSmiles }}</code>
     </div>
 
-    <div class="ledger-copy">
-      <p class="equation">2 H₂ + O₂ → 2 H₂O</p>
-      <p class="stage-copy">{{ stageCopy }}</p>
-      <div class="atom-count" aria-label="Atom conservation ledger">
+    <svg ref="reactionSvg" class="chemistry-reaction" role="img" aria-label="Two hydrogen molecules and one oxygen molecule form two water molecules" />
+    <p v-if="renderState === 'error'" class="chemistry-error">{{ renderError }}</p>
+
+    <div class="chemistry-reading">
+      <div>
+        <span>click {{ stage }} / 4</span>
+        <strong>{{ stages[stage].heading }}</strong>
+      </div>
+      <p>{{ stages[stage].copy }}</p>
+      <div class="chemistry-count" aria-label="Atom conservation count">
         <span>hydrogen <b>4 → 4</b></span>
         <span>oxygen <b>2 → 2</b></span>
       </div>
-      <p class="click-cue">click {{ stage }} / 4 · move backward to audit restoration</p>
     </div>
   </section>
 </template>
