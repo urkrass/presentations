@@ -84,16 +84,33 @@ try {
 
   await interactionPage.goto(`${base}/4`, { waitUntil: 'domcontentloaded' })
   await interactionPage.locator('.slidev-page-4').waitFor({ state: 'visible' })
-  await interactionPage.locator('.slidev-page-4 [data-renderer-state="ready"]').waitFor()
+  await interactionPage.locator('.slidev-page-4 [data-renderer-stage="0"][data-renderer-state="ready"]').waitFor()
   const renderedReaction = interactionPage.locator('.slidev-page-4 .chemistry-reaction')
-  const openingMarkup = await renderedReaction.innerHTML()
+  const reactionStates = [await renderedReaction.innerHTML()]
+  const reactionSignature = () => renderedReaction.evaluate(svg => ({
+    viewBox: svg.getAttribute('viewBox'),
+    molecules: svg.querySelectorAll(':scope > svg').length,
+    paths: svg.querySelectorAll('path').length,
+    lines: svg.querySelectorAll('line').length,
+    text: svg.textContent,
+    colours: Array.from(svg.querySelectorAll('[fill], [stroke]')).map(element => [element.getAttribute('fill'), element.getAttribute('stroke')]),
+  }))
+  const openingSignature = await reactionSignature()
   check(await renderedReaction.locator('path, line').count() > 0, 'SmilesDrawer renders the chemical structures and reaction arrow')
-  for (let click = 0; click < 4; click += 1) await interactionPage.keyboard.press('ArrowRight')
+  for (let click = 1; click <= 4; click += 1) {
+    await interactionPage.keyboard.press('ArrowRight')
+    await interactionPage.locator(`.slidev-page-4 [data-renderer-stage="${click}"][data-renderer-state="ready"]`).waitFor()
+    reactionStates.push(await renderedReaction.innerHTML())
+  }
+  check(new Set(reactionStates).size === 5, 'every chemistry click produces a distinct SmilesDrawer rendering state')
   check((await interactionPage.locator('.slidev-page-4 .chemistry-reading strong').innerText()).includes('audit complete'), 'chemistry sequence reaches its conservation audit')
-  check((await interactionPage.locator('.slidev-page-4 .chemistry-reading p').innerText()).includes('both elements'), 'chemistry sequence states the conserved result')
-  for (let click = 0; click < 4; click += 1) await interactionPage.keyboard.press('ArrowLeft')
-  check((await interactionPage.locator('.slidev-page-4 .chemistry-reading strong').innerText()).includes('read the reaction'), 'chemistry sequence restores its opening explanation')
-  check(await renderedReaction.innerHTML() === openingMarkup, 'library-rendered reaction remains unchanged across explanation states')
+  check((await interactionPage.locator('.slidev-page-4 .chemistry-reading p').innerText()).includes('every atom'), 'chemistry sequence states the conserved result')
+  for (let click = 3; click >= 0; click -= 1) {
+    await interactionPage.keyboard.press('ArrowLeft')
+    await interactionPage.locator(`.slidev-page-4 [data-renderer-stage="${click}"][data-renderer-state="ready"]`).waitFor()
+  }
+  check((await interactionPage.locator('.slidev-page-4 .chemistry-reading strong').innerText()).includes('start with a candidate'), 'chemistry sequence restores its opening explanation')
+  check(JSON.stringify(await reactionSignature()) === JSON.stringify(openingSignature), 'SmilesDrawer restores the opening candidate after reversing')
 
   await interactionPage.goto(`${base}/5`, { waitUntil: 'domcontentloaded' })
   await interactionPage.locator('.slidev-page-5').waitFor({ state: 'visible' })

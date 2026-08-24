@@ -357,6 +357,13 @@ body,
   white-space: nowrap;
 }
 
+.chemistry-source strong {
+  color: var(--lab-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
 .chemistry-reaction {
   background: var(--lab-paper-deep);
   display: block;
@@ -410,6 +417,15 @@ body,
 .chemistry-count b {
   color: var(--lab-green);
   font-size: 0.95rem;
+}
+
+.chemistry-count .mismatch {
+  color: var(--lab-rust);
+  font-weight: 800;
+}
+
+.chemistry-count .mismatch b {
+  color: var(--lab-rust);
 }
 
 .reflex-trace {

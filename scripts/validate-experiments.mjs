@@ -70,7 +70,7 @@ for (const forbidden of ['product-halo', 'halo-one', 'halo-two', 'atom-disc', 'M
 
 for (const [label, source, tokens] of [
   ['GSAP lifecycle', sourceGroups.gsap, ['gsap.context', 'onSlideEnter', 'onSlideLeave', 'reflex-source', 'timeline?.kill()']],
-  ['Chemistry renderer', sourceGroups.chemistry, ['smiles-drawer', 'SmiDrawer', '[H:1][H:2]', '[O:5]=[O:6]', 'mapped reaction SMILES']],
+  ['Chemistry renderer', sourceGroups.chemistry, ['smiles-drawer', 'SmiDrawer', 'reactionStages', '[H:1][H:2]', '[O:5]=[O:6]', 'equation-balancing candidates']],
   ['D3 study', sourceGroups.d3, ['d3-scale', 'd3-shape', 'd3-array', 'includeAnomaly', 'resolution 0.1 °C']],
   ['Canvas study', sourceGroups.canvas, ['requestAnimationFrame', 'cancelAnimationFrame', '2000', 'seedParticles', 'useIsSlideActive']],
   ['Scale reconstruction', sourceGroups.scale, ['stage', 'organism', 'organ', 'tissue', 'cell', 'receptor']],

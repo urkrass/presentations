@@ -85,11 +85,11 @@ fonts:
 
 ---
 
-<p class="lab-kicker">Study 04 · SmilesDrawer · mapped reaction SMILES</p>
+<p class="lab-kicker">Study 04 · SmilesDrawer reaction states</p>
 
 # The atom count must survive the reaction
 
-<p class="lab-lede">Advance four clicks. An established chemistry renderer—not positioned CSS shapes—derives the structures and bonds from a mapped reaction string.</p>
+<p class="lab-lede">Advance four clicks. SmilesDrawer redraws each equation candidate as the coefficients are balanced; the sequence does not invent a reaction mechanism.</p>
 
 <ParticleLedger />
 <div class="click-register" aria-hidden="true"><span v-click="1" /><span v-click="2" /><span v-click="3" /><span v-click="4" /></div>

@@ -18,7 +18,7 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 | 01 | Follow a causal signal inside one continuous photograph | Native `v-motion` + `$clicks` | Reliable baseline; reverse navigation restores emphasis without replacing the scene |
 | 02 | Replace a question with its answer in one anchored field | `VSwitch` + `v-click` | Reliable, compact and export-friendly |
 | 03 | Audit backward restoration without a comparison grid | Native motion/CSS | One image and one verdict make the technical result legible |
-| 04 | Audit atom conservation through a reaction | SmilesDrawer reaction renderer + mapped SMILES | Established chemistry layout replaces hand-positioned atoms, bonds and grouping marks |
+| 04 | Balance a molecular equation and audit atom conservation | SmilesDrawer reaction renderer + staged reaction SMILES | Every click asks the domain renderer to redraw a meaningful equation candidate; no mechanism or geometry is invented |
 | 05 | Distinguish rapid spinal response from later brain information | Sourced reflex anatomy + GSAP image focus | The source arrows remain unaltered; no authored line overlay is used |
 | 06 | Decide when a temperature reading has settled | D3 scale/shape/array + Vue state | The graph is the dominant object; readout and controls share one baseline |
 | 07 | Make retain/exclude anomaly judgement visible | D3 + reversible Vue controls | Summary and judgement change together without hiding data |
@@ -33,7 +33,7 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 ## Reliability and lifecycle
 
 - The shared GSAP helper creates one scoped `gsap.context`, builds a paused labelled timeline, maps the current Slidev click count to exact labels, handles decreasing counts, pauses on slide leave and kills both timeline and context on teardown.
-- Native and GSAP sequences were exercised forwards and backwards. The SmilesDrawer reaction remains unchanged while its explanatory click states reverse exactly.
+- Native and GSAP sequences were exercised forwards and backwards. SmilesDrawer produces five distinct rendered balancing states, then reconstructs the opening candidate when the sequence reverses.
 - The Canvas loop stops when its slide is inactive, restarts when active, and uses a seeded generator for the same reset state.
 - The 3D scene is dynamically imported, renders on demand, observes Slidev activity and supplies a textual non-WebGL fallback.
 - A persistent deck-level control stores reduced-motion preference. With motion disabled, click states jump to their destinations and no claim depends on movement alone.
@@ -41,7 +41,7 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 
 ## Browser and classroom checks
 
-Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 14 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered SmilesDrawer reaction stability, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
+Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 14 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
 
 The review screenshots are direct 1366×768 browser captures of each opening state. They preserve the deck motion control but omit surrounding browser chrome:
 
@@ -71,7 +71,7 @@ The production-route outputs were unchanged before and after the experiment inte
 
 ## Export findings
 
-The click-state export produced a **28-page, 14,482,305-byte PDF**. It uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
+The click-state export produced a **28-page, 14,479,578-byte PDF**. It uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
 
 The stock Slidev dev and export commands were not reliable in this Windows/Vite 8 workspace: they duplicated the absolute Windows path while resolving the deck-local conditional stylesheet. The repository development command builds and serves the isolated route on port 3060; the export script captures that same built route and still implements the requested click-state semantics.
 
