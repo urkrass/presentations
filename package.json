@@ -7,10 +7,12 @@
     "dev": "node scripts/build-site.mjs && node serve-dist.cjs",
     "dev:grade8": "slidev slides.md --port 3030",
     "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
+    "dev:grade11": "slidev decks/grade-11-integration-control/slides.md --port 3050",
     "build": "node scripts/build-site.mjs",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
     "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120",
+    "validate:grade11": "node scripts/validate-grade11.mjs",
     "validate:site": "node scripts/validate-site.mjs"
   },
   "devDependencies": {

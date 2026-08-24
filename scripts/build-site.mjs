@@ -18,6 +18,7 @@ fs.mkdirSync(dist, { recursive: true })
 
 buildDeck('slides.md', '/grade-8/stoichiometry/', path.join(dist, 'grade-8', 'stoichiometry'))
 buildDeck('decks/grade-7-lab-measurement/slides.md', '/grade-7/lab-measurement/', path.join(dist, 'grade-7', 'lab-measurement'))
+buildDeck('decks/grade-11-integration-control/slides.md', '/grade-11/integration-control/', path.join(dist, 'grade-11', 'integration-control'))
 
 fs.cpSync(path.join(root, 'site'), dist, { recursive: true })
 console.log('Combined presentation site built in dist/')

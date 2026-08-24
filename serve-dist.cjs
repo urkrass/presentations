@@ -37,6 +37,9 @@ function fallbackFile(pathname) {
   if (pathname.startsWith('/grade-8/stoichiometry/')) {
     return path.join(root, 'grade-8', 'stoichiometry', 'index.html')
   }
+  if (pathname.startsWith('/grade-11/integration-control/')) {
+    return path.join(root, 'grade-11', 'integration-control', 'index.html')
+  }
   return path.join(root, 'index.html')
 }
 

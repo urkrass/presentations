@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f4f0e7" />
-    <meta name="description" content="Grade 7 and Grade 8 science presentations for classroom teaching." />
+    <meta name="description" content="Grade 7, Grade 8, and Grade 11 science presentations for classroom teaching." />
     <meta property="og:title" content="Science presentations" />
     <meta property="og:description" content="Choose a grade and open the complete classroom presentation." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://presentations-lime.vercel.app/og.png" />
+    <meta property="og:image" content="https://presentations-lime.vercel.app/og-v2.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Science presentations, Grades 7–8, beside laboratory glassware" />
+    <meta property="og:image:alt" content="Science presentations, Grades 7–11, beside laboratory glassware" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Science presentations" />
     <meta name="twitter:description" content="Choose a grade and open the complete classroom presentation." />
-    <meta name="twitter:image" content="https://presentations-lime.vercel.app/og.png" />
+    <meta name="twitter:image" content="https://presentations-lime.vercel.app/og-v2.png" />
     <title>Science presentations</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
@@ -36,6 +36,10 @@
         <button type="button" role="tab" aria-selected="false" aria-controls="grade-8-deck" data-grade="8">
           <span>Grade</span>
           <strong>8</strong>
+        </button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="grade-11-deck" data-grade="11">
+          <span>Grade</span>
+          <strong>11</strong>
         </button>
       </nav>
 
@@ -65,6 +69,20 @@
           <figure>
             <img src="/grade-8/stoichiometry/images/fertilizer-works.jpg" alt="Industrial fertiliser works connected to the Haber process" />
             <figcaption>Chemists use particle ratios to predict real quantities.</figcaption>
+          </figure>
+        </article>
+
+        <article class="presentation" id="grade-11-deck" data-deck="11" hidden>
+          <div class="presentation-copy">
+            <p class="date">IB Biology SL/HL · C3.1</p>
+            <h2>Signals, coordination, and control.</h2>
+            <p class="summary">Integration and emergence, nervous and endocrine signalling, receptors, reflexes, feedback, plant tropisms, phytohormones, and investigation design.</p>
+            <p class="details">Three 45-minute lessons + investigation <span aria-hidden="true">·</span> 54 slides</p>
+            <a class="open-deck" href="/grade-11/integration-control/">Open Grade 11 presentation <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure>
+            <img src="/grade-11/integration-control/images/nervous-system.svg" alt="Diagram of the human nervous system" />
+            <figcaption>Organisms turn information into coordinated responses.</figcaption>
           </figure>
         </article>
       </section>

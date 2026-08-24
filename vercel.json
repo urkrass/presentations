@@ -13,6 +13,11 @@
       "source": "/grade-8",
       "destination": "/grade-8/stoichiometry/",
       "permanent": false
+    },
+    {
+      "source": "/grade-11",
+      "destination": "/grade-11/integration-control/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -23,6 +28,10 @@
     {
       "source": "/grade-8/stoichiometry/:path*",
       "destination": "/grade-8/stoichiometry/index.html"
+    },
+    {
+      "source": "/grade-11/integration-control/:path*",
+      "destination": "/grade-11/integration-control/index.html"
     }
   ]
 }
