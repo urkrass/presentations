@@ -29,7 +29,7 @@ html, body, #app { background: var(--paper); }
   overflow: hidden;
   background: var(--paper);
   color: var(--ink);
-  font: 19px/1.38 var(--sans);
+  font: 19px/1.45 var(--sans);
 }
 
 .slidev-layout h1, .slidev-layout h2, .slidev-layout h3, .slidev-layout p, .slidev-layout figure, .slidev-layout blockquote { margin-block-start: 0; }
@@ -39,7 +39,7 @@ html, body, #app { background: var(--paper); }
 .slidev-layout button { font-family: var(--sans); }
 .eyebrow, .kicker { margin: 0 0 16px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .hl-tag { display: inline-flex; margin-left: 8px; padding: 4px 7px; border-radius: 4px; background: var(--accent); color: white; font-size: 11px; font-weight: 800; letter-spacing: .08em; vertical-align: .18em; }
-.question-line { margin: 20px 0 0; color: var(--accent-2); text-align: center; font: 700 23px/1.25 var(--serif); }
+.question-line { margin: 20px 0 0; color: var(--accent-2); text-align: center; font: 700 23px/1.38 var(--serif); }
 
 .cover-grid { height: 555px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 48px; align-items: center; }
 .cover-copy h1 { margin-bottom: 20px; font-size: 61px; line-height: .99; letter-spacing: -.046em; }
@@ -106,7 +106,7 @@ html, body, #app { background: var(--paper); }
 
 .check-grid { min-height: 390px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-content: center; }.check-grid article { min-height: 280px; padding: 26px; display: grid; align-content: center; gap: 17px; border-radius: 7px; background: var(--paper-deep); }.check-grid article:nth-child(2){background:var(--blue-field)}.check-grid article:nth-child(3){background:var(--green-field)}.check-grid span{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.check-grid strong{font:700 25px/1.13 var(--serif)}.check-grid p{margin:0;color:var(--muted);font-size:16px}
 
-.section-slide { background: var(--accent-2); color: white; }.section-slide h1 { color: white; }.section-number { margin: 120px 0 14px; color: rgba(255,255,255,.7); font-size: 14px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }.section-title { max-width: 850px; margin: 0; color: white; font: 700 65px/.99 var(--serif); letter-spacing: -.045em; }.section-subtitle { max-width: 700px; margin: 25px 0 0; color: rgba(255,255,255,.78); font-size: 21px; }
+.section-slide { background: var(--accent-2); color: white; }.section-slide h1 { color: white; }.section-number { margin: 112px 0 14px; color: rgba(255,255,255,.7); font-size: 14px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }.section-title { max-width: 900px; margin: 0; color: white; font: 700 62px/1.08 var(--serif); letter-spacing: -.04em; }.section-subtitle { max-width: 760px; margin: 25px 0 0; color: rgba(255,255,255,.78); font-size: 21px; line-height: 1.45; }
 
 .stimulus-cases { min-height: 390px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-content: center; }.stimulus-cases article { min-height: 300px; padding: 27px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 13px; border-radius: 7px; background: var(--paper-deep); }.stimulus-cases article:nth-child(2){background:var(--blue-field)}.stimulus-cases article:nth-child(3){background:var(--green-field)}.stimulus-cases span{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.stimulus-cases strong{font:700 27px/1.08 var(--serif)}.stimulus-cases p{margin:0;color:var(--muted);font-size:16px}.stimulus-cases small{color:var(--accent-2);font-weight:800}
 
@@ -150,6 +150,48 @@ html, body, #app { background: var(--paper); }
 .answer-grid{min-height:410px;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.answer-grid p{margin:0;padding:17px 21px;display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;border-radius:6px;background:var(--paper-deep)}.answer-grid p:nth-child(2),.answer-grid p:nth-child(5){background:var(--blue-field)}.answer-grid p:nth-child(3),.answer-grid p:nth-child(6){background:var(--green-field)}.answer-grid span{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.answer-grid strong{font:700 17px/1.2 var(--serif)}
 
 .reflection-grid{min-height:410px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.reflection-grid article{padding:28px;display:grid;align-content:center;gap:18px;border-radius:7px;background:var(--paper-deep)}.reflection-grid article:nth-child(2){background:var(--blue-field)}.reflection-grid article:nth-child(3){background:var(--green-field)}.reflection-grid span{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.reflection-grid strong{font:700 27px/1.1 var(--serif)}.reflection-grid p{margin:0;color:var(--muted)}
+
+/* Sourced visuals replace hand-drawn figurative artwork. */
+.source-photo,.source-diagram{position:relative;margin:0;overflow:hidden;border-radius:7px;background:var(--paper-deep)}
+.source-photo img,.source-diagram img{width:100%;height:100%;object-fit:cover}
+.source-photo figcaption,.source-diagram figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:12px 16px;background:rgba(24,32,31,.82);color:#fff;font-size:13px;line-height:1.42}
+
+.cover-visual img{left:50%;bottom:38px;width:360px;height:435px;transform:translateX(-50%);filter:saturate(.72)}
+.cover-caption{left:42px;right:42px;bottom:18px;text-align:center;line-height:1.4}
+
+.cheetah-photo{height:425px;align-self:start}.cheetah-photo img{object-position:58% center}
+.brain-diagram{min-height:420px;padding:18px}.brain-diagram img{height:350px;object-fit:contain}.brain-diagram figcaption{position:static;margin:4px -18px -18px}
+.neuron-photo{height:430px;align-self:start}.neuron-photo img{object-position:center}
+.myelin-figure{min-height:410px;padding:22px}.myelin-figure img{height:335px;object-fit:contain}.myelin-figure figcaption{position:static;margin:8px -22px -22px}
+.balance-photo{height:420px;align-self:start}.balance-photo img{object-position:center 32%}
+.gut-diagram{height:410px;align-self:start;padding:20px}.gut-diagram img{height:322px;object-fit:contain}.gut-diagram figcaption{position:static;margin:7px -20px -20px}
+.seedling-photo{height:410px;align-self:start}.seedling-photo img{object-position:center}
+.banana-photo{height:410px;align-self:start}.banana-photo img{object-position:center}
+
+.exercise-model{grid-template-columns:.72fr 1.28fr}
+.exercise-context{padding:34px;display:grid;align-content:center;gap:18px;border-radius:7px;background:var(--blue-field)}
+.exercise-context span,.transport-evidence>span{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.exercise-context strong{font:700 28px/1.24 var(--serif)}
+.exercise-context p{margin:0;color:var(--muted);font-size:16px;line-height:1.5}
+
+.transport-evidence{padding:36px;display:grid;align-content:center;gap:18px;border-radius:7px;background:var(--blue-field)}
+.transport-evidence strong{font:700 29px/1.24 var(--serif)}
+.transport-evidence p{margin:0;color:var(--muted);line-height:1.5}
+.transport-evidence .transport-route{padding:15px 17px;border-radius:5px;background:rgba(255,255,255,.72);color:var(--accent-3);font-weight:800;text-align:center}
+
+.onion-chart{margin:0;padding:16px 18px;display:grid;grid-template-rows:1fr auto;gap:7px;border-radius:7px;background:var(--blue-field)}
+.onion-chart svg{width:100%;height:340px}.onion-chart .axis{stroke:#777f7a;stroke-width:2}.onion-chart .grid line{stroke:rgba(105,110,105,.2);stroke-width:1}.onion-chart .bars.control rect{fill:var(--accent-2)}.onion-chart .bars.experiment rect{fill:var(--accent-3)}.onion-chart .errors path{fill:none;stroke:var(--ink);stroke-width:2}.onion-chart .labels text{fill:var(--muted);font:13px var(--sans)}
+.onion-chart figcaption{color:var(--muted);font-size:12px;line-height:1.4;text-align:center}.control-key,.experiment-key{display:inline-block;width:12px;height:12px;margin:0 5px 0 12px;border-radius:2px;background:var(--accent-2);vertical-align:-1px}.experiment-key{background:var(--accent-3)}
+
+.emergence-copy strong,.brain-regions strong,.plasticity-copy strong,.myelin-copy strong,.cerebellum-copy strong,.exercise-chain strong,.ens-copy strong,.plant-core-copy strong,.transport-copy strong,.ethylene-copy strong,.investigation-copy strong{line-height:1.3}
+.route-map p,.signal-loop p,.case-sequence p,.ratio-field p,.synthesis-map p,.reflection-grid p{line-height:1.45}
+
+/* Slidev's theme sets a compact paragraph leading after deck styles load. */
+.slidev-layout p{line-height:1.45 !important}
+.slidev-layout .section-number{margin:112px 0 14px !important;line-height:1.2 !important}
+.slidev-layout .section-title{margin:0 !important;line-height:1.08 !important}
+.slidev-layout .section-subtitle{margin:25px 0 0 !important;line-height:1.45 !important}
+.diagnostic-grid strong,.exam-prompts strong,.answer-grid strong{line-height:1.34}
 
 @media (max-width: 900px) {
   .slidev-layout { padding: 36px 52px; }

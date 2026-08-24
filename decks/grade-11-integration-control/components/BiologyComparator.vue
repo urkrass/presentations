@@ -91,9 +91,9 @@ const valueText = computed(() => `${props.leftLabel} ${Math.round(position.value
 .left-copy { left: 0; }
 .right-copy { right: 0; }
 .comparison-copy span, .comparison-handle span { color: var(--accent); font: 800 13px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
-.comparison-copy strong { display: block; margin-top: 15px; color: var(--ink); font: 700 35px/1.03 var(--serif); }
-.comparison-copy p { margin: 16px 0 0; color: var(--charcoal); font-size: 18px; line-height: 1.3; }
-.comparison-copy small { margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.3; }
+.comparison-copy strong { display: block; margin-top: 15px; color: var(--ink); font: 700 35px/1.16 var(--serif); }
+.comparison-copy p { margin: 16px 0 0; color: var(--charcoal); font-size: 18px; line-height: 1.46; }
+.comparison-copy small { margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.45; }
 .comparison-divider { position: absolute; top: 0; bottom: 0; width: 2px; background: rgba(154,73,56,.22); transform: translateX(-50%); transition: left 80ms ease-out; }
 .comparison-divider::before, .comparison-divider::after { content: ''; position: absolute; top: 0; height: 100%; width: 34px; }
 .comparison-divider::before { right: 2px; background: linear-gradient(to right, transparent, rgba(154,73,56,.08)); }

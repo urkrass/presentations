@@ -78,8 +78,8 @@ function toggle(id: string) {
 .flipped .front { opacity: 0; visibility: hidden; }
 .flipped .back { opacity: 1; visibility: visible; }
 .number, .action { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .1em; }
-.face strong { margin-top: 13px; color: var(--ink); font: 700 22px/1.08 var(--serif); }
-.short, .detail { margin-top: 9px; color: var(--muted); font-size: 14px; line-height: 1.27; }
+.face strong { margin-top: 13px; color: var(--ink); font: 700 22px/1.23 var(--serif); }
+.short, .detail { margin-top: 9px; color: var(--muted); font-size: 14px; line-height: 1.42; }
 .detail { color: var(--charcoal); }
 .action { position: absolute; right: 13px; bottom: 12px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.62); color: var(--accent-2); font: 700 18px/1 var(--serif); }
 </style>

@@ -24,9 +24,8 @@ fonts:
     <h1>Signals, coordination, and control</h1>
     <p class="cover-subtitle">How animals and plants sense change, integrate information, and produce a coordinated response.</p>
   </div>
-  <div class="cover-visual" aria-label="Human nervous system beside a plant bending toward light">
+  <div class="cover-visual" aria-label="Scientific diagram of the human nervous system">
     <img :src="'images/nervous-system.svg'" alt="Unlabelled human nervous system diagram" />
-    <div class="cover-plant" aria-hidden="true"><span class="sun"></span><span class="stem"></span><span class="leaf one"></span><span class="leaf two"></span><span class="pot"></span></div>
     <p class="cover-caption">Electrical signals, chemical messages, and feedback make an organism more than separate parts.</p>
   </div>
 </div>
@@ -128,7 +127,7 @@ class: thesis-slide
 # Emergence: no single cheetah part is “speed”
 
 <div class="emergence-case">
-  <div class="cheetah-figure" aria-label="Stylised running cheetah"><span class="cheetah-body"></span><span class="cheetah-leg a"></span><span class="cheetah-leg b"></span><span class="cheetah-leg c"></span><span class="cheetah-leg d"></span><p>predation is a system-level performance</p></div>
+  <figure class="source-photo cheetah-photo"><img :src="'images/cheetah-running.jpg'" alt="A cheetah running with all four feet above the ground" /><figcaption>Predation is a system-level performance.</figcaption></figure>
   <div class="emergence-copy">
     <p><span>Musculoskeletal</span><strong>Long limbs, flexible spine, and coordinated muscle force generate acceleration.</strong></p>
     <p><span>Respiratory + circulatory</span><strong>Gas exchange and transport sustain intense cellular respiration.</strong></p>
@@ -142,6 +141,7 @@ class: thesis-slide
 [Teacher prompt] Define emergent property: a property that arises from integration of subsystems and is not predictable from one component alone.
 [Sources]
 - https://drive.google.com/file/d/1b3P07ps_14bBO_uRabODohOkdfjrRLbJ/view — Hierarchy and emergent properties, pp. 5–6.
+- https://commons.wikimedia.org/wiki/File:Namibia_Otjiwarongo_Cheetah_Conservation_Fund_Cheetah_Jumping_While_Running.jpg — running cheetah photograph, CC BY 4.0.
 [/Sources]
 -->
 
@@ -220,7 +220,7 @@ class: thesis-slide
 # Brain regions divide the work, then integrate it
 
 <div class="brain-map">
-  <div class="brain-shape" aria-label="Simplified side view of the brain"><span class="brain-form"></span><span class="brain-stem"></span><span class="brain-label a">cerebrum</span><span class="brain-label b">cerebellum</span><span class="brain-label c">brainstem</span></div>
+  <figure class="source-diagram brain-diagram"><img :src="'images/brain-lateral.svg'" alt="Lateral scientific diagram of the brain showing cerebral lobes, cerebellum, and brainstem" /><figcaption>Relative position matters: the cerebellum sits behind the brainstem.</figcaption></figure>
   <div class="brain-regions">
     <p><span>Cerebrum</span><strong>Sensation, thinking, speech, and initiation of voluntary movement.</strong></p>
     <p><span>Cerebellum</span><strong>Timing, force, balance, posture, and motor learning.</strong></p>
@@ -234,28 +234,19 @@ class: thesis-slide
 [Teacher prompt] Do not turn this into a label race. Ask which region would be implicated by loss of balance, altered breathing, or impaired conscious speech.
 [Sources]
 - https://drive.google.com/file/d/1Rls3syMDoCs9p0SDIM1ddE5mLEnFRYZv/view — Integrating the animal body, pp. 2–5.
+- https://commons.wikimedia.org/wiki/File:Gehirn,_lateral_-_Lobi_%2B_Stammhirn_%2B_Cerebellum_eng.svg — lateral brain diagram, CC BY-SA 3.0.
 [/Sources]
 -->
 
 ---
 
-# Brain and spinal cord integrate at different levels
+# Test: where does the immediate response begin?
 
-<BiologyComparator
-  left-label="Brain"
-  left-title="Conscious + unconscious integration"
-  left-body="Combines many sensory inputs, interprets context, supports learning and memory, and coordinates voluntary and involuntary responses."
-  left-detail="It can modify a reflex after the spinal pathway begins."
-  right-label="Spinal cord"
-  right-title="Rapid unconscious integration"
-  right-body="Relays information between brain and body and can initiate reflex responses without waiting for conscious processing."
-  right-detail="A knee-jerk or withdrawal reflex can begin here."
-  hinge="awareness"
-/>
+<QuickCheck mode="centres" />
 
 <!--
 [Timing] 4 minutes
-[Teacher prompt] Correct a common misconception: a spinal reflex does not mean the brain receives no information.
+[Teacher prompt] Students answer before discussion. Correct the misconception that a spinal reflex means the brain receives no information.
 [Sources]
 - https://drive.google.com/file/d/1Rls3syMDoCs9p0SDIM1ddE5mLEnFRYZv/view — Integrating the animal body, pp. 5–7.
 - https://drive.google.com/file/d/1VqYGb7FSOXNsCFOBte4mAFJq1CC_1Thf/view — Reflex arcs and cerebellum, pp. 1–2.
@@ -281,7 +272,7 @@ class: thesis-slide
 # Learning changes the network that performs the task
 
 <div class="plasticity-field">
-  <div class="network" aria-label="Network of connected neurons"><i></i><i></i><i></i><i></i><i></i><b></b><b></b><b></b><b></b><b></b><p>repeated pathways can become stronger</p></div>
+  <figure class="source-photo neuron-photo"><img :src="'images/neuron-culture.jpg'" alt="Fluorescence micrograph of cultured cortical neurons and their branching processes" /><figcaption>Real neural tissue is a dense, connected network—not a single storage site.</figcaption></figure>
   <div class="plasticity-copy">
     <p><span>Form</span><strong>New synapses can appear between neurons.</strong></p>
     <p><span>Strengthen</span><strong>Frequently used pathways become more effective.</strong></p>
@@ -296,6 +287,7 @@ class: thesis-slide
 [Teacher prompt] Separate the biological claim from motivational slogans: effort matters because networks can change, but learning still depends on method, feedback, and conditions.
 [Sources]
 - https://drive.google.com/file/d/1Rls3syMDoCs9p0SDIM1ddE5mLEnFRYZv/view — Integrating the animal body, pp. 6–8.
+- https://commons.wikimedia.org/wiki/File:Rat_primary_cortical_neuron_culture,_deconvolved_z-stack_overlay_(30614937102).jpg — cortical neuron culture micrograph, CC BY 2.0.
 [/Sources]
 -->
 
@@ -335,23 +327,13 @@ class: section-slide
 
 ---
 
-# Sensory and motor neurons differ by direction and role
+# Test: put sensory and motor information in order
 
-<BiologyComparator
-  left-label="Sensory · afferent"
-  left-title="Receptor → CNS"
-  left-body="Carries information about internal or external stimuli toward the brain or spinal cord."
-  left-detail="Often has a long dendron, cell body part-way along, and a shorter axon."
-  right-label="Motor · efferent"
-  right-title="CNS → effector"
-  right-body="Carries commands from the brain or spinal cord to muscles or glands."
-  right-detail="Has many short dendrites around the cell body and one long axon."
-  hinge="direction"
-/>
+<QuickCheck mode="neurons" />
 
 <!--
 [Timing] 5 minutes
-[Teacher prompt] Use Afferent Arrives and Efferent Exits only as a check; the biological meaning is receptor-to-CNS versus CNS-to-effector.
+[Teacher prompt] Require students to justify the direction of each arrow. Use Afferent Arrives and Efferent Exits only as a final check.
 [Sources]
 - https://drive.google.com/file/d/1kRAfw03BiqgzifKjq_inIv3WluNLgQQd/view — Sensory and motor neurons, pp. 1–5.
 [/Sources]
@@ -395,10 +377,7 @@ class: section-slide
 # Myelin changes how the signal travels
 
 <div class="myelin-model">
-  <div class="axon-stage">
-    <div class="axon"><span class="myelin a"></span><span class="myelin b"></span><span class="myelin c"></span><span class="myelin d"></span><span class="node a"></span><span class="node b"></span><span class="node c"></span><span class="impulse">signal jumps node → node → node</span></div>
-    <p>Nodes of Ranvier interrupt the insulating myelin sheath.</p>
-  </div>
+  <figure class="source-diagram myelin-figure"><img :src="'images/myelin-diagram-en.svg'" alt="Scientific diagram of saltatory conduction along a myelinated neuron" /><figcaption>Depolarisation is regenerated at each node of Ranvier.</figcaption></figure>
   <div class="myelin-copy">
     <p><span>Structure</span><strong>Myelin is a lipid-rich membrane wrapped around an axon.</strong></p>
     <p><span>Function</span><strong>Insulation enables saltatory conduction between nodes.</strong></p>
@@ -411,6 +390,7 @@ class: section-slide
 [Teacher prompt] Avoid saying the impulse literally leaps through open space. Depolarisation is regenerated at the nodes.
 [Sources]
 - https://drive.google.com/file/d/1kRAfw03BiqgzifKjq_inIv3WluNLgQQd/view — Sensory and motor neurons, pp. 7–11.
+- https://commons.wikimedia.org/wiki/File:Propagation_of_action_potential_along_myelinated_nerve_fiber_en.svg — saltatory conduction diagram, CC BY-SA 4.0.
 [/Sources]
 -->
 
@@ -425,6 +405,7 @@ class: section-slide
 [Teacher prompt] Build the pathway aloud. Ask where the spinal cord is the integrator and where the response becomes conscious.
 [Sources]
 - https://drive.google.com/file/d/1VqYGb7FSOXNsCFOBte4mAFJq1CC_1Thf/view — Reflex arcs and cerebellum, pp. 1–2.
+- https://commons.wikimedia.org/wiki/File:Anatomy_and_physiology_of_animals_A_reflex_arc.jpg — reflex arc diagram by Ruth Lawson, CC BY 3.0.
 [/Sources]
 -->
 
@@ -433,7 +414,7 @@ class: section-slide
 # The cerebellum predicts and corrects movement
 
 <div class="cerebellum-case">
-  <div class="balance-figure" aria-label="Person balancing on a narrow board"><span class="balance-person"></span><span class="balance-leg a"></span><span class="balance-leg b"></span><span class="balance-board"></span></div>
+  <figure class="source-photo balance-photo"><img :src="'images/balance-beam.jpg'" alt="Gymnast balancing on a narrow beam" /><figcaption>Balance is continuously corrected from sensory feedback.</figcaption></figure>
   <div class="cerebellum-copy">
     <p><span>Coordination</span><strong>Adjusts timing and force across groups of voluntary muscles.</strong></p>
     <p><span>Balance + posture</span><strong>Uses proprioceptive and other sensory inputs to correct body position.</strong></p>
@@ -446,28 +427,19 @@ class: section-slide
 [Teacher prompt] A movement can be initiated by the cerebrum but refined by the cerebellum. Ask students for a movement that improves with feedback.
 [Sources]
 - https://drive.google.com/file/d/1VqYGb7FSOXNsCFOBte4mAFJq1CC_1Thf/view — Reflex arcs and cerebellum, pp. 2–4.
+- https://commons.wikimedia.org/wiki/File:2021-12-10_CGC_Bettembourg_2021_Training_Women_10_December_Balance_beam_(Martin_Rulsch)_41.jpg — gymnast on balance beam, CC BY-SA 4.0.
 [/Sources]
 -->
 
 ---
 
-# Fast protection and refined performance are different jobs
+# Test: which region best explains the evidence?
 
-<BiologyComparator
-  left-label="Withdrawal reflex"
-  left-title="Protect first"
-  left-body="A spinal circuit generates a rapid, involuntary contraction before conscious interpretation is complete."
-  left-detail="Its value is speed and consistency."
-  right-label="Cerebellar control"
-  right-title="Correct continuously"
-  right-body="Multiple sensory inputs are compared with intended movement so timing, force, balance, and posture can be adjusted."
-  right-detail="Its value is accuracy and learning."
-  hinge="purpose"
-/>
+<QuickCheck mode="coordination" />
 
 <!--
 [Timing] 4 minutes
-[Teacher prompt] Ask whether a reflex is always faster than a learned movement and why speed alone is not the only performance goal.
+[Teacher prompt] Ask students to eliminate each distractor using its known function, not only to name the cerebellum.
 [Sources]
 - https://drive.google.com/file/d/1VqYGb7FSOXNsCFOBte4mAFJq1CC_1Thf/view — Reflex arcs and cerebellum, pp. 1–4.
 [/Sources]
@@ -646,23 +618,13 @@ class: section-slide
 
 ---
 
-# Sympathetic and parasympathetic outputs push in opposite directions
+# Test: predict the autonomic correction
 
-<BiologyComparator
-  left-label="Sympathetic"
-  left-title="Mobilise"
-  left-body="Raises heart rate and cardiac output, redirects blood to active tissues, and supports rapid action."
-  left-detail="Dominant in stress and when blood pressure must rise."
-  right-label="Parasympathetic"
-  right-title="Restore"
-  right-body="Slows the heart and supports lower-demand maintenance and digestive activity."
-  right-detail="Dominant when pressure is high or the body is at rest."
-  hinge="autonomic balance"
-/>
+<QuickCheck mode="autonomic" />
 
 <!--
 [Timing] 4 minutes
-[Teacher prompt] Opposing outputs create adjustable control, not a simple on/off switch.
+[Teacher prompt] Students must link the autonomic change to the direction of the pressure correction. Opposing outputs create adjustable control, not a simple on/off switch.
 [Sources]
 - https://drive.google.com/file/d/1vQo1hIhJPieTFmQYjNr8H182h5uq1TNY/view — Feedback mechanisms, pp. 2–3.
 [/Sources]
@@ -673,7 +635,7 @@ class: section-slide
 # Exercise couples respiration, circulation, and neural feedback
 
 <div class="exercise-model">
-  <div class="runner-field" aria-label="Runner in motion"><span class="runner"></span><span class="runner-arm a"></span><span class="runner-arm b"></span><span class="runner-leg a"></span><span class="runner-leg b"></span><p>one activity perturbs several variables at once</p></div>
+  <div class="exercise-context"><span>one perturbation</span><strong>Working muscle changes several internal variables at once.</strong><p>The response must coordinate ventilation, circulation, and fuel delivery rather than regulate one organ in isolation.</p></div>
   <div class="exercise-chain">
     <p><span>Cellular respiration</span><strong>Working muscles use more O₂ and produce more CO₂.</strong></p>
     <p><span>Blood chemistry</span><strong>Dissolved CO₂ increases; blood pH decreases slightly.</strong></p>
@@ -696,7 +658,7 @@ class: section-slide
 # The gut contains a local nervous system
 
 <div class="ens-map">
-  <div class="gut-visual" aria-label="Simplified digestive tract"><span class="gut"></span><p>the enteric nervous system extends from oesophagus to rectum</p></div>
+  <figure class="source-diagram gut-diagram"><img :src="'images/digestive-system.svg'" alt="Scientific diagram of the human digestive system" /><figcaption>The enteric network extends from oesophagus to rectum.</figcaption></figure>
   <div class="ens-copy">
     <p><span>After swallowing</span><strong>The ENS coordinates peristalsis through rhythmic smooth-muscle contraction.</strong></p>
     <p><span>Local control</span><strong>It regulates secretion, mixing, and blood flow needed for absorption.</strong></p>
@@ -710,6 +672,7 @@ class: section-slide
 [Teacher prompt] “Second brain” is a metaphor: it means extensive local neural control, not consciousness in the gut.
 [Sources]
 - https://drive.google.com/file/d/1vQo1hIhJPieTFmQYjNr8H182h5uq1TNY/view — Feedback mechanisms, pp. 4–6.
+- https://commons.wikimedia.org/wiki/File:Digestive_system_diagram_en.svg — human digestive system diagram, public domain.
 [/Sources]
 -->
 
@@ -771,7 +734,7 @@ class: section-slide
 # A rooted organism responds by changing growth
 
 <div class="plant-core">
-  <div class="plant-visual" aria-label="Plant bending toward lateral light"><span class="sun"></span><span class="pot"></span><span class="stem"></span><span class="leaf a"></span><span class="leaf b"></span></div>
+  <figure class="source-photo seedling-photo"><img :src="'images/phototropism-seedlings.jpg'" alt="Young seedlings growing under directional environmental light" /><figcaption>A rooted organism changes its growth rather than relocating.</figcaption></figure>
   <div class="plant-core-copy">
     <p><span>Stimulus</span><strong>Light, gravity, water, touch, and chemicals vary in direction and intensity.</strong></p>
     <p><span>Signal</span><strong>Phytohormones act as chemical messengers between plant regions.</strong></p>
@@ -785,6 +748,7 @@ class: section-slide
 [Teacher prompt] Plant movement in this topic is growth, not locomotion. Emphasise directionality.
 [Sources]
 - https://drive.google.com/file/d/1ni8UDEgpsfv3jgjXjquYmKCTyWrUzMQr/view — Tropisms and phytohormones, pp. 1–4.
+- https://commons.wikimedia.org/wiki/File:Positive_phototropism_in_Quercus_humboldtii_seedlings.jpg — seedling photograph, CC BY-SA 3.0.
 [/Sources]
 -->
 
@@ -844,6 +808,7 @@ class: section-slide
 [Teacher prompt] Switch light direction. Students narrate the causal chain and distinguish redistribution from “more auxin being made on one side.”
 [Sources]
 - https://drive.google.com/file/d/1eMzkR9dIGCi2J8gusRL7nmEBBHaNs0by/view — More on auxins and cytokinins, pp. 1–4.
+- https://commons.wikimedia.org/wiki/File:Onions_reach_for_light.jpg — onion phototropism photograph, CC BY-SA 3.0.
 [/Sources]
 -->
 
@@ -852,9 +817,7 @@ class: section-slide
 # Polar auxin transport gives the signal direction
 
 <div class="transport-model">
-  <div class="cell-column" aria-label="Column of plant cells with directional auxin efflux carriers">
-    <div class="cell-row"><i></i><i></i><i></i><i></i></div><div class="cell-row"><i></i><i></i><i></i><i></i></div><div class="cell-row"><i></i><i></i><i></i><i></i></div><p>Efflux carriers on one side of neighbouring cells create coordinated, directional cell-to-cell transport.</p>
-  </div>
+  <div class="transport-evidence"><span>direction comes from position</span><strong>Efflux carriers are concentrated on one side of neighbouring cells.</strong><p>Repeated polarity across a tissue converts local membrane transport into a coordinated route.</p><p class="transport-route">cell entry → intracellular trapping → positioned exit → next cell</p></div>
   <div class="transport-copy">
     <p><span>Entry</span><strong>IAA enters by diffusion and auxin influx carriers.</strong></p>
     <p><span>Trap</span><strong>Inside the cell, charged IAA⁻ cannot simply diffuse back across the membrane.</strong></p>
@@ -907,23 +870,13 @@ class: section-slide
 
 ---
 
-# Auxin and cytokinin are a ratio, not independent switches
+# Test: predict tissue fate from the hormone ratio
 
-<BiologyComparator
-  left-label="Auxin influence"
-  left-title="Elongation, roots, apical dominance"
-  left-body="Auxin from shoot meristems moves downward, supports elongation, favours root formation at high relative concentration, and suppresses lateral buds."
-  left-detail="High auxin : low cytokinin → roots."
-  right-label="Cytokinin influence"
-  right-title="Division, differentiation, shoots"
-  right-body="Cytokinin from roots moves upward, promotes cell division and differentiation, favours shoots, and stimulates lateral bud development."
-  right-detail="Low auxin : high cytokinin → shoots."
-  hinge="relative ratio"
-/>
+<QuickCheck mode="ratio" />
 
 <!--
 [Timing] 5 minutes
-[Teacher prompt] Drag the hinge and ask for predicted tissue outcome. Emphasise relative concentrations.
+[Teacher prompt] Students predict before seeing the three-state ratio slide. Emphasise relative concentrations rather than isolated hormone labels.
 [Sources]
 - https://drive.google.com/file/d/1eMzkR9dIGCi2J8gusRL7nmEBBHaNs0by/view — More on auxins and cytokinins, pp. 7–8.
 [/Sources]
@@ -952,7 +905,7 @@ class: section-slide
 # Ethylene makes ripening self-amplifying
 
 <div class="ethylene-case">
-  <div class="banana-stages" aria-label="Five banana stages from green to spotted brown"><span class="banana" style="--banana:#4e8c45"></span><span class="banana" style="--banana:#86a840"></span><span class="banana" style="--banana:#d6be3f"></span><span class="banana" style="--banana:#d9a83d"></span><span class="banana" style="--banana:#8c6841"></span><small>low ethylene → rising ethylene → accelerated ripening</small></div>
+  <figure class="source-photo banana-photo"><img :src="'images/banana-ripening.jpg'" alt="Bananas showing green and yellow patches during ripening" /><figcaption>Visible colour change accompanies biochemical ripening.</figcaption></figure>
   <div class="ethylene-copy">
     <p><span>Soften</span><strong>Cell-wall breakdown changes texture.</strong></p>
     <p><span>Sweeten</span><strong>Starch is converted into sugars; bitter compounds decrease.</strong></p>
@@ -966,6 +919,7 @@ class: section-slide
 [Teacher prompt] Connect molecular signalling to visible evidence: softness, sweetness, colour, and aroma.
 [Sources]
 - https://drive.google.com/file/d/1IBT9htXAMOOmUSnsVz3rM712i0eejK5n/view — Role of ethylene, pp. 1–2.
+- https://commons.wikimedia.org/wiki/File:Banana_-_cavendish_-_ripening.jpg — bananas during ripening, CC0.
 [/Sources]
 -->
 
@@ -1029,7 +983,17 @@ class: section-slide
 # Investigation extension: does vermifiltered water change onion growth?
 
 <div class="investigation-card">
-  <div class="onion-visual" aria-label="Control and experimental onion plants of different heights"><span class="onion a"></span><span class="onion b"></span><p><span>water control</span><span>vermifiltered water</span></p></div>
+  <figure class="onion-chart" aria-label="Mean onion plant height by month with standard deviation error bars">
+    <svg viewBox="0 0 560 390" role="img" aria-label="Control and vermifiltered-water onion growth means across four months">
+      <line x1="60" y1="320" x2="535" y2="320" class="axis"/><line x1="60" y1="35" x2="60" y2="320" class="axis"/>
+      <g class="grid"><line x1="60" y1="270" x2="535" y2="270"/><line x1="60" y1="220" x2="535" y2="220"/><line x1="60" y1="170" x2="535" y2="170"/><line x1="60" y1="120" x2="535" y2="120"/><line x1="60" y1="70" x2="535" y2="70"/></g>
+      <g class="bars control"><rect x="92" y="272" width="32" height="48"/><rect x="202" y="202" width="32" height="118"/><rect x="312" y="194" width="32" height="126"/><rect x="422" y="116" width="32" height="204"/></g>
+      <g class="bars experiment"><rect x="128" y="258" width="32" height="62"/><rect x="238" y="194" width="32" height="126"/><rect x="348" y="119" width="32" height="201"/><rect x="458" y="60" width="32" height="260"/></g>
+      <g class="errors"><path d="M108 265v14m-8-14h16m-8 14h8m-8 0h-8"/><path d="M144 250v17m-8-17h16m-8 17h8m-8 0h-8"/><path d="M218 197v10m-8-10h16m-8 10h8m-8 0h-8"/><path d="M254 186v16m-8-16h16m-8 16h8m-8 0h-8"/><path d="M328 189v11m-8-11h16m-8 11h8m-8 0h-8"/><path d="M364 111v16m-8-16h16m-8 16h8m-8 0h-8"/><path d="M438 110v12m-8-12h16m-8 12h8m-8 0h-8"/><path d="M474 51v18m-8-18h16m-8 18h8m-8 0h-8"/></g>
+      <g class="labels"><text x="95" y="345">M1</text><text x="205" y="345">M2</text><text x="315" y="345">M3</text><text x="425" y="345">M4</text><text x="22" y="323">0</text><text x="22" y="273">1</text><text x="22" y="223">2</text><text x="22" y="173">3</text><text x="22" y="123">4</text><text x="22" y="73">5</text></g>
+    </svg>
+    <figcaption><span class="control-key"></span> water control <span class="experiment-key"></span> vermifiltered water · means ± population SD · feet</figcaption>
+  </figure>
   <div class="investigation-copy">
     <p><span>Visualise</span><strong>Plot mean growth for control and experimental groups across four months.</strong></p>
     <p><span>Quantify variation</span><strong>Calculate standard deviation for each data set.</strong></p>
@@ -1045,6 +1009,7 @@ class: section-slide
 [Teacher prompt] Use the data table linked inside the source PDF. Require graph conventions, transparent working, and a conclusion that acknowledges spread.
 [Sources]
 - https://drive.google.com/file/d/1CTejnyANyU91J3_RezwdQLmhjhZK_S4q/view — Investigation, pp. 1–3.
+- https://d3vrb2m3yrmyfi.cloudfront.net/media/edusys_2/content_uploads/Biology%20C3.1.26%20Data%20Table.7e446e668116cbd6b648.pdf — onion growth data table; means and population SD calculated from the ten observations per condition.
 [/Sources]
 -->
 
