@@ -114,19 +114,28 @@ try {
 
   await interactionPage.goto(`${base}/5`, { waitUntil: 'domcontentloaded' })
   await interactionPage.locator('.slidev-page-5').waitFor({ state: 'visible' })
-  const openingTrace = await interactionPage.locator('.slidev-page-5 .reflex-source').evaluate(image => getComputedStyle(image).transform)
-  for (let click = 0; click < 4; click += 1) await interactionPage.keyboard.press('ArrowRight')
-  check((await interactionPage.locator('.slidev-page-5 .reflex-readout strong').innerText()).includes('brain informed'), 'reflex image sequence reaches the later brain-information state')
+  await interactionPage.locator('.slidev-page-5 [data-source-ready="true"]').waitFor()
+  const reflexPathState = () => interactionPage.locator('.slidev-page-5 .reflex-source').evaluate((source) => {
+    const document = source.contentDocument
+    return ['path261', 'path257', 'path259'].map(id => document?.getElementById(id)?.style.opacity ?? '')
+  })
+  const reflexStates = [await reflexPathState()]
+  for (let click = 0; click < 4; click += 1) {
+    await interactionPage.keyboard.press('ArrowRight')
+    reflexStates.push(await reflexPathState())
+  }
+  check(new Set(reflexStates.map(state => JSON.stringify(state))).size === 5, 'reflex clicks reveal five distinct states of the source pathways')
+  check((await interactionPage.locator('.slidev-page-5 .reflex-readout strong').innerText()).includes('whole reflex arc'), 'reflex image sequence reaches the complete source-path state')
+  check((await reflexPathState()).every(opacity => Number(opacity) === 1), 'final reflex state shows all three original source pathways together')
   for (let click = 0; click < 4; click += 1) await interactionPage.keyboard.press('ArrowLeft')
-  await interactionPage.waitForTimeout(120)
-  const restoredTrace = await interactionPage.locator('.slidev-page-5 .reflex-source').evaluate(image => getComputedStyle(image).transform)
-  check((await interactionPage.locator('.slidev-page-5 .reflex-readout strong').innerText()).includes('ready'), 'reflex image sequence restores its opening label')
-  check(openingTrace === restoredTrace, 'reflex source image restores its exact opening transform')
+  check((await interactionPage.locator('.slidev-page-5 .reflex-readout strong').innerText()).includes('complete anatomy'), 'reflex image sequence restores its opening label')
+  check(JSON.stringify(await reflexPathState()) === JSON.stringify(reflexStates[0]), 'reflex source pathways restore their exact opening visibility')
 
   await interactionPage.goto(`${base}/6`, { waitUntil: 'domcontentloaded' })
   await interactionPage.locator('.slidev-page-6').waitFor({ state: 'visible' })
   for (let reading = 0; reading < 6; reading += 1) await interactionPage.getByRole('button', { name: 'Add reading' }).click()
   check((await interactionPage.locator('.slidev-page-6 .settling-verdict').innerText()).includes('plateau'), 'temperature sequence reaches a reproducible plateau')
+  check(await interactionPage.locator('.slidev-page-6 .temperature-dot').count() === 10, 'temperature dot plot shows one mark per observation without a connecting trace')
   await interactionPage.getByRole('button', { name: 'Show range' }).click()
   check(await interactionPage.locator('.slidev-page-6 .variability-band').isVisible(), 'temperature variability can be shown and hidden')
   await interactionPage.getByRole('button', { name: 'Reset' }).click()
@@ -137,9 +146,9 @@ try {
   const meanWithAnomaly = await interactionPage.locator('.slidev-page-7 .temperature-readout p').first().innerText()
   await interactionPage.getByRole('button', { name: 'Exclude anomaly' }).click()
   const meanWithoutAnomaly = await interactionPage.locator('.slidev-page-7 .temperature-readout p').first().innerText()
-  check(meanWithAnomaly !== meanWithoutAnomaly && await interactionPage.locator('.slidev-page-7 .temperature-dot.anomaly').count() === 0, 'anomaly decision visibly changes the D3 summary')
+  check(meanWithAnomaly !== meanWithoutAnomaly && await interactionPage.locator('.slidev-page-7 .temperature-dot.anomaly.excluded').count() === 1, 'anomaly decision changes the summary while keeping the observation visible')
   await interactionPage.getByRole('button', { name: 'Restore anomaly' }).click()
-  check(await interactionPage.locator('.slidev-page-7 .temperature-dot.anomaly').count() === 1, 'anomaly decision is reversible')
+  check(await interactionPage.locator('.slidev-page-7 .temperature-dot.anomaly:not(.excluded)').count() === 1, 'anomaly decision is reversible')
 
   await interactionPage.goto(`${base}/8`, { waitUntil: 'domcontentloaded' })
   await interactionPage.locator('.slidev-page-8 canvas').waitFor({ state: 'visible' })

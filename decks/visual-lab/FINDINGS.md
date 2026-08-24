@@ -19,9 +19,9 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 | 02 | Replace a question with its answer in one anchored field | `VSwitch` + `v-click` | Reliable, compact and export-friendly |
 | 03 | Audit backward restoration without a comparison grid | Native motion/CSS | One image and one verdict make the technical result legible |
 | 04 | Balance a molecular equation and audit atom conservation | SmilesDrawer reaction renderer + staged reaction SMILES | Every click asks the domain renderer to redraw a meaningful equation candidate; no mechanism or geometry is invented |
-| 05 | Distinguish rapid spinal response from later brain information | Sourced reflex anatomy + GSAP image focus | The source arrows remain unaltered; no authored line overlay is used |
-| 06 | Decide when a temperature reading has settled | D3 scale/shape/array + Vue state | The graph is the dominant object; readout and controls share one baseline |
-| 07 | Make retain/exclude anomaly judgement visible | D3 + reversible Vue controls | Summary and judgement change together without hiding data |
+| 05 | Distinguish rapid spinal response from later brain information | Sourced reflex SVG + GSAP visibility sequencing | Clicks reveal the three original source-path groups; the image never pans and no route is overlaid |
+| 06 | Decide when a temperature reading has settled | D3 scales/array + time-positioned dot plot | Individual observations accumulate without a connecting trace; a shaded band carries the plateau judgement |
+| 07 | Make retain/exclude anomaly judgement visible | D3 dot plot + reversible Vue controls | Exclusion changes the summary while the suspected observation remains visible |
 | 08 | See a concentration gradient change as a many-body system | Seeded Canvas, 1,000 particles | Smooth on the validation machine; deterministic reset |
 | 09 | Stress the same explanation at 500–2,000 particles | Seeded Canvas + live FPS | 1,000 is the sensible classroom default; performance remains device-specific |
 | 10 | Move organism → organ without losing location | Shared scale scene + sourced MRI | Direct navigation reconstructs the requested level around one anatomical image |
@@ -32,7 +32,7 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 
 ## Reliability and lifecycle
 
-- The shared GSAP helper creates one scoped `gsap.context`, builds a paused labelled timeline, maps the current Slidev click count to exact labels, handles decreasing counts, pauses on slide leave and kills both timeline and context on teardown.
+- The reflex study creates one scoped `gsap.context` and changes visibility only for the source SVG's existing `path261`, `path257` and `path259` groups. Decreasing click counts reconstruct earlier visibility states and teardown reverts the context.
 - Native and GSAP sequences were exercised forwards and backwards. SmilesDrawer produces five distinct rendered balancing states, then reconstructs the opening candidate when the sequence reverses.
 - The Canvas loop stops when its slide is inactive, restarts when active, and uses a seeded generator for the same reset state.
 - The 3D scene is dynamically imported, renders on demand, observes Slidev activity and supplies a textual non-WebGL fallback.
@@ -41,7 +41,7 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 
 ## Browser and classroom checks
 
-Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 14 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
+Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 14 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, source-SVG reflex reveals, dot-plot plateau/anomaly decisions, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
 
 The review screenshots are direct 1366×768 browser captures of each opening state. They preserve the deck motion control but omit surrounding browser chrome:
 
@@ -57,9 +57,9 @@ The review screenshots are direct 1366×768 browser captures of each opening sta
 
 ## Build and bundle observations
 
-The native-only experimental scaffold built to 42 files / **792,449 B** total (**569,624 B JS**, **124,745 B CSS**). The revised 14-study route builds to 66 files / **3,234,829 B** total (**1,731,859 B JS**, **137,794 B CSS**, **1,361,236 B images**). The increase comes from the sourced reflex/MRI assets and the isolated chemistry renderer used to replace authored scientific geometry.
+The native-only experimental scaffold built to 42 files / **792,449 B** total (**569,624 B JS**, **124,745 B CSS**). The revised 14-study route builds to 66 files / **3,230,898 B** total (**1,727,653 B JS**, **138,069 B CSS**, **1,361,236 B images**). The increase comes from the sourced reflex/MRI assets and the isolated chemistry renderer used to replace authored scientific geometry.
 
-The deliberately isolated 3D chunk is **776,405 B raw / 202.24 kB gzip**. It is loaded only when the molecular-geometry study is requested. SmilesDrawer is isolated at **190,946 B raw / 56.32 kB gzip**; the GSAP-enabled reflex slide is **73.62 kB raw / 29.09 kB gzip**; the D3 component is **28.34 kB raw / 11.18 kB gzip**; the Canvas component is **3.75 kB raw / 1.79 kB gzip**.
+The deliberately isolated 3D chunk is **776,405 B raw / 202.24 kB gzip**. It is loaded only when the molecular-geometry study is requested. SmilesDrawer is isolated at **190,946 B raw / 56.32 kB gzip**; the GSAP-enabled reflex slide is **73.11 kB raw / 28.91 kB gzip**; the D3 dot-plot component is **23.49 kB raw / 9.64 kB gzip**; the Canvas component is **3.75 kB raw / 1.79 kB gzip**.
 
 The production-route outputs were unchanged before and after the experiment integration:
 
@@ -71,7 +71,7 @@ The production-route outputs were unchanged before and after the experiment inte
 
 ## Export findings
 
-The click-state export produced a **28-page, 14,479,578-byte PDF**. It uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
+The click-state export produced a **28-page, 14,465,682-byte PDF**. It uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
 
 The stock Slidev dev and export commands were not reliable in this Windows/Vite 8 workspace: they duplicated the absolute Windows path while resolving the deck-local conditional stylesheet. The repository development command builds and serves the isolated route on port 3060; the export script captures that same built route and still implements the requested click-state semantics.
 
@@ -86,4 +86,4 @@ The stock Slidev dev and export commands were not reliable in this Windows/Vite 
 
 ## Third-party note
 
-SmilesDrawer, TresJS and Three.js are MIT. GSAP 3 uses the [GSAP standard no-charge license](https://gsap.com/standard-license/). `d3-array`, `d3-scale` and `d3-shape` are ISC. Playwright Chromium is Apache-2.0 and pdf-lib is MIT. These packages are experiment or validation/export dependencies; no full D3 bundle or Motion Vue dependency was added, and ScrollTrigger is not used.
+SmilesDrawer, TresJS and Three.js are MIT. GSAP 3 uses the [GSAP standard no-charge license](https://gsap.com/standard-license/). `d3-array` and `d3-scale` are ISC. Playwright Chromium is Apache-2.0 and pdf-lib is MIT. These packages are experiment or validation/export dependencies; no full D3 bundle or Motion Vue dependency was added, and ScrollTrigger is not used.

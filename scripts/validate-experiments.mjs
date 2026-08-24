@@ -61,6 +61,13 @@ for (const forbidden of ['<svg', '<path', '<line', 'DrawSVGPlugin', 'MotionPathP
   console.log(`${absent ? 'PASS' : 'FAIL'} reflex study excludes authored overlay ${forbidden}`)
 }
 
+const temperatureSource = sourceGroups.d3
+for (const forbidden of ['d3-shape', 'curveMonotoneX', 'temperature-line', 'mean-line', '<path']) {
+  const absent = !temperatureSource.includes(forbidden)
+  if (!absent) failed = true
+  console.log(`${absent ? 'PASS' : 'FAIL'} temperature studies exclude ${forbidden}`)
+}
+
 const ledgerSource = sourceGroups.chemistry
 for (const forbidden of ['product-halo', 'halo-one', 'halo-two', 'atom-disc', 'MotionPathPlugin', 'gsap', '<path', '<line']) {
   const absent = !ledgerSource.includes(forbidden)
@@ -69,9 +76,9 @@ for (const forbidden of ['product-halo', 'halo-one', 'halo-two', 'atom-disc', 'M
 }
 
 for (const [label, source, tokens] of [
-  ['GSAP lifecycle', sourceGroups.gsap, ['gsap.context', 'onSlideEnter', 'onSlideLeave', 'reflex-source', 'timeline?.kill()']],
+  ['GSAP source-path reveal', sourceGroups.gsap, ['gsap.context', 'path261', 'path257', 'path259', 'reflex-source', 'context?.revert()']],
   ['Chemistry renderer', sourceGroups.chemistry, ['smiles-drawer', 'SmiDrawer', 'reactionStages', '[H:1][H:2]', '[O:5]=[O:6]', 'equation-balancing candidates']],
-  ['D3 study', sourceGroups.d3, ['d3-scale', 'd3-shape', 'd3-array', 'includeAnomaly', 'resolution 0.1 °C']],
+  ['D3 dot studies', sourceGroups.d3, ['d3-scale', 'd3-array', 'includeAnomaly', 'temperature-dot', 'resolution 0.1 °C']],
   ['Canvas study', sourceGroups.canvas, ['requestAnimationFrame', 'cancelAnimationFrame', '2000', 'seedParticles', 'useIsSlideActive']],
   ['Scale reconstruction', sourceGroups.scale, ['stage', 'organism', 'organ', 'tissue', 'cell', 'receptor']],
   ['Limited 3D study', sourceGroups.three, ["import('./MoleculeGeometryScene.vue')", 'TresCanvas', 'render-mode="on-demand"', "getContext('webgl')", 'webgl-fallback', 'type="range"', 'Reset view', 'useIsSlideActive']],

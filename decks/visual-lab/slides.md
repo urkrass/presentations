@@ -104,11 +104,11 @@ fonts:
 
 ---
 
-<p class="lab-kicker">Study 05 · GSAP image focus · sourced anatomy</p>
+<p class="lab-kicker">Study 05 · GSAP source-path reveal · sourced anatomy</p>
 
 # The hand can begin to withdraw before the brain receives the news
 
-<p class="lab-lede">The source arrows remain untouched. The camera follows the existing anatomy, then returns to the complete figure.</p>
+<p class="lab-lede">Advance four clicks. Each stage reveals a pathway already present in the sourced SVG; the image stays fixed and no route is redrawn.</p>
 
 <ReflexTrace />
 <div class="click-register" aria-hidden="true"><span v-click="1" /><span v-click="2" /><span v-click="3" /><span v-click="4" /></div>
@@ -124,9 +124,9 @@ fonts:
 
 <p class="lab-kicker">Study 06 · D3 · evidence accumulating</p>
 
-# The reading is not ready until the curve stops climbing
+# A reading is ready when new points enter the same narrow band
 
-<p class="lab-lede">Add readings. The shaded band marks the settling zone; three consecutive values within 0.2 °C turn the trace into evidence.</p>
+<p class="lab-lede">Add readings. Each dot is one observation; three consecutive values within 0.2 °C turn the green settling band into evidence.</p>
 
 <TemperatureSettling />
 
@@ -142,7 +142,7 @@ fonts:
 
 # One high point changes the mean—and demands a reason
 
-<p class="lab-lede">Retain or exclude the suspected handling error. The point never disappears without the summary changing in public.</p>
+<p class="lab-lede">Retain or exclude the suspected handling error. The point remains visible; only its contribution to the summary changes.</p>
 
 <TemperatureSettling anomaly-mode />
 

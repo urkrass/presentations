@@ -446,9 +446,9 @@ body,
 }
 
 .reflex-source {
+  border: 0;
   display: block;
   height: 100%;
-  object-fit: contain;
   padding: 12px 28px;
   width: 100%;
 }
@@ -542,62 +542,72 @@ body,
   width: 100%;
 }
 
-.chart-grid line {
-  stroke: rgba(110, 106, 98, 0.14);
-  stroke-width: 1;
+.temperature-zones rect {
+  fill: transparent;
 }
 
-.chart-grid text,
+.temperature-zones rect.alternate {
+  fill: rgba(110, 106, 98, 0.035);
+}
+
+.chart-labels text,
 .axis-label,
-.anomaly-label {
+.anomaly-label,
+.reading-label {
   fill: var(--lab-muted);
   font: 12px Inter, sans-serif;
   text-anchor: end;
 }
 
-.chart-grid text { text-anchor: middle; }
-.chart-grid text:nth-of-type(-n+8) { text-anchor: end; }
+.chart-labels text { text-anchor: middle; }
+.chart-labels text:nth-of-type(-n+8) { text-anchor: end; }
 
 .axis-label { text-anchor: start; }
-.chart-axis { stroke: var(--lab-muted); stroke-width: 1.5; }
+.chart-axis {
+  opacity: 0.48;
+  stroke: var(--lab-muted);
+  stroke-width: 0.65;
+}
 
 .plateau-band {
   fill: color-mix(in srgb, var(--lab-green) 11%, transparent);
 }
 
 .variability-band {
-  fill: color-mix(in srgb, var(--lab-blue) 12%, transparent);
-}
-
-.mean-line {
-  stroke: var(--lab-blue);
-  stroke-dasharray: 8 7;
-  stroke-width: 3;
-}
-
-.temperature-line {
-  fill: none;
-  stroke: var(--lab-rust);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 5;
+  fill: color-mix(in srgb, var(--lab-blue) 8%, transparent);
 }
 
 .temperature-dot {
-  fill: var(--lab-paper);
-  stroke: var(--lab-rust);
-  stroke-width: 4;
+  fill: var(--lab-rust);
+  opacity: 0.72;
+  stroke: none;
+}
+
+.temperature-dot.latest {
+  opacity: 1;
 }
 
 .temperature-dot.anomaly {
   fill: var(--lab-gold);
+  opacity: 1;
+}
+
+.temperature-dot.anomaly.excluded {
+  fill: var(--lab-paper);
+  opacity: 0.72;
   stroke: var(--lab-gold);
+  stroke-width: 1;
 }
 
 .anomaly-label {
   fill: var(--lab-gold);
   font-weight: 700;
   text-anchor: start;
+}
+
+.reading-label {
+  fill: var(--lab-rust);
+  font-weight: 700;
 }
 
 .settling-verdict {
