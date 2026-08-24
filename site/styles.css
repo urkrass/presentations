@@ -162,6 +162,7 @@ figure img {
 
 #grade-8-deck figure img { object-position: center 58%; }
 #grade-11-deck figure img { padding: 24px; background: #e4edf1; object-fit: contain; box-shadow: 0 22px 50px rgba(29, 40, 35, .09); }
+#ib-dp-deck figure img { object-position: center 62%; }
 
 figcaption {
   margin-top: 12px;

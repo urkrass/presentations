@@ -18,6 +18,11 @@
       "source": "/grade-11",
       "destination": "/grade-11/integration-control/",
       "permanent": false
+    },
+    {
+      "source": "/ib-dp",
+      "destination": "/ib-dp/a2-cells-viruses/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -32,6 +37,10 @@
     {
       "source": "/grade-11/integration-control/:path*",
       "destination": "/grade-11/integration-control/index.html"
+    },
+    {
+      "source": "/ib-dp/a2-cells-viruses/:path*",
+      "destination": "/ib-dp/a2-cells-viruses/index.html"
     },
     {
       "source": "/experiments/visual-lab/:path*",

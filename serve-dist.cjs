@@ -41,6 +41,9 @@ function fallbackFile(pathname) {
   if (pathname.startsWith('/grade-11/integration-control/')) {
     return path.join(root, 'grade-11', 'integration-control', 'index.html')
   }
+  if (pathname.startsWith('/ib-dp/a2-cells-viruses/')) {
+    return path.join(root, 'ib-dp', 'a2-cells-viruses', 'index.html')
+  }
   if (pathname.startsWith('/experiments/visual-lab/')) {
     return path.join(root, 'experiments', 'visual-lab', 'index.html')
   }

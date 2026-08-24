@@ -8,15 +8,18 @@
     "dev:grade8": "slidev slides.md --port 3030",
     "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
     "dev:grade11": "slidev decks/grade-11-integration-control/slides.md --port 3050",
+    "dev:ib-a2": "node scripts/build-ib-a2.mjs && node scripts/serve-ib-a2.mjs",
     "dev:experiments": "node scripts/build-experiments.mjs && node scripts/serve-experiments.mjs",
     "build": "node scripts/build-site.mjs",
     "build:experiments": "node scripts/build-experiments.mjs",
+    "build:ib-a2": "node scripts/build-ib-a2.mjs",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
     "export:experiments": "node scripts/export-experiments.mjs --with-clicks",
     "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120",
     "validate:grade11": "node scripts/validate-grade11.mjs",
     "validate:experiments": "node scripts/validate-experiments.mjs && vue-tsc --noEmit -p decks/visual-lab/tsconfig.json && node scripts/validate-experiments-browser.mjs",
+    "validate:ib-a2": "vue-tsc --noEmit -p decks/ib-dp-a2-cells-viruses/tsconfig.json && node scripts/validate-ib-a2.mjs",
     "validate:site": "node scripts/validate-site.mjs"
   },
   "devDependencies": {
