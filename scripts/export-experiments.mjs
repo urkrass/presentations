@@ -12,6 +12,7 @@ const output = outputFlag >= 0
   ? path.resolve(root, process.argv[outputFlag + 1])
   : path.join(root, 'output', withClicks ? 'visual-lab-with-clicks.pdf' : 'visual-lab.pdf')
 const clickStates = new Map([[1, 3], [2, 3], [4, 4], [5, 4]])
+const slideCount = 12
 
 execFileSync(process.execPath, [path.join(root, 'scripts', 'build-experiments.mjs')], {
   cwd: root,
@@ -31,10 +32,10 @@ pdf.setCreator('Slidev visual experimentation laboratory')
 
 let exportedPages = 0
 try {
-  for (let slide = 1; slide <= 14; slide += 1) {
+  for (let slide = 1; slide <= slideCount; slide += 1) {
     await page.goto(`${base}/${slide}`, { waitUntil: 'domcontentloaded' })
     await page.locator(`.slidev-page-${slide}`).waitFor({ state: 'visible', timeout: 30000 })
-    await page.waitForTimeout(slide === 13 ? 1100 : 260)
+    await page.waitForTimeout(slide === 11 ? 1100 : 260)
 
     const maxClicks = withClicks ? (clickStates.get(slide) ?? 0) : 0
     for (let click = 0; click <= maxClicks; click += 1) {
@@ -48,6 +49,19 @@ try {
       const pdfPage = pdf.addPage([960, 540])
       pdfPage.drawImage(image, { x: 0, y: 0, width: 960, height: 540 })
       exportedPages += 1
+    }
+
+    if (withClicks && slide === 10) {
+      for (let levelIndex = 1; levelIndex < 5; levelIndex += 1) {
+        await page.locator('.slidev-page-10 .scale-controls button').nth(levelIndex).click()
+        await page.waitForTimeout(220)
+        const visibleSlide = page.locator('.slidev-page-10')
+        const imageBytes = await visibleSlide.screenshot({ type: 'png', animations: 'disabled' })
+        const image = await pdf.embedPng(imageBytes)
+        const pdfPage = pdf.addPage([960, 540])
+        pdfPage.drawImage(image, { x: 0, y: 0, width: 960, height: 540 })
+        exportedPages += 1
+      }
     }
   }
 

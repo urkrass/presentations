@@ -713,155 +713,51 @@ body,
   color: var(--lab-blue);
 }
 
-.scale-journey {
-  display: grid;
-  gap: 44px;
-  grid-template-columns: 0.5fr 1.5fr;
-  min-height: 410px;
-}
-
-.scale-journey.scale-cinema {
-  gap: 28px;
-  grid-template-columns: 0.36fr 1.64fr;
-}
-
-.scale-cinema .scale-rail > div {
-  background: transparent;
-  gap: 8px;
-  grid-template-columns: 24px 76px 1fr;
-  padding: 0.35rem 0;
-}
-
-.scale-cinema .scale-rail > div.active {
-  background: transparent;
-  color: var(--lab-rust);
-  transform: none;
-}
-
-.scale-cinema .scale-window {
-  background: #090909;
-  height: 422px;
-}
-
-.scale-cinema .scale-window::after {
-  background: linear-gradient(0deg, rgba(10, 10, 9, 0.76), transparent 52%);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.scale-cinema .scale-window.stage-1 > img {
-  background: #090909;
-  filter: grayscale(1) contrast(1.1);
-  object-fit: contain;
-  padding: 0;
-}
-
-.scale-cinema .scale-window.stage-3 > img {
-  filter: saturate(0.82) contrast(1.12);
-  object-fit: cover;
-  padding: 0;
-  transform: scale(1.12);
-}
-
-.scale-cinema .scale-window figcaption {
-  background: transparent;
-  bottom: 24px;
-  color: var(--lab-paper);
-  left: 28px;
-  max-width: 500px;
-  padding: 0;
-  z-index: 2;
-}
-
-.scale-cinema .scale-window figcaption strong { color: var(--lab-paper); font-size: 1.9rem; }
-.scale-cinema .scale-window figcaption p { color: rgba(251, 250, 246, 0.76) !important; font-size: 0.85rem !important; }
-
-.scale-rail {
-  align-self: center;
-  display: grid;
-  gap: 6px;
-}
-
-.scale-rail > div {
-  align-items: baseline;
-  color: var(--lab-muted);
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 24px 92px 1fr;
-  min-height: 50px;
-  opacity: 0.42;
-  padding: 0.45rem 0.55rem;
-  transition: background var(--lab-medium) var(--lab-ease), opacity var(--lab-medium) var(--lab-ease), transform var(--lab-medium) var(--lab-ease);
-}
-
-.scale-rail > div.passed { opacity: 0.7; }
-.scale-rail > div.active {
-  background: var(--lab-soft-rust);
-  color: var(--lab-rust);
-  opacity: 1;
-  transform: translateX(8px);
-}
-
-.scale-rail span {
-  font-size: 0.65rem;
-  font-weight: 800;
-}
-
-.scale-rail strong {
-  color: inherit;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.08rem;
-  font-weight: 500;
-}
-
-.scale-rail small {
-  font-size: 0.72rem;
-}
-
-.scale-window {
-  background: var(--lab-paper-deep);
-  height: 408px;
+.scale-inspector {
+  background: #171714;
+  height: 410px;
   margin: 0;
   overflow: hidden;
   position: relative;
 }
 
-.scale-window > img {
+.scale-base {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.scale-base > img {
   display: block;
-  filter: saturate(0.72) contrast(1.04);
+  filter: saturate(0.72) contrast(1.08);
   height: 100%;
   object-fit: cover;
+  object-position: center 43%;
   width: 100%;
 }
 
-.scale-window.stage-1 > img,
-.scale-window.stage-3 > img {
-  background: #f2eee5;
-  object-fit: contain;
-  padding: 22px;
-}
-
-.scale-window.stage-4 > img {
-  filter: saturate(0.48) brightness(0.48);
-  transform: scale(1.35);
-}
-
-.scale-window figcaption {
-  background: rgba(251, 250, 246, 0.93);
-  bottom: 22px;
-  left: 24px;
-  max-width: 330px;
-  padding: 16px 18px;
+.scale-base-shade {
+  background: linear-gradient(90deg, rgba(17, 18, 15, 0.85) 0%, rgba(17, 18, 15, 0.56) 31%, rgba(17, 18, 15, 0.08) 67%), linear-gradient(0deg, rgba(17, 18, 15, 0.78), transparent 40%);
+  inset: 0;
+  pointer-events: none;
   position: absolute;
 }
 
-.scale-window figcaption span,
+.scale-context-caption {
+  color: var(--lab-paper);
+  left: 30px;
+  max-width: 345px;
+  position: absolute;
+  top: 32px;
+  z-index: 1;
+}
+
+.scale-context-caption span,
+.scale-inspection-window figcaption span,
 .receptor-question span,
 .molecule-controls > span,
 .recommendation-pair span {
-  color: var(--lab-rust);
   display: block;
   font-size: 0.66rem;
   font-weight: 800;
@@ -869,27 +765,169 @@ body,
   text-transform: uppercase;
 }
 
-.scale-window figcaption strong {
-  display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.65rem;
-  font-weight: 500;
-  margin-top: 0.2rem;
+.scale-context-caption span,
+.scale-inspection-window figcaption span {
+  color: #e8bda3;
 }
 
-.scale-window figcaption p,
-.receptor-question p {
-  color: var(--lab-muted) !important;
-  font-size: 0.78rem !important;
-  margin: 0.35rem 0 0 !important;
+.scale-context-caption strong {
+  color: var(--lab-paper);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.08;
+  margin-top: 0.45rem;
+}
+
+.scale-context-caption p {
+  color: rgba(251, 250, 246, 0.75) !important;
+  font-size: 0.8rem !important;
+  margin: 0.55rem 0 0 !important;
+  max-width: 290px;
+}
+
+.scale-controls {
+  bottom: 16px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(5, 1fr);
+  left: 24px;
+  position: absolute;
+  right: 24px;
+  z-index: 4;
+}
+
+.scale-controls button {
+  background: rgba(17, 18, 15, 0.62);
+  border: 0;
+  color: rgba(251, 250, 246, 0.58);
+  cursor: pointer;
+  min-height: 50px;
+  padding: 8px 10px 7px;
+  text-align: left;
+  transition: background var(--lab-fast) ease, color var(--lab-fast) ease;
+}
+
+.scale-controls button:hover,
+.scale-controls button.active {
+  background: rgba(251, 250, 246, 0.92);
+  color: var(--lab-ink);
+}
+
+.scale-controls button:focus-visible {
+  outline: 3px solid #e8bda3;
+  outline-offset: 2px;
+}
+
+.scale-controls span {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.scale-controls strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.scale-controls small {
+  display: block;
+  font-size: 0.59rem;
+  margin-top: 3px;
+  opacity: 0.72;
+}
+
+.scale-inspection-window {
+  background: #11110f;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+  height: 316px;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 26px;
+  top: 24px;
+  transform: translateY(12px) scale(0.965);
+  transform-origin: center;
+  visibility: hidden;
+  width: 61%;
+  z-index: 3;
+}
+
+.scale-inspection-window > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.scale-inspection-window.level-organ > img {
+  background: #090909;
+  filter: grayscale(1) contrast(1.1);
+  object-fit: contain;
+}
+
+.scale-inspection-window.level-tissue > img {
+  filter: saturate(0.82) contrast(1.1);
+}
+
+.scale-inspection-window.level-cell > img {
+  filter: saturate(0.8) contrast(1.12);
+  object-position: 58% 48%;
+  transform: scale(1.32);
+}
+
+.scale-inspection-window.level-receptor > img {
+  filter: saturate(0.45) brightness(0.42) contrast(1.15);
+  object-position: 58% 48%;
+  transform: scale(1.42);
+}
+
+.scale-window-shade {
+  background: linear-gradient(0deg, rgba(8, 9, 8, 0.84), transparent 58%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.scale-inspection-window figcaption {
+  bottom: 22px;
+  color: var(--lab-paper);
+  left: 24px;
+  max-width: 420px;
+  position: absolute;
+  z-index: 2;
+}
+
+.scale-inspection-window figcaption strong {
+  color: var(--lab-paper);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.25rem;
+}
+
+.scale-inspection-window figcaption p {
+  color: rgba(251, 250, 246, 0.76) !important;
+  font-size: 0.75rem !important;
+  margin: 0.38rem 0 0 !important;
 }
 
 .receptor-question {
   color: var(--lab-paper);
-  max-width: 390px;
+  left: 24px;
+  max-width: 430px;
   position: absolute;
-  right: 30px;
-  top: 52px;
+  top: 28px;
+  z-index: 2;
 }
 
 .receptor-question span { color: #e1b99e; }

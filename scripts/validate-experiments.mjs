@@ -80,7 +80,7 @@ for (const [label, source, tokens] of [
   ['Chemistry renderer', sourceGroups.chemistry, ['smiles-drawer', 'SmiDrawer', 'reactionStages', '[H:1][H:2]', '[O:5]=[O:6]', 'equation-balancing candidates']],
   ['D3 dot studies', sourceGroups.d3, ['d3-scale', 'd3-array', 'includeAnomaly', 'temperature-dot', 'resolution 0.1 °C']],
   ['Canvas study', sourceGroups.canvas, ['requestAnimationFrame', 'cancelAnimationFrame', '2000', 'seedParticles', 'useIsSlideActive']],
-  ['Scale reconstruction', sourceGroups.scale, ['stage', 'organism', 'organ', 'tissue', 'cell', 'receptor']],
+  ['Scale inspector', sourceGroups.scale, ['activeIndex', 'selectLevel', 'scale-inspection-window', 'gsap.fromTo', 'organism', 'organ', 'tissue', 'cell', 'receptor']],
   ['Limited 3D study', sourceGroups.three, ["import('./MoleculeGeometryScene.vue')", 'TresCanvas', 'render-mode="on-demand"', "getContext('webgl')", 'webgl-fallback', 'type="range"', 'Reset view', 'useIsSlideActive']],
 ]) {
   for (const token of tokens) {
@@ -89,6 +89,10 @@ for (const [label, source, tokens] of [
     console.log(`${valid ? 'PASS' : 'FAIL'} ${label} contains ${token}`)
   }
 }
+
+const stagePropAbsent = !sourceGroups.scale.includes('defineProps<{ stage')
+if (!stagePropAbsent) failed = true
+console.log(`${stagePropAbsent ? 'PASS' : 'FAIL'} scale inspector replaces slide-bound stage props with direct controls`)
 
 const screenshotDir = path.join(deck, 'findings', 'screenshots')
 const screenshots = fs.existsSync(screenshotDir)

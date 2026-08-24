@@ -13,6 +13,7 @@ if (process.env.VISUAL_LAB_SKIP_BUILD !== '1') {
 
 const site = await startStaticSite(root, path.join('experiments', 'visual-lab', 'index.html'))
 const base = `${site.origin}/experiments/visual-lab`
+const slideCount = 12
 const browser = await chromium.launch({ headless: true })
 const errors = []
 
@@ -33,11 +34,11 @@ try {
       if (message.type() === 'error') errors.push(`${viewport.width}x${viewport.height} console error: ${message.text()}`)
     })
 
-    for (let slide = 1; slide <= 14; slide += 1) {
+    for (let slide = 1; slide <= slideCount; slide += 1) {
       await page.goto(`${base}/${slide}`, { waitUntil: 'domcontentloaded' })
       const current = page.locator(`.slidev-page-${slide}`)
       await current.waitFor({ state: 'visible', timeout: 30000 })
-      await page.waitForTimeout(slide === 13 ? 900 : 120)
+      await page.waitForTimeout(slide === 11 ? 900 : 120)
       const fit = await current.evaluate((element, size) => {
         const layout = element.querySelector('.slidev-layout')
         const box = element.getBoundingClientRect()
@@ -157,14 +158,29 @@ try {
   await interactionPage.getByRole('button', { name: 'Equilibrium' }).click()
   check((await interactionPage.locator('.slidev-page-8 .diffusion-readout').innerText()).includes('equilibrium sample'), 'Canvas simulation can jump to a deterministic equilibrium')
 
-  await interactionPage.goto(`${base}/11`, { waitUntil: 'domcontentloaded' })
-  await interactionPage.locator('.slidev-page-11 .scale-journey[data-stage="3"]').waitFor({ state: 'visible' })
+  await interactionPage.goto(`${base}/10`, { waitUntil: 'domcontentloaded' })
+  const scaleInspector = interactionPage.locator('.slidev-page-10 .scale-inspector')
+  await scaleInspector.waitFor({ state: 'visible' })
+  check(await scaleInspector.getAttribute('data-level') === 'organism', 'scale inspector opens with the whole organism and no inspection window')
+  const fixedContextSource = await scaleInspector.locator('.scale-base > img').getAttribute('src')
+  for (const [index, level] of ['organ', 'tissue', 'cell', 'receptor'].entries()) {
+    await scaleInspector.locator('.scale-controls button').nth(index + 1).click()
+    await interactionPage.locator(`.slidev-page-10 .scale-inspector[data-level="${level}"][data-window-state="visible"]`).waitFor()
+    await scaleInspector.locator('.scale-inspection-window').waitFor({ state: 'visible' })
+    check(await scaleInspector.locator('.scale-inspection-window').isVisible(), `scale inspector shows the ${level} window without changing slides`)
+    check(await scaleInspector.locator('.scale-base > img').getAttribute('src') === fixedContextSource, `${level} selection keeps the organism image fixed`)
+  }
+  check(await scaleInspector.locator('.receptor-question').isVisible(), 'receptor level ends with an explicit conceptual question')
+  await scaleInspector.locator('.scale-controls button').first().click()
+  await interactionPage.locator('.slidev-page-10 .scale-inspector[data-level="organism"][data-window-state="hidden"]').waitFor()
+  await scaleInspector.locator('.scale-inspection-window').waitFor({ state: 'hidden' })
+  check(!await scaleInspector.locator('.scale-inspection-window').isVisible(), 'returning to organism hides only the inspection window')
   await interactionPage.reload({ waitUntil: 'domcontentloaded' })
-  await interactionPage.locator('.slidev-page-11 .scale-journey[data-stage="3"]').waitFor({ state: 'visible' })
-  check(await interactionPage.locator('.slidev-page-11 .scale-journey[data-stage="3"]').isVisible(), 'cross-scale middle slide reconstructs after refresh')
+  await interactionPage.locator('.slidev-page-10 .scale-inspector[data-level="organism"][data-window-state="hidden"]').waitFor({ state: 'visible' })
+  check(await interactionPage.locator('.slidev-page-10 .scale-inspector[data-level="organism"]').isVisible(), 'scale inspector restores its opening context after refresh')
 
-  await interactionPage.goto(`${base}/13`, { waitUntil: 'domcontentloaded' })
-  await interactionPage.locator('.slidev-page-13').waitFor({ state: 'visible' })
+  await interactionPage.goto(`${base}/11`, { waitUntil: 'domcontentloaded' })
+  await interactionPage.locator('.slidev-page-11').waitFor({ state: 'visible' })
   await interactionPage.locator('.molecule-stage canvas').waitFor({ state: 'visible', timeout: 30000 })
   await interactionPage.getByRole('button', { name: 'CH₄' }).click()
   await interactionPage.getByRole('button', { name: 'top' }).click()
@@ -177,7 +193,7 @@ try {
 
   await interactionPage.goto(`${base}/overview`, { waitUntil: 'domcontentloaded' })
   await interactionPage.waitForTimeout(500)
-  check(await interactionPage.locator('.slidev-page').count() >= 14, 'overview route renders all experiment studies')
+  check(await interactionPage.locator('.slidev-page').count() >= slideCount, 'overview route renders all experiment studies')
   await interactionPage.goto(`${base}/presenter`, { waitUntil: 'domcontentloaded' })
   await interactionPage.waitForTimeout(500)
   check((await interactionPage.title()).includes('Visual Experiments Laboratory'), 'presenter route loads the experiment deck')

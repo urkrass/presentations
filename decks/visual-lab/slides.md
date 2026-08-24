@@ -186,56 +186,26 @@ fonts:
 
 ---
 
-<p class="lab-kicker">Study 10 · persistent scale scene · organ</p>
+<p class="lab-kicker">Study 10 · one persistent scene · direct level switching</p>
 
-# The brain becomes meaningful only after the whole animal sets the context
+# Keep the organism visible while the inspection window changes scale
 
-<p class="lab-lede">The scale rail preserves location while the scientific image changes from organism to a real anatomical section.</p>
+<p class="lab-lede">Choose a level. The cheetah remains fixed; only the inspection window appears or changes.</p>
 
-<ScaleJourney :stage="1" />
+<ScaleJourney />
 
 <!--
 [Sources]
 - https://commons.wikimedia.org/wiki/File:Namibia_Otjiwarongo_Cheetah_Conservation_Fund_Cheetah_Jumping_While_Running.jpg — cheetah photograph, CC BY 4.0.
 - https://commons.wikimedia.org/wiki/File:MRI_brain_sagittal_section.jpg — sagittal MRI image, CC BY-SA 2.0.
-[/Sources]
--->
-
----
-
-<p class="lab-kicker">Study 11 · persistent scale scene · cell</p>
-
-# At cell scale, a network resolves into individual signalling units
-
-<p class="lab-lede">The same micrograph now answers a narrower question: where does one cell sit inside the connected tissue?</p>
-
-<ScaleJourney :stage="3" />
-
-<!--
-[Sources]
 - https://commons.wikimedia.org/wiki/File:Rat_primary_cortical_neuron_culture,_deconvolved_z-stack_overlay_(30614937102).jpg — cortical neuron culture micrograph, CC BY 2.0.
+- The neuron micrograph remains cellular context at the receptor level; it is not presented as a receptor micrograph.
 [/Sources]
 -->
 
 ---
 
-<p class="lab-kicker">Study 12 · persistent scale scene · receptor</p>
-
-# At receptor scale, the organism is still the context
-
-<p class="lab-lede">The final focus is deliberately conceptual: no invented receptor drawing, only the question that links a boundary protein back to the whole response.</p>
-
-<ScaleJourney :stage="4" />
-
-<!--
-[Sources]
-- https://commons.wikimedia.org/wiki/File:Rat_primary_cortical_neuron_culture,_deconvolved_z-stack_overlay_(30614937102).jpg — cortical neuron culture micrograph, CC BY 2.0; used as cellular context, not as a receptor micrograph.
-[/Sources]
--->
-
----
-
-<p class="lab-kicker">Study 13 · dynamically loaded TresJS / Three.js</p>
+<p class="lab-kicker">Study 11 · dynamically loaded TresJS / Three.js</p>
 
 # Three dimensions earn their weight when geometry is the idea
 
@@ -251,7 +221,7 @@ fonts:
 
 ---
 
-<p class="lab-kicker">Study 14 · editorial decision</p>
+<p class="lab-kicker">Study 12 · editorial decision</p>
 
 # Use the quietest engine that makes the phenomenon visible
 

@@ -5,7 +5,7 @@
 After visual review, promote two techniques into a first production trial:
 
 1. **The Canvas diffusion system** when a lesson genuinely depends on hundreds of simultaneous particles.
-2. **The persistent scale scene** when students must retain organism-level context while moving toward cellular detail.
+2. **The persistent scale inspector** when students must retain organism-level context while moving toward cellular detail.
 
 They were the strongest combinations of one dominant visual subject, purposeful interaction and restrained supporting text. Native Slidev remains the default for simpler sequences. The limited 3D study is visually successful but should remain specialist because of its bundle cost. GSAP and D3 remain useful technical proofs, but their production use should wait for a lesson whose causal objects or changing evidence cannot be taught as clearly with a quieter medium.
 
@@ -24,11 +24,9 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 | 07 | Make retain/exclude anomaly judgement visible | D3 dot plot + reversible Vue controls | Exclusion changes the summary while the suspected observation remains visible |
 | 08 | See a concentration gradient change as a many-body system | Seeded Canvas, 1,000 particles | Smooth on the validation machine; deterministic reset |
 | 09 | Stress the same explanation at 500–2,000 particles | Seeded Canvas + live FPS | 1,000 is the sensible classroom default; performance remains device-specific |
-| 10 | Move organism → organ without losing location | Shared scale scene + sourced MRI | Direct navigation reconstructs the requested level around one anatomical image |
-| 11 | Move tissue → cell while preserving context | Shared scale scene + sourced micrograph | Refresh and middle-slide entry are deterministic |
-| 12 | Reach receptor scale without inventing a scientific figure | Shared scale scene + sourced images | Conceptual endpoint is honest; a real receptor micrograph would be needed for production |
-| 13 | Compare linear, bent and tetrahedral geometry | Dynamically loaded TresJS/Three.js | Useful only when 3D geometry is the concept; fixed views plus keyboard-accessible rotation clarify the comparison |
-| 14 | Compare value, cost, export and use | Annotated editorial sequence | Clear synthesis without a dashboard or comparison matrix |
+| 10 | Move organism → organ → tissue → cell → receptor without losing location | One fixed source photograph + animated inspection window + direct level controls | The base scene never changes; only the inspection window appears or changes, and the receptor endpoint remains explicitly conceptual |
+| 11 | Compare linear, bent and tetrahedral geometry | Dynamically loaded TresJS/Three.js | Useful only when 3D geometry is the concept; fixed views plus keyboard-accessible rotation clarify the comparison |
+| 12 | Compare value, cost, export and use | Annotated editorial sequence | Clear synthesis without a dashboard or comparison matrix |
 
 ## Reliability and lifecycle
 
@@ -36,30 +34,30 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 - Native and GSAP sequences were exercised forwards and backwards. SmilesDrawer produces five distinct rendered balancing states, then reconstructs the opening candidate when the sequence reverses.
 - The Canvas loop stops when its slide is inactive, restarts when active, and uses a seeded generator for the same reset state.
 - The 3D scene is dynamically imported, renders on demand, observes Slidev activity and supplies a textual non-WebGL fallback.
+- The scale inspector is one persistent DOM scene. Direct controls select every level; the cheetah source remains fixed while GSAP animates only the inspection window. Reduced motion replaces that animation with an immediate state change.
 - A persistent deck-level control stores reduced-motion preference. With motion disabled, click states jump to their destinations and no claim depends on movement alone.
-- Direct navigation to all 14 studies passed. Overview and presenter routes rendered correctly. Middle-scale slides reconstruct from their `stage` prop rather than depending on a previous slide.
+- Direct navigation to all 12 studies passed. Overview and presenter routes rendered correctly. Refresh restores the scale inspector to its labelled organism-level opening state.
 
 ## Browser and classroom checks
 
-Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 14 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, source-SVG reflex reveals, dot-plot plateau/anomaly decisions, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
+Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 12 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, source-SVG reflex reveals, dot-plot plateau/anomaly decisions, fixed-context scale switching, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
 
-The review screenshots are direct 1366×768 browser captures of each opening state. They preserve the deck motion control but omit surrounding browser chrome:
+The review screenshots are direct 1366×768 browser captures of stable teaching states. They preserve the deck motion control but omit surrounding browser chrome:
 
-| 01–07 | 08–14 |
+| 01–06 | 07–12 |
 | --- | --- |
-| [01 native pathway](findings/screenshots/study-01.jpg) | [08 Canvas, 1,000 particles](findings/screenshots/study-08.jpg) |
-| [02 state replacement](findings/screenshots/study-02.jpg) | [09 Canvas, 2,000 particles](findings/screenshots/study-09.jpg) |
-| [03 native verdict](findings/screenshots/study-03.jpg) | [10 organism → organ](findings/screenshots/study-10.jpg) |
-| [04 reaction renderer](findings/screenshots/study-04.jpg) | [11 tissue → cell](findings/screenshots/study-11.jpg) |
-| [05 reflex trace](findings/screenshots/study-05.jpg) | [12 receptor focus](findings/screenshots/study-12.jpg) |
-| [06 temperature plateau](findings/screenshots/study-06.jpg) | [13 molecular geometry](findings/screenshots/study-13.jpg) |
-| [07 anomaly decision](findings/screenshots/study-07.jpg) | [14 comparison](findings/screenshots/study-14.jpg) |
+| [01 native pathway](findings/screenshots/study-01.jpg) | [07 anomaly decision](findings/screenshots/study-07.jpg) |
+| [02 state replacement](findings/screenshots/study-02.jpg) | [08 Canvas, 1,000 particles](findings/screenshots/study-08.jpg) |
+| [03 native verdict](findings/screenshots/study-03.jpg) | [09 Canvas, 2,000 particles](findings/screenshots/study-09.jpg) |
+| [04 reaction renderer](findings/screenshots/study-04.jpg) | [10 persistent scale inspector](findings/screenshots/study-10.jpg) |
+| [05 reflex trace](findings/screenshots/study-05.jpg) | [11 molecular geometry](findings/screenshots/study-11.jpg) |
+| [06 temperature plateau](findings/screenshots/study-06.jpg) | [12 editorial decision](findings/screenshots/study-12.jpg) |
 
 ## Build and bundle observations
 
-The native-only experimental scaffold built to 42 files / **792,449 B** total (**569,624 B JS**, **124,745 B CSS**). The revised 14-study route builds to 66 files / **3,230,898 B** total (**1,727,653 B JS**, **138,069 B CSS**, **1,361,236 B images**). The increase comes from the sourced reflex/MRI assets and the isolated chemistry renderer used to replace authored scientific geometry.
+The native-only experimental scaffold built to 42 files / **792,449 B** total (**569,624 B JS**, **124,745 B CSS**). The revised 12-study route builds to 64 files / **3,229,098 B** total (**1,725,309 B JS**, **138,613 B CSS**, **1,361,236 B images**). The increase comes from the sourced reflex/MRI assets and the isolated chemistry renderer used to replace authored scientific geometry.
 
-The deliberately isolated 3D chunk is **776,405 B raw / 202.24 kB gzip**. It is loaded only when the molecular-geometry study is requested. SmilesDrawer is isolated at **190,946 B raw / 56.32 kB gzip**; the GSAP-enabled reflex slide is **73.11 kB raw / 28.91 kB gzip**; the D3 dot-plot component is **23.49 kB raw / 9.64 kB gzip**; the Canvas component is **3.75 kB raw / 1.79 kB gzip**.
+The deliberately isolated 3D chunk is **776,405 B raw / 202.24 kB gzip**. It is loaded only when the molecular-geometry study is requested. SmilesDrawer is isolated at **190,946 B raw / 56.32 kB gzip**; the shared GSAP chunk is **69.58 kB raw / 27.28 kB gzip**; the D3 dot-plot component is **23.48 kB raw / 9.64 kB gzip**; the Canvas component is **3.75 kB raw / 1.79 kB gzip**.
 
 The production-route outputs were unchanged before and after the experiment integration:
 
@@ -71,7 +69,7 @@ The production-route outputs were unchanged before and after the experiment inte
 
 ## Export findings
 
-The click-state export produced a **28-page, 14,465,682-byte PDF**. It uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
+The click-state export produced a **30-page, 17,483,787-byte PDF**. It includes the organism opening state and all four directly selected inspection-window levels. The exporter uses the built static route, Playwright Chromium and pdf-lib so every deterministic click state is captured after the slide settles. This avoids blank pages, half-transitions and dependence on a running Canvas loop. The molecular-geometry page exports a labelled deterministic view; its essential geometry description is textual and does not depend on WebGL.
 
 The stock Slidev dev and export commands were not reliable in this Windows/Vite 8 workspace: they duplicated the absolute Windows path while resolving the deck-local conditional stylesheet. The repository development command builds and serves the isolated route on port 3060; the export script captures that same built route and still implements the requested click-state semantics.
 
@@ -81,7 +79,7 @@ The stock Slidev dev and export commands were not reliable in this Windows/Vite 
 - Canvas FPS is browser- and hardware-specific. The live value is evidence for the current machine, not a universal benchmark.
 - PDF captures Canvas and 3D as static teaching states; it cannot reproduce continuous motion or free rotation.
 - The receptor endpoint is conceptual and uses sourced cellular context. It deliberately does not pretend to be a receptor micrograph or an authored molecular diagram.
-- The scale journey reconstructs deterministically but does not yet share one physically persistent DOM object across page transitions; it proves visual continuity, not a public persistence abstraction.
+- The cell and receptor levels reuse a sourced neuron-culture micrograph as context. A production lesson should replace that reuse when a suitable level-specific source image is available.
 - The experimental route is intentionally absent from the grade-first public menu and has not been deployed.
 
 ## Third-party note
