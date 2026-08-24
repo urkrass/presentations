@@ -10,6 +10,11 @@ const requiredFiles = [
   path.join(deck, 'styles', 'index.css'),
   path.join(deck, 'components', 'MotionPreference.vue'),
   path.join(deck, 'components', 'NativeBaseline.vue'),
+  path.join(deck, 'components', 'ParticleLedger.vue'),
+  path.join(deck, 'components', 'ReflexTrace.vue'),
+  path.join(deck, 'components', 'TemperatureSettling.vue'),
+  path.join(deck, 'components', 'DiffusionCanvas.vue'),
+  path.join(deck, 'composables', 'useGsapSlideTimeline.ts'),
 ]
 
 let failed = false
@@ -31,5 +36,23 @@ const slideCount = Math.max(0, separators - 1)
 const validScaffold = slideCount >= 3
 if (!validScaffold) failed = true
 console.log(`${validScaffold ? 'PASS' : 'FAIL'} scaffold has at least 3 studies (${slideCount})`)
+
+const sourceGroups = {
+  gsap: fs.readFileSync(path.join(deck, 'composables', 'useGsapSlideTimeline.ts'), 'utf8') + fs.readFileSync(path.join(deck, 'components', 'ParticleLedger.vue'), 'utf8') + fs.readFileSync(path.join(deck, 'components', 'ReflexTrace.vue'), 'utf8'),
+  d3: fs.readFileSync(path.join(deck, 'components', 'TemperatureSettling.vue'), 'utf8'),
+  canvas: fs.readFileSync(path.join(deck, 'components', 'DiffusionCanvas.vue'), 'utf8'),
+}
+
+for (const [label, source, tokens] of [
+  ['GSAP lifecycle', sourceGroups.gsap, ['gsap.context', 'onSlideEnter', 'onSlideLeave', 'MotionPathPlugin', 'DrawSVGPlugin', 'timeline?.kill()']],
+  ['D3 study', sourceGroups.d3, ['d3-scale', 'd3-shape', 'd3-array', 'includeAnomaly', 'resolution 0.1 °C']],
+  ['Canvas study', sourceGroups.canvas, ['requestAnimationFrame', 'cancelAnimationFrame', '2000', 'seedParticles', 'useIsSlideActive']],
+]) {
+  for (const token of tokens) {
+    const valid = source.includes(token)
+    if (!valid) failed = true
+    console.log(`${valid ? 'PASS' : 'FAIL'} ${label} contains ${token}`)
+  }
+}
 
 if (failed) process.exit(1)
