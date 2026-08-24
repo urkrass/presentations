@@ -8,15 +8,31 @@
     "dev:grade8": "slidev slides.md --port 3030",
     "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
     "dev:grade11": "slidev decks/grade-11-integration-control/slides.md --port 3050",
+    "dev:experiments": "slidev decks/visual-lab/slides.md --port 3060",
     "build": "node scripts/build-site.mjs",
+    "build:experiments": "slidev build decks/visual-lab/slides.md --base /experiments/visual-lab/ --out ../../dist/experiments/visual-lab",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
+    "export:experiments": "slidev export decks/visual-lab/slides.md --output output/visual-lab-with-clicks.pdf --with-clicks",
     "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120",
     "validate:grade11": "node scripts/validate-grade11.mjs",
+    "validate:experiments": "node scripts/validate-experiments.mjs && vue-tsc --noEmit -p decks/visual-lab/tsconfig.json",
     "validate:site": "node scripts/validate-site.mjs"
   },
   "devDependencies": {
     "@slidev/cli": "52.15.2",
-    "@slidev/theme-default": "0.25.0"
+    "@slidev/theme-default": "0.25.0",
+    "@tresjs/core": "^5.8.3",
+    "@types/d3-array": "^3.2.2",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.2.0",
+    "@types/three": "^0.185.4",
+    "d3-array": "^3.2.4",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "gsap": "^3.15.0",
+    "three": "^0.185.1",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.3.11"
   }
 }

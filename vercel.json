@@ -32,6 +32,10 @@
     {
       "source": "/grade-11/integration-control/:path*",
       "destination": "/grade-11/integration-control/index.html"
+    },
+    {
+      "source": "/experiments/visual-lab/:path*",
+      "destination": "/experiments/visual-lab/index.html"
     }
   ]
 }
