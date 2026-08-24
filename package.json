@@ -1,0 +1,17 @@
+{
+  "name": "grade-8-stoichiometry-entry-diagnostic",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --port 3030",
+    "build": "slidev build slides.md --base ./",
+    "serve:dist": "node serve-dist.cjs",
+    "export": "slidev export slides.md",
+    "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120"
+  },
+  "devDependencies": {
+    "@slidev/cli": "52.15.2",
+    "@slidev/theme-default": "0.25.0"
+  }
+}

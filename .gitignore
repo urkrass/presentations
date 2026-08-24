@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.slidev/
+.vercel/
+.playwright-cli/
+output/playwright/
+*.local
+*.log

@@ -1,0 +1,51 @@
+const http = require('node:http')
+const fs = require('node:fs')
+const path = require('node:path')
+
+const root = path.resolve(__dirname, 'dist')
+const port = 3030
+
+const types = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.json': 'application/json',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+}
+
+function sendFile(response, file) {
+  fs.readFile(file, (error, data) => {
+    if (error) {
+      response.writeHead(404)
+      response.end('Not found')
+      return
+    }
+    response.writeHead(200, {
+      'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream',
+    })
+    response.end(data)
+  })
+}
+
+http.createServer((request, response) => {
+  const url = new URL(request.url, `http://localhost:${port}`)
+  let pathname = decodeURIComponent(url.pathname)
+  if (pathname === '/') pathname = '/index.html'
+
+  const file = path.resolve(root, `.${pathname}`)
+  if (!file.startsWith(root)) {
+    response.writeHead(403)
+    response.end('Forbidden')
+    return
+  }
+
+  fs.stat(file, (error, stat) => {
+    if (!error && stat.isFile()) sendFile(response, file)
+    else sendFile(response, path.join(root, 'index.html'))
+  })
+}).listen(port, '127.0.0.1', () => {
+  console.log(`Static Slidev deck on http://localhost:${port}/`)
+})
