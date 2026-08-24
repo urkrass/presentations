@@ -4,11 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "slidev slides.md --port 3030",
-    "build": "slidev build slides.md --base ./",
+    "dev": "node scripts/build-site.mjs && node serve-dist.cjs",
+    "dev:grade8": "slidev slides.md --port 3030",
+    "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
+    "build": "node scripts/build-site.mjs",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
-    "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120"
+    "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120",
+    "validate:site": "node scripts/validate-site.mjs"
   },
   "devDependencies": {
     "@slidev/cli": "52.15.2",

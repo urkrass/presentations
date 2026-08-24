@@ -30,6 +30,16 @@ function sendFile(response, file) {
   })
 }
 
+function fallbackFile(pathname) {
+  if (pathname.startsWith('/grade-7/lab-measurement/')) {
+    return path.join(root, 'grade-7', 'lab-measurement', 'index.html')
+  }
+  if (pathname.startsWith('/grade-8/stoichiometry/')) {
+    return path.join(root, 'grade-8', 'stoichiometry', 'index.html')
+  }
+  return path.join(root, 'index.html')
+}
+
 http.createServer((request, response) => {
   const url = new URL(request.url, `http://localhost:${port}`)
   let pathname = decodeURIComponent(url.pathname)
@@ -43,8 +53,15 @@ http.createServer((request, response) => {
   }
 
   fs.stat(file, (error, stat) => {
-    if (!error && stat.isFile()) sendFile(response, file)
-    else sendFile(response, path.join(root, 'index.html'))
+    if (!error && stat.isFile()) {
+      sendFile(response, file)
+      return
+    }
+    if (!error && stat.isDirectory()) {
+      sendFile(response, path.join(file, 'index.html'))
+      return
+    }
+    sendFile(response, fallbackFile(pathname))
   })
 }).listen(port, '127.0.0.1', () => {
   console.log(`Static Slidev deck on http://localhost:${port}/`)

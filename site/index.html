@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e7" />
+    <meta name="description" content="Grade 7 and Grade 8 science presentations for classroom teaching." />
+    <meta property="og:title" content="Science presentations" />
+    <meta property="og:description" content="Choose a grade and open the complete classroom presentation." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://presentations-lime.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Science presentations, Grades 7–8, beside laboratory glassware" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Science presentations" />
+    <meta name="twitter:description" content="Choose a grade and open the complete classroom presentation." />
+    <meta name="twitter:image" content="https://presentations-lime.vercel.app/og.png" />
+    <title>Science presentations</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header class="site-header">
+        <p class="eyebrow">Science · classroom presentations</p>
+        <h1>Choose a grade.</h1>
+        <p class="intro">Each presentation opens as a full interactive Slidev lesson.</p>
+      </header>
+
+      <nav class="grade-menu" aria-label="Choose a grade" role="tablist">
+        <button type="button" role="tab" aria-selected="true" aria-controls="grade-7-deck" data-grade="7">
+          <span>Grade</span>
+          <strong>7</strong>
+        </button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="grade-8-deck" data-grade="8">
+          <span>Grade</span>
+          <strong>8</strong>
+        </button>
+      </nav>
+
+      <section class="presentation-stage" aria-live="polite">
+        <article class="presentation" id="grade-7-deck" data-deck="7">
+          <div class="presentation-copy">
+            <p class="date">24–28 Aug · Laboratory induction</p>
+            <h2>Safe first. Then trustworthy evidence.</h2>
+            <p class="summary">Safety, RAMP, observation and inference, apparatus, units, resolution, precision, and the core scientific model.</p>
+            <p class="details">Two 45-minute lessons <span aria-hidden="true">·</span> 45 slides</p>
+            <a class="open-deck" href="/grade-7/lab-measurement/">Open Grade 7 presentation <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure>
+            <img src="/grade-7/lab-measurement/images/graduated-cylinders.jpg" alt="Graduated cylinders containing coloured liquids" />
+            <figcaption>Safety makes careful investigation possible.</figcaption>
+          </figure>
+        </article>
+
+        <article class="presentation" id="grade-8-deck" data-deck="8" hidden>
+          <div class="presentation-copy">
+            <p class="date">24–28 Aug · Stoichiometry foundations</p>
+            <h2>Particles, equations, and moles.</h2>
+            <p class="summary">Formulae, balancing, concentration, dilution, mole ratios, linked representations, and first mass–mass calculations.</p>
+            <p class="details">Two 45-minute lessons <span aria-hidden="true">·</span> 33 slides</p>
+            <a class="open-deck" href="/grade-8/stoichiometry/">Open Grade 8 presentation <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure>
+            <img src="/grade-8/stoichiometry/images/fertilizer-works.jpg" alt="Industrial fertiliser works connected to the Haber process" />
+            <figcaption>Chemists use particle ratios to predict real quantities.</figcaption>
+          </figure>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

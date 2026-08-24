@@ -3,10 +3,26 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": null,
+  "redirects": [
+    {
+      "source": "/grade-7",
+      "destination": "/grade-7/lab-measurement/",
+      "permanent": false
+    },
+    {
+      "source": "/grade-8",
+      "destination": "/grade-8/stoichiometry/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/grade-7/lab-measurement/:path*",
+      "destination": "/grade-7/lab-measurement/index.html"
+    },
+    {
+      "source": "/grade-8/stoichiometry/:path*",
+      "destination": "/grade-8/stoichiometry/index.html"
     }
   ]
 }

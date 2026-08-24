@@ -1,18 +1,14 @@
-# Grade 8 Chemistry — Particles, Equations, and Moles
+# Science presentations
 
-An explanatory Slidev deck for two 45-minute Grade 8 chemistry lessons during 24–28 Aug, with a short entry diagnostic and coordinated particle, equation, and mole-path representations.
+A single Grade 7–8 presentation site with a grade-first menu and two complete Slidev decks.
 
-The lessons diagnose and connect:
+## Routes
 
-- `n = m / M`
-- chemical formulae and balancing
-- `c = n / V`
-- dilution and simple ratios
-- particle, equation, and mole-path representations
-- first mass–mass stoichiometry problems
-- conservation of mass, chemical entities, state symbols, and limiting-reactant intuition
-- real cases from fertiliser production, catalytic converters, antacids, and limestone processing
-- historical figures including Lavoisier, Avogadro, Haber, and Bosch
+- `/` — grade menu
+- `/grade-7/lab-measurement/` — **Safe first. Then trustworthy evidence.** (45 slides, two 45-minute lessons)
+- `/grade-8/stoichiometry/` — **Particles, equations, and moles.** (33 slides, two 45-minute lessons)
+
+The Grade 8 deck remains at the repository root. The Grade 7 deck is mirrored under `decks/grade-7-lab-measurement/`; its `SOURCE.md` records the source repository and exact commit.
 
 ## Run locally
 
@@ -28,15 +24,11 @@ Open `http://localhost:3030`.
 ```bash
 npm run validate:deck-style
 npm run build
+npm run validate:site
 ```
 
-## Teaching flow
+The combined build compiles both Slidev decks into `dist/`, then adds the root grade menu.
 
-- Lesson 1: short entry diagnostic, historical foundations, formulae and entities, the mole, molar mass, equation anatomy, balancing, concentration, and dilution.
-- Lesson 2: Haber–Bosch as a scale case, coordinated representations, coefficient-to-mole ratios, catalytic converters, antacids, limestone processing, and a guided mass–mass path.
+## Design
 
-The 33 slides include portrait, timeline, case-study, comparison, process, matrix, metaphor, and synthesis forms. Presenter notes beneath every slide contain pacing, prompts, expected answers, and source blocks where relevant.
-
-## Design provenance
-
-The procedural and visual system is adapted from [Science, Revolutions, and Method](https://github.com/urkrass/science-revolutions-method-slidev): warm paper, large serif claims, portrait and case-study compositions, varied silhouettes, one dominant surface per slide, and purposeful progressive disclosure. Decorative horizontal rules are intentionally avoided.
+The menu follows the decks’ warm-paper editorial system: one grade choice, one visible presentation, generous typography, restrained color, and no dashboard-style chrome.
