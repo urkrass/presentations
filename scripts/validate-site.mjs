@@ -13,6 +13,9 @@ const required = [
   'dist/grade-8/stoichiometry/images/fertilizer-works.jpg',
   'dist/grade-11/integration-control/index.html',
   'dist/grade-11/integration-control/images/nervous-system.svg',
+  'dist/ib-dp/a2-cells-viruses/index.html',
+  'dist/ib-dp/a2-cells-viruses/images/stromatolites.jpg',
+  'dist/experiments/visual-lab/index.html',
   'dist/og-v2.png',
 ]
 
@@ -25,17 +28,21 @@ for (const file of required) {
 }
 
 const landing = fs.readFileSync(path.join(root, 'dist', 'index.html'), 'utf8')
-for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', '/grade-7/lab-measurement/', '/grade-8/stoichiometry/', '/grade-11/integration-control/', 'https://presentations-lime.vercel.app/og-v2.png']) {
+for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', 'IB DP', '/grade-7/lab-measurement/', '/grade-8/stoichiometry/', '/grade-11/integration-control/', '/ib-dp/a2-cells-viruses/', 'https://presentations-lime.vercel.app/og-v2.png']) {
   const valid = landing.includes(expected)
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} landing contains ${expected}`)
 }
 
 const vercelConfig = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8')
-for (const expected of ['/grade-11', '/grade-11/integration-control/:path*']) {
+for (const expected of ['/grade-11', '/grade-11/integration-control/:path*', '/ib-dp', '/ib-dp/a2-cells-viruses/:path*', '/experiments/visual-lab/:path*']) {
   const valid = vercelConfig.includes(expected)
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} Vercel route contains ${expected}`)
 }
+
+const hiddenExperiment = !landing.includes('/experiments/visual-lab/')
+if (!hiddenExperiment) failed = true
+console.log(`${hiddenExperiment ? 'PASS' : 'FAIL'} experiment route stays out of public grade menu`)
 
 if (failed) process.exit(1)

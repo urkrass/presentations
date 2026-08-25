@@ -4,5 +4,6 @@ dist/
 .vercel/
 .playwright-cli/
 output/playwright/
+output/*.pdf
 *.local
 *.log

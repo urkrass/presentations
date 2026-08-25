@@ -3,7 +3,8 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const root = path.resolve(__dirname, 'dist')
-const port = 3030
+const port = Number(process.env.PRESENTATIONS_PORT || 3030)
+const startRoute = process.env.PRESENTATIONS_START_ROUTE || '/'
 
 const types = {
   '.html': 'text/html; charset=utf-8',
@@ -40,6 +41,12 @@ function fallbackFile(pathname) {
   if (pathname.startsWith('/grade-11/integration-control/')) {
     return path.join(root, 'grade-11', 'integration-control', 'index.html')
   }
+  if (pathname.startsWith('/ib-dp/a2-cells-viruses/')) {
+    return path.join(root, 'ib-dp', 'a2-cells-viruses', 'index.html')
+  }
+  if (pathname.startsWith('/experiments/visual-lab/')) {
+    return path.join(root, 'experiments', 'visual-lab', 'index.html')
+  }
   return path.join(root, 'index.html')
 }
 
@@ -67,5 +74,5 @@ http.createServer((request, response) => {
     sendFile(response, fallbackFile(pathname))
   })
 }).listen(port, '127.0.0.1', () => {
-  console.log(`Static Slidev deck on http://localhost:${port}/`)
+  console.log(`Static Slidev deck on http://localhost:${port}${startRoute}`)
 })

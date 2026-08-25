@@ -1,0 +1,1110 @@
+:root {
+  --lab-paper: #fbfaf6;
+  --lab-paper-deep: #f2eee5;
+  --lab-ink: #191918;
+  --lab-muted: #6e6a62;
+  --lab-rust: #9b4937;
+  --lab-green: #486b58;
+  --lab-blue: #315c78;
+  --lab-gold: #a67a2c;
+  --lab-soft-rust: #f3e5dd;
+  --lab-soft-green: #e6efe8;
+  --lab-soft-blue: #e5edf2;
+  --lab-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --lab-fast: 180ms;
+  --lab-medium: 420ms;
+  --lab-slow: 760ms;
+}
+
+html,
+body,
+#app {
+  background: var(--lab-paper);
+}
+
+.visual-lab-deck {
+  background: var(--lab-paper);
+  color: var(--lab-ink);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  padding: 48px 64px 44px;
+}
+
+.visual-lab-deck h1 {
+  color: var(--lab-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.75rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  margin: 0 0 1.15rem;
+  max-width: 1120px;
+}
+
+.visual-lab-deck p {
+  line-height: 1.38;
+}
+
+.lab-kicker {
+  color: var(--lab-rust) !important;
+  font-size: 0.76rem !important;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  margin: 0 0 0.65rem !important;
+  text-transform: uppercase;
+}
+
+.lab-lede {
+  color: var(--lab-muted) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem !important;
+  margin: -0.4rem 0 1.2rem !important;
+  max-width: 920px;
+}
+
+.motion-preference {
+  align-items: center;
+  background: rgba(251, 250, 246, 0.92);
+  border: 0;
+  bottom: 13px;
+  color: var(--lab-muted);
+  cursor: pointer;
+  display: flex;
+  font: 650 11px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+  gap: 6px;
+  letter-spacing: 0.03em;
+  padding: 8px 10px;
+  position: fixed;
+  right: 16px;
+  z-index: 30;
+}
+
+.motion-preference:hover {
+  color: var(--lab-rust);
+}
+
+.motion-preference:focus-visible,
+.lab-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lab-blue) 48%, transparent);
+  outline-offset: 3px;
+}
+
+.native-baseline {
+  min-height: 392px;
+}
+
+.native-field {
+  background: #1b1a18;
+  height: 392px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.native-field::before {
+  background-image: var(--native-image);
+  background-position: center;
+  background-size: cover;
+  content: "";
+  filter: blur(10px) brightness(0.42) saturate(0.55);
+  inset: -14px;
+  position: absolute;
+  z-index: 0;
+}
+
+.native-field > img {
+  background: #1b1a18;
+  filter: saturate(0.72) contrast(1.04);
+  height: 100%;
+  object-fit: contain;
+  object-position: 58% 52%;
+  position: relative;
+  transition: transform var(--lab-slow) var(--lab-ease), object-position var(--lab-slow) var(--lab-ease);
+  width: 100%;
+  z-index: 1;
+}
+
+.native-baseline[data-stage="1"] .native-field > img { object-fit: cover; object-position: 67% 30%; transform: scale(1.18); }
+.native-baseline[data-stage="2"] .native-field > img { object-fit: cover; object-position: 66% 46%; transform: scale(1.1); }
+.native-baseline[data-stage="3"] .native-field > img { object-fit: cover; object-position: 72% 70%; transform: scale(1.2); }
+
+.native-field-shade,
+.native-question-shade {
+  background: linear-gradient(90deg, rgba(20, 20, 18, 0.78), rgba(20, 20, 18, 0.1) 62%, rgba(20, 20, 18, 0.25));
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.native-copy {
+  align-items: center;
+  display: flex;
+  left: 38px;
+  max-width: 540px;
+  min-height: 180px;
+  position: absolute;
+  top: 42px;
+  z-index: 3;
+}
+
+.native-copy p {
+  color: var(--lab-paper) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem !important;
+  line-height: 1.18 !important;
+  margin: 0 !important;
+}
+
+.native-copy b {
+  color: #f0c4aa;
+  font-weight: 500;
+}
+
+.native-path {
+  align-items: end;
+  bottom: 26px;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  left: 38px;
+  max-width: 660px;
+  position: absolute;
+  z-index: 3;
+}
+
+.native-node {
+  color: rgba(251, 250, 246, 0.48);
+  display: grid;
+  gap: 3px;
+  opacity: 0.65;
+  transition: color var(--lab-medium) var(--lab-ease), opacity var(--lab-medium) var(--lab-ease), transform var(--lab-medium) var(--lab-ease);
+}
+
+.native-node strong {
+  color: inherit;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.native-node span {
+  color: #e1b99e;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.native-node.active {
+  color: var(--lab-paper);
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.native-signal {
+  background: #e1b99e;
+  border-radius: 50%;
+  bottom: 4px;
+  height: 8px;
+  left: 0;
+  position: absolute;
+  transform: translateX(calc(max(0, var(--native-progress, 0) - 1) * 229px));
+  transition: transform var(--lab-slow) var(--lab-ease), opacity var(--lab-fast) linear;
+  width: 8px;
+}
+
+.native-baseline[data-stage="0"] .native-signal { opacity: 0; }
+
+.click-register {
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+}
+
+.native-question-stage {
+  height: 428px;
+  margin-top: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.native-question-stage > img {
+  filter: saturate(0.56) contrast(1.04);
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 55%;
+  transform: scale(1.06);
+  width: 100%;
+}
+
+.native-question-copy {
+  align-items: center;
+  display: flex;
+  inset: 0 42% 70px 44px;
+  position: absolute;
+}
+
+.native-question-copy blockquote {
+  background: transparent !important;
+  border: 0;
+  color: var(--lab-paper);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.18;
+  margin: 0;
+  padding: 0;
+}
+
+.native-question-rail {
+  bottom: 24px;
+  color: rgba(251, 250, 246, 0.52);
+  display: flex;
+  font-size: 0.72rem;
+  font-weight: 800;
+  gap: 36px;
+  left: 44px;
+  letter-spacing: 0.1em;
+  list-style: decimal-leading-zero;
+  margin: 0;
+  padding-left: 24px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.native-question-rail li { padding-left: 4px; }
+
+.native-verdict-stage {
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+}
+
+.native-verdict-stage > img {
+  filter: saturate(0.58) contrast(1.06);
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 44%;
+  width: 100%;
+}
+
+.native-verdict-shade {
+  background: linear-gradient(90deg, rgba(20, 20, 18, 0.84), rgba(20, 20, 18, 0.08) 72%);
+  inset: 0;
+  position: absolute;
+}
+
+.native-verdict-stage blockquote {
+  background: transparent !important;
+  border: 0;
+  color: var(--lab-paper);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.25rem;
+  left: 42px;
+  line-height: 1.13;
+  margin: 0;
+  max-width: 620px;
+  padding: 0;
+  position: absolute;
+  top: 72px;
+}
+
+.native-verdict-measures {
+  bottom: 32px;
+  color: rgba(251, 250, 246, 0.68);
+  display: flex;
+  font-size: 0.76rem;
+  gap: 42px;
+  left: 44px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.native-verdict-measures b {
+  color: #e1b99e;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.chemistry-renderer {
+  display: grid;
+  grid-template-rows: 38px 292px 82px;
+  min-height: 412px;
+}
+
+.chemistry-source {
+  align-items: baseline;
+  display: flex;
+  gap: 18px;
+  min-width: 0;
+}
+
+.chemistry-source span,
+.chemistry-reading span {
+  color: var(--lab-rust);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.chemistry-source code {
+  color: var(--lab-muted);
+  font-size: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chemistry-source strong {
+  color: var(--lab-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.chemistry-reaction {
+  background: var(--lab-paper-deep);
+  display: block;
+  height: 292px !important;
+  max-width: 100%;
+  min-width: 0;
+  width: 100% !important;
+}
+
+.chemistry-error {
+  color: var(--lab-rust) !important;
+  font-size: 0.85rem !important;
+}
+
+.chemistry-reading {
+  align-items: center;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 220px minmax(360px, 1fr) 180px;
+  padding-top: 12px;
+}
+
+.chemistry-reading strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  margin-top: 0.38rem;
+}
+
+.chemistry-reading > p {
+  color: var(--lab-muted) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.94rem !important;
+  margin: 0 !important;
+}
+
+.chemistry-count {
+  color: var(--lab-muted);
+  display: grid;
+  font-size: 0.72rem;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+.chemistry-count span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chemistry-count b {
+  color: var(--lab-green);
+  font-size: 0.95rem;
+}
+
+.chemistry-count .mismatch {
+  color: var(--lab-rust);
+  font-weight: 800;
+}
+
+.chemistry-count .mismatch b {
+  color: var(--lab-rust);
+}
+
+.reflex-trace {
+  min-height: 408px;
+}
+
+.reflex-figure {
+  display: grid;
+  grid-template-rows: 328px 80px;
+  height: 408px;
+  margin: 0;
+  width: 100%;
+}
+
+.reflex-image-window {
+  background: var(--lab-paper-deep);
+  overflow: hidden;
+}
+
+.reflex-source {
+  border: 0;
+  display: block;
+  height: 100%;
+  padding: 12px 28px;
+  width: 100%;
+}
+
+.reflex-readout {
+  align-items: center;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 160px minmax(260px, 1fr) auto;
+  padding-top: 12px;
+}
+
+.reflex-readout span,
+.temperature-readout > span,
+.diffusion-readout > span {
+  color: var(--lab-rust);
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.reflex-readout strong,
+.temperature-readout > strong,
+.diffusion-readout > strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0.7rem;
+}
+
+.reflex-readout p,
+.temperature-readout p,
+.diffusion-readout p {
+  color: var(--lab-muted) !important;
+  font-size: 0.88rem !important;
+  margin: 0.8rem 0 0 !important;
+}
+
+.reflex-readout > p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.92rem !important;
+  margin: 0 !important;
+}
+
+.reflex-sequence {
+  display: flex;
+  gap: 13px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reflex-sequence li {
+  color: var(--lab-muted);
+  font-size: 0.65rem;
+  font-weight: 750;
+  opacity: 0.36;
+  text-transform: uppercase;
+}
+
+.reflex-sequence li.reached {
+  color: var(--lab-green);
+  opacity: 1;
+}
+
+.temperature-study,
+.diffusion-study {
+  align-items: center;
+  display: grid;
+  gap: 44px;
+  grid-template-columns: 1.55fr 0.65fr;
+  min-height: 400px;
+}
+
+.temperature-study {
+  display: block;
+  min-height: 416px;
+}
+
+.temperature-chart {
+  background: transparent;
+  padding: 0;
+}
+
+.temperature-chart svg {
+  display: block;
+  width: 100%;
+}
+
+.temperature-zones rect {
+  fill: transparent;
+}
+
+.temperature-zones rect.alternate {
+  fill: rgba(110, 106, 98, 0.035);
+}
+
+.chart-labels text,
+.axis-label,
+.anomaly-label,
+.reading-label {
+  fill: var(--lab-muted);
+  font: 12px Inter, sans-serif;
+  text-anchor: end;
+}
+
+.chart-labels text { text-anchor: middle; }
+.chart-labels text:nth-of-type(-n+8) { text-anchor: end; }
+
+.axis-label { text-anchor: start; }
+.chart-axis {
+  opacity: 0.48;
+  stroke: var(--lab-muted);
+  stroke-width: 0.65;
+}
+
+.plateau-band {
+  fill: color-mix(in srgb, var(--lab-green) 11%, transparent);
+}
+
+.variability-band {
+  fill: color-mix(in srgb, var(--lab-blue) 8%, transparent);
+}
+
+.temperature-dot {
+  fill: var(--lab-rust);
+  opacity: 0.72;
+  stroke: none;
+}
+
+.temperature-dot.latest {
+  opacity: 1;
+}
+
+.temperature-dot.anomaly {
+  fill: var(--lab-gold);
+  opacity: 1;
+}
+
+.temperature-dot.anomaly.excluded {
+  fill: var(--lab-paper);
+  opacity: 0.72;
+  stroke: var(--lab-gold);
+  stroke-width: 1;
+}
+
+.anomaly-label {
+  fill: var(--lab-gold);
+  font-weight: 700;
+  text-anchor: start;
+}
+
+.reading-label {
+  fill: var(--lab-rust);
+  font-weight: 700;
+}
+
+.settling-verdict {
+  color: var(--lab-rust) !important;
+  font-weight: 700;
+}
+
+.settling-verdict.ready { color: var(--lab-green) !important; }
+
+.temperature-readout {
+  align-items: center;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 180px 1fr auto;
+  margin-top: -5px;
+}
+
+.temperature-value > span {
+  color: var(--lab-rust);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.temperature-value > strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.35rem;
+}
+
+.temperature-summary p { margin: 0.15rem 0 !important; }
+.temperature-summary .settling-verdict { font-size: 0.85rem !important; }
+.temperature-readout .lab-actions { justify-content: flex-end; margin-top: 0; max-width: 430px; }
+
+.lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.2rem;
+}
+
+.lab-button,
+.particle-count button {
+  background: transparent;
+  border: 1px solid rgba(110, 106, 98, 0.4);
+  color: var(--lab-ink);
+  cursor: pointer;
+  font: 700 0.76rem/1 Inter, sans-serif;
+  padding: 0.72rem 0.88rem;
+}
+
+.lab-button.primary {
+  background: var(--lab-rust);
+  border-color: var(--lab-rust);
+  color: var(--lab-paper);
+}
+
+.lab-button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.diffusion-canvas-wrap {
+  background: var(--lab-paper-deep);
+  position: relative;
+}
+
+.diffusion-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+}
+
+.diffusion-side {
+  bottom: 12px;
+  color: var(--lab-muted);
+  font-size: 0.67rem;
+  font-weight: 700;
+  position: absolute;
+}
+
+.diffusion-side.left { left: 14px; }
+.diffusion-side.right { right: 14px; }
+
+.particle-count {
+  display: flex;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.particle-count button {
+  border: 0;
+  color: var(--lab-muted);
+  padding: 0.55rem 0.6rem;
+}
+
+.particle-count button.active {
+  background: var(--lab-soft-blue);
+  color: var(--lab-blue);
+}
+
+.scale-inspector {
+  background: #171714;
+  height: 410px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.scale-base {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.scale-base > img {
+  display: block;
+  filter: saturate(0.72) contrast(1.08);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 43%;
+  width: 100%;
+}
+
+.scale-base-shade {
+  background: linear-gradient(90deg, rgba(17, 18, 15, 0.85) 0%, rgba(17, 18, 15, 0.56) 31%, rgba(17, 18, 15, 0.08) 67%), linear-gradient(0deg, rgba(17, 18, 15, 0.78), transparent 40%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.scale-context-caption {
+  color: var(--lab-paper);
+  left: 30px;
+  max-width: 345px;
+  position: absolute;
+  top: 32px;
+  z-index: 1;
+}
+
+.scale-context-caption span,
+.scale-inspection-window figcaption span,
+.receptor-question span,
+.molecule-controls > span,
+.recommendation-pair span {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.scale-context-caption span,
+.scale-inspection-window figcaption span {
+  color: #e8bda3;
+}
+
+.scale-context-caption strong {
+  color: var(--lab-paper);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.08;
+  margin-top: 0.45rem;
+}
+
+.scale-context-caption p {
+  color: rgba(251, 250, 246, 0.75) !important;
+  font-size: 0.8rem !important;
+  margin: 0.55rem 0 0 !important;
+  max-width: 290px;
+}
+
+.scale-controls {
+  bottom: 16px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(5, 1fr);
+  left: 24px;
+  position: absolute;
+  right: 24px;
+  z-index: 4;
+}
+
+.scale-controls button {
+  background: rgba(17, 18, 15, 0.62);
+  border: 0;
+  color: rgba(251, 250, 246, 0.58);
+  cursor: pointer;
+  min-height: 50px;
+  padding: 8px 10px 7px;
+  text-align: left;
+  transition: background var(--lab-fast) ease, color var(--lab-fast) ease;
+}
+
+.scale-controls button:hover,
+.scale-controls button.active {
+  background: rgba(251, 250, 246, 0.92);
+  color: var(--lab-ink);
+}
+
+.scale-controls button:focus-visible {
+  outline: 3px solid #e8bda3;
+  outline-offset: 2px;
+}
+
+.scale-controls span {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.scale-controls strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.scale-controls small {
+  display: block;
+  font-size: 0.59rem;
+  margin-top: 3px;
+  opacity: 0.72;
+}
+
+.scale-inspection-window {
+  background: #11110f;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+  height: 316px;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 26px;
+  top: 24px;
+  transform: translateY(12px) scale(0.965);
+  transform-origin: center;
+  visibility: hidden;
+  width: 61%;
+  z-index: 3;
+}
+
+.scale-inspection-window > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.scale-inspection-window.level-organ > img {
+  background: #090909;
+  filter: grayscale(1) contrast(1.1);
+  object-fit: contain;
+}
+
+.scale-inspection-window.level-tissue > img {
+  filter: saturate(0.82) contrast(1.1);
+}
+
+.scale-inspection-window.level-cell > img {
+  filter: saturate(0.8) contrast(1.12);
+  object-position: 58% 48%;
+  transform: scale(1.32);
+}
+
+.scale-inspection-window.level-receptor > img {
+  filter: saturate(0.45) brightness(0.42) contrast(1.15);
+  object-position: 58% 48%;
+  transform: scale(1.42);
+}
+
+.scale-window-shade {
+  background: linear-gradient(0deg, rgba(8, 9, 8, 0.84), transparent 58%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.scale-inspection-window figcaption {
+  bottom: 22px;
+  color: var(--lab-paper);
+  left: 24px;
+  max-width: 420px;
+  position: absolute;
+  z-index: 2;
+}
+
+.scale-inspection-window figcaption strong {
+  color: var(--lab-paper);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.25rem;
+}
+
+.scale-inspection-window figcaption p {
+  color: rgba(251, 250, 246, 0.76) !important;
+  font-size: 0.75rem !important;
+  margin: 0.38rem 0 0 !important;
+}
+
+.receptor-question {
+  color: var(--lab-paper);
+  left: 24px;
+  max-width: 430px;
+  position: absolute;
+  top: 28px;
+  z-index: 2;
+}
+
+.receptor-question span { color: #e1b99e; }
+.receptor-question strong {
+  color: var(--lab-paper);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0.6rem;
+}
+
+.molecule-study {
+  align-items: stretch;
+  display: grid;
+  gap: 44px;
+  grid-template-columns: 1.45fr 0.65fr;
+  min-height: 410px;
+}
+
+.molecule-stage {
+  background: var(--lab-paper-deep);
+  min-height: 400px;
+}
+
+.molecule-stage canvas {
+  height: 400px !important;
+  width: 100% !important;
+}
+
+.webgl-fallback {
+  align-items: center;
+  color: var(--lab-muted);
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia, "Times New Roman", serif;
+  height: 400px;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.webgl-fallback strong {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.webgl-fallback p { font-size: 1rem !important; }
+
+.molecule-controls {
+  align-self: center;
+}
+
+.molecule-controls > strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  margin: 1rem 0 1.6rem;
+}
+
+.molecule-controls > p {
+  color: var(--lab-muted) !important;
+  font-size: 0.75rem !important;
+  margin: 1rem 0 0 !important;
+}
+
+.molecule-options {
+  display: flex;
+  gap: 4px;
+  margin-top: 0.55rem;
+}
+
+.molecule-options button {
+  background: transparent;
+  border: 0;
+  color: var(--lab-muted);
+  cursor: pointer;
+  font: 700 0.78rem/1 Inter, sans-serif;
+  padding: 0.65rem 0.7rem;
+}
+
+.molecule-options button.active {
+  background: var(--lab-soft-blue);
+  color: var(--lab-blue);
+}
+
+.rotation-heading { margin-top: 1rem; }
+
+.rotation-controls {
+  display: grid;
+  gap: 5px;
+  margin-top: 0.45rem;
+}
+
+.rotation-controls label {
+  align-items: center;
+  color: var(--lab-muted);
+  display: grid;
+  font-size: 0.68rem;
+  grid-template-columns: 78px 1fr;
+}
+
+.rotation-controls input {
+  accent-color: var(--lab-blue);
+  cursor: ew-resize;
+  width: 100%;
+}
+
+.rotation-controls input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lab-blue) 48%, transparent);
+  outline-offset: 2px;
+}
+
+.molecule-controls > .lab-button { margin-top: 0.75rem; }
+
+.technique-sequence {
+  display: grid;
+  gap: 5px;
+  margin-top: 1.15rem;
+}
+
+.technique-sequence > div {
+  align-items: baseline;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 30px 120px 1fr 250px;
+  min-height: 54px;
+  padding: 0.4rem 0;
+}
+
+.technique-sequence span {
+  color: var(--lab-rust);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.technique-sequence strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 500;
+}
+
+.technique-sequence p {
+  color: var(--lab-muted) !important;
+  font-size: 0.78rem !important;
+  margin: 0 !important;
+}
+
+.technique-sequence em {
+  color: var(--lab-green);
+  font-size: 0.77rem;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.technique-sequence .promoted strong,
+.technique-sequence .promoted em { color: var(--lab-green); }
+
+.lab-reduced-motion *,
+.lab-reduced-motion *::before,
+.lab-reduced-motion *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 1ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
