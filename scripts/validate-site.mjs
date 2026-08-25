@@ -4,6 +4,7 @@ import path from 'node:path'
 const root = process.cwd()
 const required = [
   'dist/index.html',
+  'dist/404.html',
   'dist/styles.css',
   'dist/app.js',
   'dist/og.png',
@@ -33,6 +34,18 @@ for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', 'IB DP', '/grade-7/lab
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} landing contains ${expected}`)
 }
+
+const notFound = fs.readFileSync(path.join(root, 'dist', '404.html'), 'utf8')
+for (const expected of ['__slidev_redirect', '/grade-7/lab-measurement/', '/ib-dp/a2-cells-viruses/']) {
+  const valid = notFound.includes(expected)
+  if (!valid) failed = true
+  console.log(`${valid ? 'PASS' : 'FAIL'} route recovery contains ${expected}`)
+}
+
+const ibDeck = fs.readFileSync(path.join(root, 'dist', 'ib-dp', 'a2-cells-viruses', 'index.html'), 'utf8')
+const restoresSlideRoute = ibDeck.includes("searchParams.get('__slidev_redirect')")
+if (!restoresSlideRoute) failed = true
+console.log(`${restoresSlideRoute ? 'PASS' : 'FAIL'} Slidev entry restores direct slide routes`)
 
 const vercelConfig = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8')
 for (const expected of ['/grade-11', '/grade-11/integration-control/:path*', '/ib-dp', '/ib-dp/a2-cells-viruses/:path*', '/experiments/visual-lab/:path*']) {
