@@ -184,6 +184,18 @@ html, body, #app { background: var(--paper); }
 .checkpoint-copy li { color: var(--muted); font-size: 18px; line-height: 1.4; }
 .checkpoint-copy li::marker { color: var(--green); font-weight: 800; }
 
+.dated-case { display: grid; grid-template-columns: .86fr 1.14fr; gap: 46px; min-height: 470px; }
+.dated-case figure { position: relative; margin: 0; height: 470px; overflow: hidden; background: #151515; }
+.dated-case figure img { width: 100%; height: 100%; object-fit: cover; }
+.dated-case figcaption { position: absolute; left: 17px; bottom: 14px; padding: 7px 10px; background: rgba(10,10,10,.7); color: white; font-size: 11px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+.dated-events { display: grid; align-content: center; gap: 12px; }
+.dated-events article { min-height: 126px; display: grid; grid-template-columns: 112px 1fr; gap: 20px; align-items: center; padding: 16px 20px; background: var(--paper-deep); }
+.dated-events article:nth-child(2) { background: var(--soft-blue); }
+.dated-events article:nth-child(3) { background: var(--soft-green); }
+.dated-events article > span { color: var(--rust); font: 500 34px/1 Georgia, serif; }
+.dated-events article h2 { margin: 0 0 6px; font: 500 24px/1.1 Georgia, serif; }
+.dated-events article p { margin: 0; color: var(--muted); font-size: 15px; }
+
 .closing-slide { padding: 0; }
 .closing-scene { position: relative; width: 100%; height: 100%; overflow: hidden; background: #111; }
 .closing-scene img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.62) brightness(.44); }

@@ -17,5 +17,12 @@ The slide-level speaker notes in `slides.md` contain the claim and image sources
 | `variola.jpg` | [CDC PHIL 2291](https://wwwn.cdc.gov/phil/Details.aspx?pid=2291) | CDC / Fred Murphy / Sylvia Whitfield, public domain |
 | `influenza.jpg` | [CDC PHIL 10072](https://wwwn.cdc.gov/phil/Details.aspx?pid=10072) | CDC / F. A. Murphy, public domain |
 | `acinetobacter.jpg` | [CDC PHIL 10095](https://wwwn.cdc.gov/phil/Details.aspx?pid=10095) | CDC / Matthew J. Arduino / Janice Haney Carr, public domain |
+| `black-smoker.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BlackSmoker.jpg) | W. R. Normark / Dudley Foster / USGS, public domain |
+| `cell-theory-portraits.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Schleiden,_Schwann,_Schultze_-_Some_apostles_of_physiology.jpg) | William Stirling, 1902, public domain |
+| `virchow.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portrait_of_Rudolf_Ludwig_Karl_Virchow_(1821-1902),_Medical_Scientist_and_Anthropologist_(2552818237).jpg) | Smithsonian Institution Libraries, no known copyright restrictions |
+| `mereschkowski.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Konstantin_Mereschkowski.jpg) | Anonymous historical portrait, public domain |
+| `lynn-margulis.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lynn_Margulis.jpg) | Javier Pedreira, CC BY-SA 2.5 |
+| `mitochondria-tem.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mitochondria_-_TEM.jpg) | Louisa Howard, public domain |
+| `esther-lederberg.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Esther_Lab.jpg) | Esther M. Zimmer Lederberg, attribution permitted |
 
 The source PDFs supplied in `D:\IB DP` were used to map curriculum scope and recurring learning rhythm. They were not copied into the repository.

@@ -115,19 +115,16 @@ class: act-slide
 
 ---
 
-# Early Earth is a reconstruction, not a remembered scene
-
-<div class="claim-ladder">
-  <div class="claim-step"><span class="tag">comparatively secure</span><h2>Liquid water, volcanic activity, impact chemistry</h2><p>Rocks, isotopes, impact records, and planetary comparison constrain the setting.</p></div>
-  <div class="claim-step"><span class="tag">model-dependent</span><h2>Atmospheric composition and local environments</h2><p>Different mixtures change which prebiotic reactions become plausible.</p></div>
-  <div class="claim-step"><span class="tag">open question</span><h2>The exact path from chemistry to evolving cells</h2><p>No surviving rock records every intermediate. Several environments may have contributed.</p></div>
-</div>
+<OriginEvidenceScene />
 
 <!--
-[Timing] 5 minutes
-[Teacher prompt] Ask which column a textbook illustration usually hides. Emphasise confidence levels rather than “facts versus guesses.”
+[Timing] 7 minutes
+[Teacher prompt] Switch settings only after students predict what each can test. End by asking why the three settings need not be mutually exclusive.
 [Sources]
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC2944365/ — review of early atmosphere and origin-of-life environments.
+- https://commons.wikimedia.org/wiki/File:BlackSmoker.jpg — East Pacific Rise black smoker, USGS, public domain.
+- https://commons.wikimedia.org/wiki/File:OSIRIS-REx_Bennu_Sample_Arrives_at_NASA_Goddard_(DSCN0120).jpg — NASA Bennu sample, public domain.
+- https://commons.wikimedia.org/wiki/File:Miller-Urey_experiment-en.svg — sourced apparatus diagram, CC BY-SA 3.0.
 - D:\IB DP\Conditions on early Earth (HL) _ IB DP Biology SL_HL FE2028.pdf — supplied conceptual sequence.
 [/Sources]
 -->
@@ -217,20 +214,16 @@ class: act-slide
 
 ---
 
-# Amphiphiles turn one chemical problem into a system
+# A boundary matters because it changes which chemistry persists
 
-<div class="sequence">
-  <div class="sequence-step"><span class="index">01</span><h2>Two-faced molecules</h2><p>A water-attracting region and water-avoiding region constrain orientation.</p></div>
-  <div class="sequence-step"><span class="index">02</span><h2>Self-assembly</h2><p>In water, fatty acids can form bilayer-bounded vesicles without a cellular machine.</p></div>
-  <div class="sequence-step"><span class="index">03</span><h2>Local chemistry</h2><p>A compartment can retain products and raise effective concentrations.</p></div>
-  <div class="sequence-step"><span class="index">04</span><h2>Selection becomes possible</h2><p>Only when compartment traits affect persistence or copying can populations evolve.</p></div>
-</div>
+<CompartmentSimulation />
 
 <!--
-[Timing] 5 minutes
-[Teacher prompt] Emphasise emergent organisation: no molecule “plans” the vesicle. Ask what is still missing.
+[Timing] 8 minutes
+[Teacher prompt] Run the selective state, predict the damaged state, then switch. Treat the particles as a qualitative model: the causal claim is retention, not the exact percentage.
 [Sources]
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC2890201/ — fatty-acid vesicle formation and protocell models.
+- No external data. The seeded particle field is an explicitly labelled qualitative model of solute retention and leakage.
 [/Sources]
 -->
 
@@ -410,17 +403,17 @@ class: act-slide
 
 ---
 
-<div class="image-story reverse">
-  <figure class="contain"><img :src="'images/hooke-cork.jpg'" alt="Hooke's engraved cork micrograph" /><figcaption>Micrographia · Observation XVIII · 1665</figcaption></figure>
-  <div class="story-copy"><p class="scene-kicker">Historical figure · Robert Hooke</p><h2>He named cells by looking at what was no longer alive</h2><p>Thin cork showed repeated empty compartments bounded by walls. Hooke compared them to small rooms—cellulae.</p><p class="claim">The word survived. The interpretation changed as <strong>better instruments and living specimens</strong> made membranes, nuclei, division, and organelles observable.</p></div>
-</div>
+<ScienceTimeline mode="cell-theory" />
 
 <!--
-[Timing] 5 minutes
-[Teacher prompt] Students distinguish observation (“repeated compartments”) from inference (“fundamental living units”).
+[Timing] 9 minutes
+[Teacher prompt] Students predict what each historical stage adds and what it still cannot explain. Credit Remak’s division evidence rather than attributing the whole continuity claim to Virchow.
 [Sources]
 - https://digital.sciencehistory.org/works/fx719n66r — Micrographia scan.
 - https://commons.wikimedia.org/wiki/File:Robert_Hooke,_Micrographia,_cork._Wellcome_M0010579.jpg — image licence.
+- https://commons.wikimedia.org/wiki/File:Schleiden,_Schwann,_Schultze_-_Some_apostles_of_physiology.jpg — historical portrait plate, public domain.
+- https://commons.wikimedia.org/wiki/File:Portrait_of_Rudolf_Ludwig_Karl_Virchow_(1821-1902),_Medical_Scientist_and_Anthropologist_(2552818237).jpg — Smithsonian portrait, no known copyright restrictions.
+- https://www.ncbi.nlm.nih.gov/books/NBK26876/ — historical development and modern cell-theory framing.
 [/Sources]
 -->
 
@@ -459,19 +452,16 @@ class: act-slide
 
 ---
 
-# Magnification enlarges. Resolution separates.
+# Magnification changes size. Resolution changes information.
 
-<div class="concept-map">
-  <div class="concept-node"><span class="node-label">magnification</span><h2>image size ÷ actual size</h2><p>A large image can still be empty magnification if no additional detail is resolved.</p></div>
-  <div class="concept-node center"><span class="node-label">the decision</span><h2>Can two nearby structures be distinguished as separate?</h2><p>That is a resolution question.</p></div>
-  <div class="concept-node"><span class="node-label">scale discipline</span><h2>unit first, calculation second</h2><p>Convert millimetres and micrometres before dividing. State a unit only for actual or image size—not for magnification.</p></div>
-</div>
+<ResolutionComparator />
 
 <!--
-[Timing] 5 minutes
-[Teacher prompt] Use two close dots on the board but do not draw a pseudo-microscope diagram. Ask whether enlarging a blurred photo adds information.
+[Timing] 7 minutes
+[Teacher prompt] Let students drag once, then freeze the handle. Ask why an enlarged unresolved image cannot support a stronger structural claim.
 [Sources]
 - D:\IB DP\Using microscopes _ IB DP Biology SL_HL FE2028.pdf — calibration and magnification sequence.
+- https://commons.wikimedia.org/wiki/File:Escherichia_coli_(SEM).jpg — source micrograph, CDC, public domain. The blurred layer is an explicitly altered copy used to demonstrate information loss.
 [/Sources]
 -->
 
@@ -616,20 +606,16 @@ class: act-slide
 
 ---
 
-# Endosymbiosis was a century-long argument
-
-<div class="sequence">
-  <div class="sequence-step"><span class="index">1905</span><h2>Konstantin Mereschkowski</h2><p>Argued that plastids originated from once-independent symbionts.</p></div>
-  <div class="sequence-step"><span class="index">1920s</span><h2>Further symbiotic proposals</h2><p>Ideas persisted at the margins while genetics and microscopy matured.</p></div>
-  <div class="sequence-step"><span class="index">1967</span><h2>Lynn Sagan / Margulis</h2><p>Synthesised evidence for serial endosymbiosis and forced the model back into serious debate.</p></div>
-  <div class="sequence-step"><span class="index">today</span><h2>Genomes resolve ancestry</h2><p>Mitochondria group with alphaproteobacteria; plastids group with cyanobacteria.</p></div>
-</div>
+<ScienceTimeline mode="endosymbiosis" />
 
 <!--
-[Timing] 6 minutes
-[Teacher prompt] Correct the common shortcut “Margulis invented endosymbiosis.” Her contribution was a powerful modern synthesis and advocacy.
+[Timing] 9 minutes
+[Teacher prompt] Move through the dates as an evidence story. Correct the shortcut “Margulis invented endosymbiosis”; her contribution was a powerful modern synthesis and research programme.
 [Sources]
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC5426843/ — historical and evidential review of endosymbiotic theory.
+- https://commons.wikimedia.org/wiki/File:Konstantin_Mereschkowski.jpg — portrait, public domain.
+- https://commons.wikimedia.org/wiki/File:Lynn_Margulis.jpg — portrait by Javier Pedreira, CC BY-SA 2.5.
+- https://commons.wikimedia.org/wiki/File:Mitochondria_-_TEM.jpg — mitochondrial TEM by Louisa Howard, public domain.
 [/Sources]
 -->
 
@@ -637,15 +623,11 @@ class: act-slide
 
 # Four independent clues converge on bacterial ancestry
 
-<div class="evidence-columns">
-  <div class="evidence-column"><span class="big-number">DNA</span><h2>Circular genomes and phylogeny</h2><p>Organelle genes nest within bacterial lineages rather than the host nuclear lineage.</p><span class="status">sequence evidence</span></div>
-  <div class="evidence-column"><span class="big-number">70S</span><h2>Bacterial-type ribosomes</h2><p>Organelle translation resembles bacterial translation and responds to some bacterial antibiotics.</p><span class="status">mechanistic evidence</span></div>
-  <div class="evidence-column"><span class="big-number">2×</span><h2>Division and double membranes</h2><p>Binary-fission-like division and membrane topology fit engulfment followed by integration.</p><span class="status">structural evidence</span></div>
-</div>
+<EndosymbiosisEvidence />
 
 <!--
-[Timing] 5 minutes
-[Teacher prompt] Rank the evidence by independence. Ask which alternative explanation would have to account for all four patterns.
+[Timing] 8 minutes
+[Teacher prompt] Students state the predicted evidential value before each reveal, then rank the four clues by independence.
 [Sources]
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC5426843/
 [/Sources]
@@ -851,7 +833,7 @@ class: act-slide
 # Esther Lederberg found a virus hiding in plain sight
 
 <div class="image-story">
-  <figure><img :src="'images/phages.jpg'" alt="Bacteriophages attached to a bacterial cell" /><figcaption>Temperate phages made bacterial heredity experimentally tractable</figcaption></figure>
+  <figure><img :src="'images/esther-lederberg.jpg'" alt="Esther Lederberg working in her Stanford laboratory" /><figcaption>Esther Lederberg · Stanford laboratory · 1977</figcaption></figure>
   <div class="story-copy"><p class="scene-kicker">Historical figure · 1951</p><h2>λ could remain silent inside E. coli</h2><p>Esther Lederberg discovered bacteriophage lambda and published the first report in 1951. Its temperate life cycle made it a model for recombination and gene regulation.</p><p class="claim">A phage that does not immediately destroy its host revealed that infection can be a <strong>stable inherited state</strong>.</p></div>
 </div>
 
@@ -860,7 +842,7 @@ class: act-slide
 [Teacher prompt] Note how scientific credit can be compressed or lost when a tool becomes more famous than its discoverer.
 [Sources]
 - https://med.stanford.edu/news/all-news/2006/11/esther-lederberg-pioneer-in-microbial-genetics-dies-at-stanford-at-83.html — Stanford history of Lederberg and λ.
-- https://commons.wikimedia.org/wiki/File:Phage.jpg — image, CC BY-SA 3.0.
+- https://commons.wikimedia.org/wiki/File:Esther_Lab.jpg — laboratory photograph, attribution permitted.
 [/Sources]
 -->
 
@@ -972,10 +954,13 @@ class: act-slide
 
 # Smallpox disappeared because transmission was made to fail everywhere
 
-<div class="evidence-columns">
-  <div class="evidence-column"><span class="big-number">1967</span><h2>Intensified eradication</h2><p>Surveillance, containment, and vaccination targeted every remaining chain of transmission.</p><span class="status">global coordination</span></div>
-  <div class="evidence-column"><span class="big-number">1977</span><h2>Last natural case</h2><p>Ali Maow Maalin in Somalia became the last person known to acquire smallpox naturally.</p><span class="status">case finding</span></div>
-  <div class="evidence-column"><span class="big-number">1980</span><h2>WHO declared eradication</h2><p>A human virus was removed from natural circulation without eliminating every laboratory sample.</p><span class="status">population outcome</span></div>
+<div class="dated-case">
+  <figure><img :src="'images/variola.jpg'" alt="Transmission electron micrograph of variola virus particles" /><figcaption>Variola virus · CDC TEM</figcaption></figure>
+  <div class="dated-events">
+    <article><span>1967</span><div><h2>Intensified eradication</h2><p>Surveillance, containment, and vaccination targeted every remaining chain.</p></div></article>
+    <article><span>1977</span><div><h2>Last natural case</h2><p>Ali Maow Maalin in Somalia became the last person known to acquire smallpox naturally.</p></div></article>
+    <article><span>1980</span><div><h2>WHO declared eradication</h2><p>Natural circulation ended without eliminating every laboratory sample.</p></div></article>
+  </div>
 </div>
 
 <!--
