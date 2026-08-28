@@ -9,17 +9,21 @@
     "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
     "dev:grade11": "slidev decks/grade-11-integration-control/slides.md --port 3050",
     "dev:ib-a2": "node scripts/build-ib-a2.mjs && node scripts/serve-ib-a2.mjs",
+    "dev:ib-chem-kinetics": "node scripts/build-ib-chem-kinetics.mjs && node scripts/serve-ib-chem-kinetics.mjs",
     "dev:experiments": "node scripts/build-experiments.mjs && node scripts/serve-experiments.mjs",
     "build": "node scripts/build-site.mjs",
     "build:experiments": "node scripts/build-experiments.mjs",
     "build:ib-a2": "node scripts/build-ib-a2.mjs",
+    "build:ib-chem-kinetics": "node scripts/build-ib-chem-kinetics.mjs",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
     "export:experiments": "node scripts/export-experiments.mjs --with-clicks",
     "validate:deck-style": "node scripts/validate-deck.mjs --slides slides.md --css styles/index.css --components components --max-words-per-slide 120",
     "validate:grade11": "node scripts/validate-grade11.mjs",
     "validate:experiments": "node scripts/validate-experiments.mjs && vue-tsc --noEmit -p decks/visual-lab/tsconfig.json && node scripts/validate-experiments-browser.mjs",
-    "validate:ib-a2": "vue-tsc --noEmit -p decks/ib-dp-a2-cells-viruses/tsconfig.json && node scripts/validate-ib-a2.mjs",
+    "validate:ib-a2": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-a2-cells-viruses/tsconfig.json && node scripts/validate-ib-a2-condenser-model.mjs && node scripts/validate-ib-a2.mjs && node scripts/validate-ib-a2-browser.mjs",
+    "validate:ib-a2:browser": "node scripts/validate-ib-a2-browser.mjs",
+    "validate:ib-chem-kinetics": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-chemistry-kinetics/tsconfig.json && node scripts/validate-ib-chem-kinetics.mjs && node scripts/validate-ib-chem-kinetics-browser.mjs",
     "validate:site": "node scripts/validate-site.mjs"
   },
   "devDependencies": {
@@ -38,5 +42,8 @@
     "three": "^0.185.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.11"
+  },
+  "dependencies": {
+    "pixi.js": "^8.20.0"
   }
 }

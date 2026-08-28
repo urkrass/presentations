@@ -44,6 +44,9 @@ function fallbackFile(pathname) {
   if (pathname.startsWith('/ib-dp/a2-cells-viruses/')) {
     return path.join(root, 'ib-dp', 'a2-cells-viruses', 'index.html')
   }
+  if (pathname.startsWith('/ib-dp/chemistry-kinetics/')) {
+    return path.join(root, 'ib-dp', 'chemistry-kinetics', 'index.html')
+  }
   if (pathname.startsWith('/experiments/visual-lab/')) {
     return path.join(root, 'experiments', 'visual-lab', 'index.html')
   }

@@ -18,6 +18,7 @@ const deckRoutes = [
   '/grade-7/lab-measurement/',
   '/grade-11/integration-control/',
   '/ib-dp/a2-cells-viruses/',
+  '/ib-dp/chemistry-kinetics/',
   '/experiments/visual-lab/',
 ]
 
@@ -42,12 +43,14 @@ buildDeck('slides.md', publicPath('/grade-8/stoichiometry/'), path.join(dist, 'g
 buildDeck('decks/grade-7-lab-measurement/slides.md', publicPath('/grade-7/lab-measurement/'), path.join(dist, 'grade-7', 'lab-measurement'))
 buildDeck('decks/grade-11-integration-control/slides.md', publicPath('/grade-11/integration-control/'), path.join(dist, 'grade-11', 'integration-control'))
 buildDeck('decks/ib-dp-a2-cells-viruses/slides.md', publicPath('/ib-dp/a2-cells-viruses/'), path.join(dist, 'ib-dp', 'a2-cells-viruses'))
+buildDeck('decks/ib-dp-chemistry-kinetics/slides.md', publicPath('/ib-dp/chemistry-kinetics/'), path.join(dist, 'ib-dp', 'chemistry-kinetics'))
 buildDeck('decks/visual-lab/slides.md', publicPath('/experiments/visual-lab/'), path.join(dist, 'experiments', 'visual-lab'))
 
 addRouteRecovery(path.join(dist, 'grade-8', 'stoichiometry'))
 addRouteRecovery(path.join(dist, 'grade-7', 'lab-measurement'))
 addRouteRecovery(path.join(dist, 'grade-11', 'integration-control'))
 addRouteRecovery(path.join(dist, 'ib-dp', 'a2-cells-viruses'))
+addRouteRecovery(path.join(dist, 'ib-dp', 'chemistry-kinetics'))
 addRouteRecovery(path.join(dist, 'experiments', 'visual-lab'))
 
 fs.cpSync(path.join(root, 'site'), dist, { recursive: true })

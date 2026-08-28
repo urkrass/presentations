@@ -43,6 +43,10 @@
       "destination": "/ib-dp/a2-cells-viruses/index.html"
     },
     {
+      "source": "/ib-dp/chemistry-kinetics/:path*",
+      "destination": "/ib-dp/chemistry-kinetics/index.html"
+    },
+    {
       "source": "/experiments/visual-lab/:path*",
       "destination": "/experiments/visual-lab/index.html"
     }

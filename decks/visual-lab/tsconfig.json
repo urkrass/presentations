@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["env.d.ts", "types/**/*.d.ts", "components/**/*.vue", "composables/**/*.ts"]
+  "include": ["env.d.ts", "types/**/*.d.ts", "components/**/*.vue", "composables/**/*.ts", "lib/**/*.ts"]
 }

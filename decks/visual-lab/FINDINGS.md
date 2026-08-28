@@ -2,10 +2,11 @@
 
 ## Decision
 
-After visual review, promote two techniques into a first production trial:
+After visual review, promote three techniques into a first production trial:
 
 1. **The Canvas diffusion system** when a lesson genuinely depends on hundreds of simultaneous particles.
 2. **The persistent scale inspector** when students must retain organism-level context while moving toward cellular detail.
+3. **The hybrid SVG + PixiJS liquid field** when the scientific meaning depends on bubbles sharing and disturbing one liquid surface.
 
 They were the strongest combinations of one dominant visual subject, purposeful interaction and restrained supporting text. Native Slidev remains the default for simpler sequences. The limited 3D study is visually successful but should remain specialist because of its bundle cost. GSAP and D3 remain useful technical proofs, but their production use should wait for a lesson whose causal objects or changing evidence cannot be taught as clearly with a quieter medium.
 
@@ -27,6 +28,9 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 | 10 | Move organism → organ → tissue → cell → receptor without losing location | One fixed source photograph + animated inspection window + direct level controls | The base scene never changes; only the inspection window appears or changes, and the receptor endpoint remains explicitly conceptual |
 | 11 | Compare linear, bent and tetrahedral geometry | Dynamically loaded TresJS/Three.js | Useful only when 3D geometry is the concept; fixed views plus keyboard-accessible rotation clarify the comparison |
 | 12 | Compare value, cost, export and use | Annotated editorial sequence | Clear synthesis without a dashboard or comparison matrix |
+| 13 | Distinguish still, near-boil, gentle and rolling boiling | SVG glass + PixiJS v8 mesh + custom GLSL metaball field | The same vessel interpolates between five states; bubbles grow, detach, deform, rupture the surface and eject bounded droplets |
+| 14 | Decide whether WebGL meaningfully improves the prior SVG treatment | Sourced SVG reference beside the shader scene | The SVG preserves source fidelity; the WebGL version adds shared deformation, depth and a reacting interface rather than merely moving marks |
+| 15 | Separate model problems from rendering problems | Deterministic debug overlay | Nucleation points, particle centres, clip bounds, FPS and gas/splash populations remain inspectable without changing the phenomenon |
 
 ## Reliability and lifecycle
 
@@ -35,12 +39,13 @@ For scientific geometry, the selection order is now explicit: **sourced figure o
 - The Canvas loop stops when its slide is inactive, restarts when active, and uses a seeded generator for the same reset state.
 - The 3D scene is dynamically imported, renders on demand, observes Slidev activity and supplies a textual non-WebGL fallback.
 - The scale inspector is one persistent DOM scene. Direct controls select every level; the cheetah source remains fixed while GSAP animates only the inspection window. Reduced motion replaces that animation with an immediate state change.
+- The boiling model uses seeded state, a capped 40-object uniform buffer and explicit gas/splash lifecycles. Attachment lifetime never deletes a detached bubble: at 90°C it continues under buoyancy until surface contact, while cooling invokes a separate visibly gradual dissolution path. Its Pixi ticker pauses off-slide, resumes on return, tears down on unmount and renders a deterministic static state when motion is reduced.
 - A persistent deck-level control stores reduced-motion preference. With motion disabled, click states jump to their destinations and no claim depends on movement alone.
-- Direct navigation to all 12 studies passed. Overview and presenter routes rendered correctly. Refresh restores the scale inspector to its labelled organism-level opening state.
+- Direct navigation to all 15 studies passed. Overview and presenter routes rendered correctly. Refresh restores the scale inspector to its labelled organism-level opening state.
 
 ## Browser and classroom checks
 
-Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 12 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, source-SVG reflex reveals, dot-plot plateau/anomaly decisions, fixed-context scale switching, 3D molecule/view controls, overview and presenter mode, and failed on console or page errors.
+Automated checks used Chromium at exactly **1366×768** and **1920×1080**. All 15 slides fit their 16:9 stage without layout overflow. Every slide retained the reduced-motion state. Browser checks also covered distinct and reversible SmilesDrawer reaction states, source-SVG reflex reveals, dot-plot plateau/anomaly decisions, fixed-context scale switching, 3D molecule/view controls, WebGL presets/slider/debug and pause/resume lifecycle, overview and presenter mode, and failed on console or page errors.
 
 The review screenshots are direct 1366×768 browser captures of stable teaching states. They preserve the deck motion control but omit surrounding browser chrome:
 
@@ -53,11 +58,19 @@ The review screenshots are direct 1366×768 browser captures of stable teaching 
 | [05 reflex trace](findings/screenshots/study-05.jpg) | [11 molecular geometry](findings/screenshots/study-11.jpg) |
 | [06 temperature plateau](findings/screenshots/study-06.jpg) | [12 editorial decision](findings/screenshots/study-12.jpg) |
 
+| 13–15 |
+| --- |
+| [13 interactive boiling field](findings/screenshots/study-13.jpg) |
+| [14 SVG versus WebGL](findings/screenshots/study-14.jpg) |
+| [15 deterministic debug view](findings/screenshots/study-15.jpg) |
+
 ## Build and bundle observations
 
 The native-only experimental scaffold built to 42 files / **792,449 B** total (**569,624 B JS**, **124,745 B CSS**). The revised 12-study route builds to 64 files / **3,229,098 B** total (**1,725,309 B JS**, **138,613 B CSS**, **1,361,236 B images**). The increase comes from the sourced reflex/MRI assets and the isolated chemistry renderer used to replace authored scientific geometry.
 
 The deliberately isolated 3D chunk is **776,405 B raw / 202.24 kB gzip**. It is loaded only when the molecular-geometry study is requested. SmilesDrawer is isolated at **190,946 B raw / 56.32 kB gzip**; the shared GSAP chunk is **69.58 kB raw / 27.28 kB gzip**; the D3 dot-plot component is **23.48 kB raw / 9.64 kB gzip**; the Canvas component is **3.75 kB raw / 1.79 kB gzip**.
+
+PixiJS is dynamically isolated from the earlier studies. Its shared renderer chunk is approximately **625.01 kB raw / 176.34 kB gzip**; the boiling component and shader/model wrapper add approximately **18.70 kB raw / 7.13 kB gzip**. The live debug view sustained roughly **80–92 FPS** in the in-app Chromium review at 1280×720; this is evidence for the current machine, not a universal benchmark.
 
 The production-route outputs were unchanged before and after the experiment integration:
 
@@ -76,6 +89,9 @@ The stock Slidev dev and export commands were not reliable in this Windows/Vite 
 ## Boundaries and unresolved limitations
 
 - The 3D chunk is large even when isolated. Keep it experimental unless fixed 2D views fail to teach the geometry.
+- The Pixi renderer is also a substantial specialist dependency. The hybrid approach is reusable when shared-liquid behaviour is the teaching point, but unjustified for a few independent bubbles.
+- The shader is a convincing visual model, not CFD. Its crown/depression and droplet breakup communicate a surface rupture, but they do not calculate viscosity, pressure or heat transfer.
+- Steam remains deliberately faint so it does not obscure the interface; a lesson about condensation would need a separate, more explicit vapour model.
 - Canvas FPS is browser- and hardware-specific. The live value is evidence for the current machine, not a universal benchmark.
 - PDF captures Canvas and 3D as static teaching states; it cannot reproduce continuous motion or free rotation.
 - The receptor endpoint is conceptual and uses sourced cellular context. It deliberately does not pretend to be a receptor micrograph or an authored molecular diagram.

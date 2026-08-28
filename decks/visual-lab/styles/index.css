@@ -1089,6 +1089,221 @@ body,
 .technique-sequence .promoted strong,
 .technique-sequence .promoted em { color: var(--lab-green); }
 
+.boiling-experiment {
+  display: grid;
+  gap: 8px;
+  grid-template-rows: minmax(0, 356px) auto;
+  margin: -12px auto 0;
+  max-width: 880px;
+}
+
+.boiling-focus {
+  display: flex;
+  justify-content: center;
+  min-height: 0;
+}
+
+.boiling-focus .boiling-beaker {
+  flex: 0 0 auto;
+  height: 356px;
+  width: 512.64px !important;
+}
+
+.boiling-controls {
+  align-items: center;
+  display: grid;
+  gap: 12px 24px;
+  grid-template-columns: 1fr auto;
+}
+
+.boiling-presets {
+  display: grid;
+  gap: 4px;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.boiling-presets button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--lab-muted);
+  cursor: pointer;
+  font: 700 0.72rem/1 Inter, sans-serif;
+  min-height: 35px;
+  padding: 0.55rem 0.5rem;
+  transition: background var(--lab-fast) ease, color var(--lab-fast) ease;
+}
+
+.boiling-presets button:hover {
+  background: var(--lab-paper-deep);
+  color: var(--lab-ink);
+}
+
+.boiling-presets button.active {
+  background: var(--lab-soft-rust);
+  color: var(--lab-rust);
+}
+
+.boiling-presets button:focus-visible,
+.boiling-debug-toggle:focus-visible,
+.boiling-slider input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lab-blue) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.boiling-slider {
+  align-items: center;
+  color: var(--lab-muted);
+  display: grid;
+  font-size: 0.68rem;
+  gap: 12px;
+  grid-template-columns: 90px minmax(260px, 1fr) 54px;
+}
+
+.boiling-slider span {
+  font-weight: 750;
+  letter-spacing: 0.035em;
+}
+
+.boiling-slider input {
+  accent-color: var(--lab-rust);
+  cursor: ew-resize;
+  width: 100%;
+}
+
+.boiling-slider output {
+  color: var(--lab-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+}
+
+.boiling-debug-toggle {
+  background: transparent;
+  border: 0;
+  color: var(--lab-muted);
+  cursor: pointer;
+  font: 700 0.68rem/1 Inter, sans-serif;
+  padding: 0.62rem 0;
+}
+
+.boiling-debug-toggle:hover,
+.boiling-debug-toggle[aria-pressed="true"] {
+  color: var(--lab-rust);
+}
+
+.boiling-comparison {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2px;
+}
+
+.boiling-comparison-side {
+  background: var(--lab-paper-deep);
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: auto 286px auto;
+  min-width: 0;
+  overflow: hidden;
+  padding: 20px 24px 18px;
+}
+
+.boiling-comparison-side.shader {
+  background: var(--lab-soft-blue);
+}
+
+.boiling-comparison-side header span {
+  color: var(--lab-rust);
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.boiling-comparison-side header strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-top: 0.4rem;
+}
+
+.boiling-comparison-side > p {
+  color: var(--lab-muted) !important;
+  font-size: 0.76rem !important;
+  margin: 0.55rem 0 0 !important;
+}
+
+.boiling-comparison-side .boiling-beaker {
+  align-self: center;
+  justify-self: center;
+  max-height: 286px;
+  width: min(100%, 420px);
+}
+
+.legacy-svg-boiling {
+  align-self: center;
+  display: grid;
+  grid-template-rows: 244px auto;
+  margin: 0;
+  min-width: 0;
+}
+
+.legacy-svg-source {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.legacy-svg-source svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.legacy-svg-boiling figcaption {
+  color: var(--lab-muted);
+  font-size: 0.63rem;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.boiling-debug-study {
+  display: grid;
+  grid-template-rows: 370px auto;
+  margin: -8px auto 0;
+  max-width: 900px;
+}
+
+.boiling-debug-study .boiling-beaker {
+  height: 370px;
+  justify-self: center;
+  width: 532.8px !important;
+}
+
+.boiling-debug-key {
+  color: var(--lab-muted);
+  display: grid;
+  font-size: 0.7rem;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4px;
+  text-align: center;
+}
+
+.boiling-debug-key b {
+  color: var(--lab-rust);
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.18rem;
+}
+
 .lab-reduced-motion *,
 .lab-reduced-motion *::before,
 .lab-reduced-motion *::after {

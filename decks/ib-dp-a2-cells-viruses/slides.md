@@ -13,7 +13,7 @@ drawings:
 transition: fade-out
 mdc: true
 fonts:
-  sans: Arial
+  sans: Aptos
   serif: Georgia
   mono: Consolas
 ---
@@ -61,11 +61,7 @@ class: thesis-slide
 
 # Entry diagnostic: which is closest to independently alive?
 
-<div class="diagnostic-stage">
-  <div class="diagnostic-item"><figure><img :src="'images/bennu-sample.jpg'" alt="Pristine asteroid Bennu sample at NASA Goddard" /></figure><p><strong>Organic-rich asteroid material</strong>Contains molecular ingredients but no organised metabolism or reproduction.</p></div>
-  <div class="diagnostic-item"><figure><img :src="'images/e-coli.jpg'" alt="Scanning electron micrograph of E. coli" /></figure><p><strong>A bacterium</strong>One cell sustains metabolism, regulation, growth, and reproduction.</p></div>
-  <div class="diagnostic-item"><figure><img :src="'images/variola.jpg'" alt="Transmission electron micrograph of variola virus particles" /></figure><p><strong>A virus particle</strong>Information in a protective package, inactive without a suitable host cell.</p></div>
-</div>
+<LifeBoundaryBuilder />
 
 <!--
 [Timing] 5 minutes
@@ -165,17 +161,15 @@ class: act-slide
 
 ---
 
-<div class="image-story reverse">
-  <figure class="contain"><img :src="'images/miller-urey.png'" alt="Diagram of the Miller-Urey experimental apparatus" /><figcaption>Miller–Urey apparatus · 1953</figcaption></figure>
-  <div class="story-copy"><p class="scene-kicker">Historical experiment · Stanley Miller and Harold Urey</p><h2>A planet became a glass apparatus</h2><p>Water circulated through a chosen gas mixture while electrical sparks supplied energy. Organic compounds, including amino acids, accumulated.</p><p class="claim">The experiment showed that <strong>some organic molecules can form abiotically under specified conditions</strong>. It did not create a cell—or prove the exact early atmosphere.</p></div>
-</div>
+<MillerUreyAssumptions />
 
 <!--
 [Timing] 6 minutes
 [Teacher prompt] Read the apparatus as a model: identify the Earth feature represented by each physical component.
 [Sources]
 - https://www.science.org/doi/10.1126/science.117.3046.528 — Miller, 1953 original report.
-- https://commons.wikimedia.org/wiki/File:Miller-Urey_experiment-en.svg — apparatus diagram, CC BY-SA 3.0.
+- https://commons.wikimedia.org/wiki/File:Miller-Urey_experiment-en.svg — apparatus diagram by YassineMrabet, CC BY-SA 3.0; original vector elements modified locally for motion.
+- https://codepen.io/uchardon/pen/WaYmjR — visual reference for liquid detachment; the deck uses a separate seeded particle model and custom shader fitted to the sourced flask.
 [/Sources]
 -->
 
@@ -296,11 +290,7 @@ class: act-slide
 
 # Evidence for an RNA world is strong—and incomplete
 
-<div class="evidence-columns">
-  <div class="evidence-column"><span class="big-number">✓</span><h2>Ribozymes exist</h2><p>RNA can catalyse cleavage, ligation, and key reactions in modern translation.</p><span class="status">direct evidence</span></div>
-  <div class="evidence-column"><span class="big-number">✓</span><h2>RNA can evolve in experiments</h2><p>Selection can enrich RNA sequences with improved binding or catalytic activity.</p><span class="status">proof of principle</span></div>
-  <div class="evidence-column"><span class="big-number">?</span><h2>Prebiotic synthesis and copying</h2><p>Producing long, accurate, self-sustaining RNA under realistic early-Earth conditions remains difficult.</p><span class="status gap">unsolved transition</span></div>
-</div>
+<RnaEvidenceSpoiler />
 
 <!--
 [Timing] 4 minutes
@@ -368,13 +358,7 @@ class: act-slide
 
 ---
 
-<QuickCheck
-  label="Act I checkpoint"
-  question="Which statement best separates evidence from inference in origins research?"
-  :options="['Amino acids in Bennu prove life began in space','Ribozymes prove the exact first replicator was RNA','Shared genes allow reconstruction of a common ancestor, but the reconstruction depends on evolutionary models','Stromatolite shape alone identifies an ancient species']"
-  :answer="2"
-  explanation="Comparative genomes provide evidence; ancestry is inferred through explicit models and filters. The other options claim more than their evidence can support."
-/>
+<ClaimDisciplineSorter />
 
 <!--
 [Timing] 4 minutes
@@ -469,14 +453,7 @@ class: act-slide
 
 # One scale bar can expose a false impression
 
-<div class="data-stage">
-  <div class="bar-plot" aria-label="Scale calculation">
-    <div class="bar-row"><span>image bar</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><b>42 mm</b></div>
-    <div class="bar-row"><span>actual bar</span><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div><b>2.0 μm</b></div>
-    <div class="bar-row"><span>cell image</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><b>29 mm</b></div>
-  </div>
-  <div class="data-copy"><p class="scene-kicker">Calculation check</p><h2>First find magnification; then find actual cell length</h2><p>42 mm = 42,000 μm. Magnification = 42,000 ÷ 2.0 = 21,000×.</p><p class="question">Actual cell length = 29,000 μm ÷ 21,000 = ?</p></div>
-</div>
+<ScaleBarWorkbench />
 
 <!--
 [Timing] 6 minutes
@@ -815,10 +792,7 @@ class: act-slide
 
 ---
 
-<div class="tok-layout">
-  <div class="tok-mark">TOK</div>
-  <div class="tok-copy"><p class="eyebrow">Category boundaries</p><h1>Is “alive” a discovery—or a decision about which properties matter?</h1><p class="tok-question">A virus evolves, carries information, and reproduces only as a host–virus system. A sterile worker ant metabolises but does not reproduce.</p><p>Should a definition aim for necessary-and-sufficient conditions, or for a useful family resemblance?</p></div>
-</div>
+<DefinitionStressTest />
 
 <!--
 [Timing] 8 minutes
@@ -974,10 +948,7 @@ class: act-slide
 
 ---
 
-<div class="image-story reverse">
-  <figure><img :src="'images/acinetobacter.jpg'" alt="Scanning electron micrograph of Acinetobacter baumannii" /><figcaption>Acinetobacter baumannii · CDC SEM</figcaption></figure>
-  <div class="story-copy"><p class="scene-kicker">Real case · Tom Patterson · 2016</p><h2>A virus became an experimental antibiotic</h2><p>Patterson was near death from a multidrug-resistant A. baumannii infection. A matched bacteriophage cocktail was administered intravenously under emergency use.</p><p class="claim">Recovery made the case influential, but one rescue is not a universal cure. Phages are host-specific and rigorous trials remain essential.</p></div>
-</div>
+<PhageTherapyMatcher />
 
 <!--
 [Timing] 7 minutes
@@ -985,6 +956,7 @@ class: act-slide
 [Sources]
 - https://health.ucsd.edu/news/press-releases/2022-06-09-unprecedented-case-series-advances-promise-of-phage-therapy/ — UC San Diego case history and later series.
 - https://wwwn.cdc.gov/phil/Details.aspx?pid=10095 — A. baumannii SEM, public domain.
+- The host-range assay is an explicitly labelled qualitative teaching scenario, not Patterson's laboratory dataset.
 [/Sources]
 -->
 
@@ -992,16 +964,7 @@ class: act-slide
 
 # Cumulative challenge: classify the unknown system
 
-<div class="investigation-layout">
-  <div class="investigation-brief"><p class="scene-kicker">Synthesis · no single clue is decisive</p><h2>Unknown X crosses a 0.2 μm filter, contains RNA and protein, evolves in culture, and produces copies only in living cells.</h2><p>Make the strongest classification you can—and state what remains uncertain.</p></div>
-  <div class="investigation-method">
-    <div class="method-row"><strong>claim</strong><span>virus is the leading hypothesis</span></div>
-    <div class="method-row"><strong>support</strong><span>host-dependent reproduction + heritable RNA + evolving populations</span></div>
-    <div class="method-row"><strong>do not use</strong><span>size alone; some bacteria are tiny and some viruses are giant</span></div>
-    <div class="method-row"><strong>next test</strong><span>look for a capsid, identify host range, sequence the genome, test sensitivity to translation inhibitors</span></div>
-    <div class="method-row"><strong>certainty</strong><span>provisional classification, revised by converging evidence</span></div>
-  </div>
-</div>
+<UnknownClassification />
 
 <!--
 [Timing] 8 minutes

@@ -13,7 +13,7 @@ if (process.env.VISUAL_LAB_SKIP_BUILD !== '1') {
 
 const site = await startStaticSite(root, path.join('experiments', 'visual-lab', 'index.html'))
 const base = `${site.origin}/experiments/visual-lab`
-const slideCount = 12
+const slideCount = 15
 const browser = await chromium.launch({ headless: true })
 const errors = []
 
@@ -38,7 +38,10 @@ try {
       await page.goto(`${base}/${slide}`, { waitUntil: 'domcontentloaded' })
       const current = page.locator(`.slidev-page-${slide}`)
       await current.waitFor({ state: 'visible', timeout: 30000 })
-      await page.waitForTimeout(slide === 11 ? 900 : 120)
+      await page.waitForTimeout(slide === 11 ? 900 : slide >= 13 ? 1300 : 120)
+      if (slide >= 13) {
+        await current.locator('.boiling-beaker[data-renderer-state="ready"] canvas').first().waitFor({ timeout: 30000 })
+      }
       const fit = await current.evaluate((element, size) => {
         const layout = element.querySelector('.slidev-layout')
         const box = element.getBoundingClientRect()
@@ -190,6 +193,49 @@ try {
   check(await interactionPage.getByRole('slider', { name: 'Turn molecule' }).inputValue() === '90', '3D user rotation is keyboard accessible')
   await interactionPage.getByRole('button', { name: 'Reset view' }).click()
   check(await interactionPage.getByRole('slider', { name: 'Turn molecule' }).inputValue() === '0', '3D reset restores the labelled front view')
+
+  await interactionPage.goto(`${base}/13`, { waitUntil: 'domcontentloaded' })
+  const boiling = interactionPage.locator('.slidev-page-13 .boiling-beaker')
+  await boiling.locator('canvas').waitFor({ state: 'visible', timeout: 30000 })
+  await interactionPage.getByRole('button', { name: '20°C', exact: true }).click()
+  check(await boiling.getAttribute('data-intensity') === 'still' && await boiling.getAttribute('data-active-bubbles') === '0', '20°C preset produces a stable bubble-free state')
+  await interactionPage.getByRole('button', { name: 'rolling', exact: true }).click()
+  const rollingCount = Number(await boiling.getAttribute('data-active-bubbles'))
+  check(await boiling.getAttribute('data-intensity') === 'rolling' && rollingCount > 0, 'rolling preset produces a deterministic active boil')
+  await interactionPage.getByRole('button', { name: '100°C gentle', exact: true }).click()
+  const gentleCount = Number(await boiling.getAttribute('data-active-bubbles'))
+  check(await boiling.getAttribute('data-intensity') === 'gentle' && rollingCount > gentleCount && gentleCount > 0, 'gentle and rolling presets produce immediately distinct bubble populations')
+  await interactionPage.getByRole('slider', { name: 'Temperature' }).fill('90')
+  check(await boiling.getAttribute('data-temperature') === '90' && await boiling.getAttribute('data-intensity') === 'near-boil', 'temperature slider selects a sensible intermediate state')
+  await interactionPage.getByRole('button', { name: 'Inspect model' }).click()
+  check(await boiling.getAttribute('data-debug') === 'true' && await interactionPage.locator('.slidev-page-13 .boiling-debug-readout').isVisible(), 'debug mode exposes the simulation readout on demand')
+
+  await interactionPage.goto(`${base}/14`, { waitUntil: 'domcontentloaded' })
+  await interactionPage.locator('.slidev-page-14 .boiling-beaker[data-renderer-state="ready"] canvas').waitFor({ timeout: 30000 })
+  check(await interactionPage.locator('.slidev-page-14 .legacy-svg-source svg').isVisible(), 'comparison retains the sourced SVG boiling reference')
+  check(await interactionPage.locator('.slidev-page-14 .boiling-comparison-side').count() === 2, 'comparison presents one SVG and one WebGL field')
+
+  await interactionPage.goto(`${base}/15`, { waitUntil: 'domcontentloaded' })
+  const debugBeaker = interactionPage.locator('.slidev-page-15 .boiling-beaker')
+  await debugBeaker.locator('canvas').waitFor({ state: 'visible', timeout: 30000 })
+  check(await debugBeaker.getAttribute('data-debug') === 'true' && await interactionPage.locator('.slidev-page-15 .boiling-debug-svg').isVisible(), 'dedicated debug study exposes nucleation points and clip bounds')
+
+  const lifecyclePage = await browser.newPage({ viewport: { width: 1366, height: 768 } })
+  await lifecyclePage.addInitScript(() => localStorage.setItem('visual-lab-motion-reduced', 'false'))
+  lifecyclePage.on('pageerror', error => errors.push(`lifecycle page error: ${error.message}`))
+  lifecyclePage.on('console', message => {
+    if (message.type() === 'error') errors.push(`lifecycle console error: ${message.text()}`)
+  })
+  await lifecyclePage.goto(`${base}/13`, { waitUntil: 'domcontentloaded' })
+  await lifecyclePage.locator('.slidev-page-13 .boiling-beaker[data-loop-state="running"]').waitFor({ timeout: 30000 })
+  await lifecyclePage.keyboard.press('ArrowLeft')
+  await lifecyclePage.locator('.slidev-page-12').waitFor({ state: 'visible' })
+  const inactiveLoopState = await lifecyclePage.locator('.slidev-page-13 .boiling-beaker').getAttribute('data-loop-state')
+  check(inactiveLoopState === 'paused', `WebGL loop pauses when its slide becomes inactive (state: ${inactiveLoopState})`)
+  await lifecyclePage.keyboard.press('ArrowRight')
+  await lifecyclePage.locator('.slidev-page-13 .boiling-beaker[data-loop-state="running"]').waitFor({ timeout: 30000 })
+  check(await lifecyclePage.locator('.slidev-page-13 .boiling-beaker').getAttribute('data-loop-state') === 'running', 'WebGL loop resumes after repeated slide navigation')
+  await lifecyclePage.close()
 
   await interactionPage.goto(`${base}/overview`, { waitUntil: 'domcontentloaded' })
   await interactionPage.waitForTimeout(500)

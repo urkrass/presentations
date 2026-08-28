@@ -16,6 +16,8 @@ const required = [
   'dist/grade-11/integration-control/images/nervous-system.svg',
   'dist/ib-dp/a2-cells-viruses/index.html',
   'dist/ib-dp/a2-cells-viruses/images/stromatolites.jpg',
+  'dist/ib-dp/chemistry-kinetics/index.html',
+  'dist/ib-dp/chemistry-kinetics/images/iodine-clock.jpg',
   'dist/experiments/visual-lab/index.html',
   'dist/og-v2.png',
 ]
@@ -29,14 +31,14 @@ for (const file of required) {
 }
 
 const landing = fs.readFileSync(path.join(root, 'dist', 'index.html'), 'utf8')
-for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', 'IB DP', '/grade-7/lab-measurement/', '/grade-8/stoichiometry/', '/grade-11/integration-control/', '/ib-dp/a2-cells-viruses/', 'https://presentations-lime.vercel.app/og-v2.png']) {
+for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', 'IB DP', '/grade-7/lab-measurement/', '/grade-8/stoichiometry/', '/grade-11/integration-control/', '/ib-dp/a2-cells-viruses/', '/ib-dp/chemistry-kinetics/', 'https://presentations-lime.vercel.app/og-v2.png']) {
   const valid = landing.includes(expected)
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} landing contains ${expected}`)
 }
 
 const notFound = fs.readFileSync(path.join(root, 'dist', '404.html'), 'utf8')
-for (const expected of ['__slidev_redirect', '/grade-7/lab-measurement/', '/ib-dp/a2-cells-viruses/']) {
+for (const expected of ['__slidev_redirect', '/grade-7/lab-measurement/', '/ib-dp/a2-cells-viruses/', '/ib-dp/chemistry-kinetics/']) {
   const valid = notFound.includes(expected)
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} route recovery contains ${expected}`)
@@ -47,8 +49,13 @@ const restoresSlideRoute = ibDeck.includes("searchParams.get('__slidev_redirect'
 if (!restoresSlideRoute) failed = true
 console.log(`${restoresSlideRoute ? 'PASS' : 'FAIL'} Slidev entry restores direct slide routes`)
 
+const chemistryDeck = fs.readFileSync(path.join(root, 'dist', 'ib-dp', 'chemistry-kinetics', 'index.html'), 'utf8')
+const chemistryRestoresSlideRoute = chemistryDeck.includes("searchParams.get('__slidev_redirect')")
+if (!chemistryRestoresSlideRoute) failed = true
+console.log(`${chemistryRestoresSlideRoute ? 'PASS' : 'FAIL'} chemistry Slidev entry restores direct slide routes`)
+
 const vercelConfig = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8')
-for (const expected of ['/grade-11', '/grade-11/integration-control/:path*', '/ib-dp', '/ib-dp/a2-cells-viruses/:path*', '/experiments/visual-lab/:path*']) {
+for (const expected of ['/grade-11', '/grade-11/integration-control/:path*', '/ib-dp', '/ib-dp/a2-cells-viruses/:path*', '/ib-dp/chemistry-kinetics/:path*', '/experiments/visual-lab/:path*']) {
   const valid = vercelConfig.includes(expected)
   if (!valid) failed = true
   console.log(`${valid ? 'PASS' : 'FAIL'} Vercel route contains ${expected}`)

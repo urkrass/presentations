@@ -239,3 +239,61 @@ fonts:
 - No external source. Ratings summarise validation performed in this repository and are documented in FINDINGS.md.
 [/Sources]
 -->
+
+---
+
+<p class="lab-kicker">Study 13 · PixiJS v8 · fragment-shader liquid</p>
+
+# WebGL Boiling Experiment
+
+<p class="lab-lede">Move from still water to a rolling boil. The vessel stays crisp while one liquid field changes bubbles, surface, depth and steam together.</p>
+
+<BoilingExperiment />
+
+<!--
+[Sources]
+- https://pixijs.com/8.x/guides/components/application — PixiJS v8 asynchronous Application initialization and renderer lifecycle.
+- https://pixijs.com/8.x/guides/components/scene-objects/mesh — PixiJS v8 custom Mesh and Shader architecture.
+- No measured data. Temperature states are a deterministic qualitative visual model built for this rendering experiment.
+[/Sources]
+-->
+
+---
+
+<p class="lab-kicker">Study 14 · direct visual comparison</p>
+
+# A better engine must change what the learner can see
+
+<p class="lab-lede">The comparison is not “more animation.” It is whether bubbles deform one another, disturb the surface and belong to the same liquid.</p>
+
+<BoilingComparison />
+
+<!--
+[Sources]
+- Existing SVG side reuses the sourced Miller–Urey apparatus already documented in the IB A2 deck.
+- https://pixijs.com/8.x/guides/components/scene-objects/mesh — custom shader mesh implementation reference.
+[/Sources]
+-->
+
+---
+
+<p class="lab-kicker">Study 15 · deterministic debug view</p>
+
+# Inspect the model without replacing the phenomenon
+
+<p class="lab-lede">Rust points mark fixed nucleation regions. The shader exposes bubble centres and the live readout separates gas bubbles from detached splash droplets.</p>
+
+<div class="boiling-debug-study">
+  <BoilingBeaker :temperature="100" intensity="rolling" debug />
+  <div class="boiling-debug-key">
+    <span><b>bottom + walls</b> biased nucleation</span>
+    <span><b>centre points</b> simulated particles</span>
+    <span><b>field outline</b> shader clip bounds</span>
+  </div>
+</div>
+
+<!--
+[Sources]
+- No external data. The seeded particle model and debug states were created to audit rendering behaviour and lifecycle.
+[/Sources]
+-->

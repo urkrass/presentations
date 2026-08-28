@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { onSlideEnter, onSlideLeave, useIsSlideActive, useNav } from '@slidev/client'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
 type Particle = { x:number; y:number; vx:number; vy:number }
 
 const canvas = ref<HTMLCanvasElement | null>(null)
-const root = ref<HTMLElement | null>(null)
-const visible = ref(true)
+const isActive = useIsSlideActive()
+const { isPrintMode } = useNav()
 const running = ref(true)
 const mode = ref<'selective' | 'damaged'>('selective')
 const retained = ref(100)
@@ -19,12 +20,12 @@ let particles: Particle[] = []
 let frame = 0
 let seed = 0x6a09e667
 let sampleFrames = 0
-let observer: IntersectionObserver | null = null
 
 const modeCopy = computed(() => mode.value === 'selective'
   ? 'Low permeability preserves a concentrated internal mixture while matter still moves.'
   : 'Higher permeability dissipates the concentration advantage.'
 )
+const animationState = computed(() => running.value && isActive.value && !isPrintMode.value && !document.documentElement.classList.contains('deck-reduced-motion') ? 'running' : 'paused')
 
 function random() {
   seed ^= seed << 13
@@ -80,7 +81,7 @@ function draw() {
 
 function tick() {
   frame = 0
-  if (!running.value || !visible.value) { draw(); return }
+  if (!running.value || !isActive.value || isPrintMode.value || document.documentElement.classList.contains('deck-reduced-motion')) { draw(); return }
   const permeability = mode.value === 'selective' ? .0016 : .032
   for (const particle of particles) {
     particle.vx = particle.vx * .987 + (random() - .5) * .17
@@ -114,27 +115,31 @@ function tick() {
   frame = requestAnimationFrame(tick)
 }
 
-function start() { if (!frame && running.value && visible.value) frame = requestAnimationFrame(tick) }
+function start() {
+  if (frame || !running.value || !isActive.value || isPrintMode.value || document.documentElement.classList.contains('deck-reduced-motion')) return
+  frame = requestAnimationFrame(tick)
+}
 function stop() { if (frame) cancelAnimationFrame(frame); frame = 0; draw() }
 function toggle() { running.value = !running.value; running.value ? start() : stop() }
 function setMode(next:'selective'|'damaged') { mode.value = next; reset() }
+function onMotionChange() { document.documentElement.classList.contains('deck-reduced-motion') ? stop() : start() }
 
 onMounted(async () => {
   await nextTick()
   prepareCanvas()
   reset()
-  observer = new IntersectionObserver(([entry]) => {
-    visible.value = entry.isIntersecting
-    visible.value ? start() : stop()
-  }, { threshold: .25 })
-  if (root.value) observer.observe(root.value)
   window.addEventListener('resize', prepareCanvas)
+  window.addEventListener('deck-motion-change', onMotionChange)
 })
-onUnmounted(() => { stop(); observer?.disconnect(); window.removeEventListener('resize', prepareCanvas) })
+watch(isActive, active => active ? start() : stop())
+watch(isPrintMode, print => print ? stop() : start())
+onSlideEnter(start)
+onSlideLeave(stop)
+onUnmounted(() => { stop(); window.removeEventListener('resize', prepareCanvas); window.removeEventListener('deck-motion-change', onMotionChange) })
 </script>
 
 <template>
-  <section ref="root" class="compartment-simulation">
+  <section class="compartment-simulation" :data-animation-state="animationState">
     <div class="canvas-wrap"><canvas ref="canvas" aria-label="Qualitative particle model of solute retention by a membrane-bounded compartment" /><span class="model-note">qualitative model · not measured data</span></div>
     <div class="simulation-copy">
       <p class="scene-kicker">Particle model · retention under changing permeability</p>
@@ -151,5 +156,5 @@ onUnmounted(() => { stop(); observer?.disconnect(); window.removeEventListener('
 </template>
 
 <style scoped>
-.compartment-simulation{display:grid;grid-template-columns:1.22fr .78fr;gap:42px;min-height:470px;align-items:center}.canvas-wrap{position:relative;height:450px;display:grid;place-items:center;background:var(--paper-deep);overflow:hidden}.canvas-wrap canvas{width:100%;height:auto;display:block}.model-note{position:absolute;left:16px;bottom:14px;padding:7px 9px;background:rgba(251,250,246,.88);color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.simulation-copy{display:grid;gap:16px}.simulation-copy h2{margin:0;color:var(--green);font:500 54px/1 Georgia,serif}.simulation-copy>p:not(.scene-kicker){margin:0;color:var(--muted);font-size:17px;line-height:1.43}.membrane-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.membrane-modes button,.simulation-actions button{border:0;background:var(--paper-deep);color:var(--muted);font-weight:750;cursor:pointer}.membrane-modes button{min-height:55px;padding:10px}.membrane-modes button.active{background:var(--blue);color:#fff}.simulation-actions{display:flex;gap:8px}.simulation-actions button{padding:11px 16px}.simulation-actions button:first-child{background:var(--rust);color:#fff}.simulation-claim{padding:15px 17px;background:var(--soft-green);color:var(--ink)!important;font-family:Georgia,serif;font-size:18px!important}button:focus-visible{outline:3px solid color-mix(in srgb,var(--blue) 48%,transparent);outline-offset:3px}
+.compartment-simulation{display:grid;grid-template-columns:1.22fr .78fr;gap:42px;min-height:470px;align-items:center}.canvas-wrap{position:relative;height:450px;display:grid;place-items:center;background:var(--paper-deep);border-radius:var(--radius-field);overflow:hidden}.canvas-wrap canvas{width:100%;height:auto;display:block}.model-note{position:absolute;left:16px;bottom:14px;padding:7px 10px;border-radius:var(--radius-control);background:rgba(251,250,246,.88);color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.simulation-copy{display:grid;gap:16px}.simulation-copy h2{margin:0;color:var(--green);font:500 54px/1 Georgia,serif}.simulation-copy>p:not(.scene-kicker){margin:0;color:var(--muted);font-size:17px;line-height:1.43}.membrane-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.membrane-modes button,.simulation-actions button{border:0;border-radius:var(--radius-control);background:var(--paper-deep);color:var(--muted);font-weight:750;cursor:pointer;transition:background var(--motion-fast) var(--ease),color var(--motion-fast) var(--ease)}.membrane-modes button{min-height:50px;padding:10px}.membrane-modes button.active{background:var(--blue);color:#fff}.simulation-actions{display:flex;gap:8px}.simulation-actions button{padding:11px 16px}.simulation-actions button:first-child{background:var(--rust);color:#fff}.simulation-claim{padding:15px 17px;border-radius:var(--radius-field);background:var(--soft-green);color:var(--ink)!important;font-family:Georgia,serif;font-size:18px!important}button:focus-visible{outline:3px solid color-mix(in srgb,var(--blue) 48%,transparent);outline-offset:3px}
 </style>

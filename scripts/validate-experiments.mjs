@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import ts from 'typescript'
 
 const root = process.cwd()
 const deck = path.join(root, 'decks', 'visual-lab')
@@ -17,6 +18,12 @@ const requiredFiles = [
   path.join(deck, 'components', 'ScaleJourney.vue'),
   path.join(deck, 'components', 'MoleculeGeometry.vue'),
   path.join(deck, 'components', 'MoleculeGeometryScene.vue'),
+  path.join(deck, 'components', 'BoilingBeaker.vue'),
+  path.join(deck, 'components', 'BoilingExperiment.vue'),
+  path.join(deck, 'components', 'BoilingComparison.vue'),
+  path.join(deck, 'components', 'LegacySvgBoiling.vue'),
+  path.join(deck, 'lib', 'boilingModel.ts'),
+  path.join(deck, 'lib', 'boilingShaders.ts'),
   path.join(deck, 'composables', 'useGsapSlideTimeline.ts'),
   path.join(deck, 'FINDINGS.md'),
   path.join(root, 'scripts', 'build-experiments.mjs'),
@@ -41,10 +48,11 @@ for (const expected of ['<NativeBaseline', '<VSwitch', 'v-click', 'v-motion', '[
 
 const separators = (slides.match(/^---$/gm) ?? []).length
 const slideCount = Math.max(0, separators - 1)
-const validScaffold = slideCount >= 12 && slideCount <= 15
+const validScaffold = slideCount === 15
 if (!validScaffold) failed = true
-console.log(`${validScaffold ? 'PASS' : 'FAIL'} deck contains 12–15 studies (${slideCount})`)
+console.log(`${validScaffold ? 'PASS' : 'FAIL'} deck contains 15 studies (${slideCount})`)
 
+const boilingModelSource = fs.readFileSync(path.join(deck, 'lib', 'boilingModel.ts'), 'utf8')
 const sourceGroups = {
   gsap: fs.readFileSync(path.join(deck, 'composables', 'useGsapSlideTimeline.ts'), 'utf8') + fs.readFileSync(path.join(deck, 'components', 'ReflexTrace.vue'), 'utf8'),
   chemistry: fs.readFileSync(path.join(deck, 'components', 'ParticleLedger.vue'), 'utf8'),
@@ -52,6 +60,10 @@ const sourceGroups = {
   canvas: fs.readFileSync(path.join(deck, 'components', 'DiffusionCanvas.vue'), 'utf8'),
   scale: fs.readFileSync(path.join(deck, 'components', 'ScaleJourney.vue'), 'utf8'),
   three: fs.readFileSync(path.join(deck, 'components', 'MoleculeGeometry.vue'), 'utf8') + fs.readFileSync(path.join(deck, 'components', 'MoleculeGeometryScene.vue'), 'utf8'),
+  boiling: fs.readFileSync(path.join(deck, 'components', 'BoilingBeaker.vue'), 'utf8')
+    + fs.readFileSync(path.join(deck, 'components', 'BoilingExperiment.vue'), 'utf8')
+    + boilingModelSource
+    + fs.readFileSync(path.join(deck, 'lib', 'boilingShaders.ts'), 'utf8'),
 }
 
 const reflexSource = fs.readFileSync(path.join(deck, 'components', 'ReflexTrace.vue'), 'utf8')
@@ -82,6 +94,7 @@ for (const [label, source, tokens] of [
   ['Canvas study', sourceGroups.canvas, ['requestAnimationFrame', 'cancelAnimationFrame', '2000', 'seedParticles', 'useIsSlideActive']],
   ['Scale inspector', sourceGroups.scale, ['activeIndex', 'selectLevel', 'scale-inspection-window', 'gsap.fromTo', 'organism', 'organ', 'tissue', 'cell', 'receptor']],
   ['Limited 3D study', sourceGroups.three, ["import('./MoleculeGeometryScene.vue')", 'TresCanvas', 'render-mode="on-demand"', "getContext('webgl')", 'webgl-fallback', 'type="range"', 'Reset view', 'useIsSlideActive']],
+  ['Pixi boiling study', sourceGroups.boiling, ["import('pixi.js')", 'Shader.from', 'UniformGroup', 'uBubbleData', 'bubbleInfluence', 'surfaceAt', 'spawnSplash', 'buoyantFloor', 'coolingDissolution', 'surfaceBurstCount', 'data-loop-state', 'prefers-reduced-motion', 'useIsSlideActive']],
 ]) {
   for (const token of tokens) {
     const valid = source.includes(token)
@@ -89,6 +102,21 @@ for (const [label, source, tokens] of [
     console.log(`${valid ? 'PASS' : 'FAIL'} ${label} contains ${token}`)
   }
 }
+
+const detachedBubbleTimeoutAbsent = !sourceGroups.boiling.includes('life >= 1.16')
+if (!detachedBubbleTimeoutAbsent) failed = true
+console.log(`${detachedBubbleTimeoutAbsent ? 'PASS' : 'FAIL'} detached bubbles have no arbitrary mid-column lifetime timeout`)
+
+const emittedBoilingModel = ts.transpileModule(boilingModelSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+}).outputText
+const boilingModelModule = await import(`data:text/javascript;base64,${Buffer.from(emittedBoilingModel).toString('base64')}`)
+const nearBoilModel = new boilingModelModule.BoilingModel(90, 'near-boil')
+nearBoilModel.reset()
+for (let frame = 0; frame < 1800; frame += 1) nearBoilModel.step(1 / 60, frame / 60)
+const nearBoilLifecycleValid = nearBoilModel.surfaceBurstCount > 0 && nearBoilModel.coolingDissolutionCount === 0
+if (!nearBoilLifecycleValid) failed = true
+console.log(`${nearBoilLifecycleValid ? 'PASS' : 'FAIL'} detached 90°C bubbles reach the surface without mid-column deletion (${nearBoilModel.surfaceBurstCount} bursts)`)
 
 const stagePropAbsent = !sourceGroups.scale.includes('defineProps<{ stage')
 if (!stagePropAbsent) failed = true

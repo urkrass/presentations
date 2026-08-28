@@ -109,6 +109,12 @@ h1 {
 }
 
 .presentation[hidden] { display: none; }
+.presentation-collection[hidden] { display: none; }
+.presentation-collection { display: grid; gap: 62px; }
+.compact-presentation { padding: 8px 0; }
+.compact-presentation + .compact-presentation { margin-top: 8px; }
+.compact-presentation h2 { font-size: clamp(38px, 4.4vw, 56px); }
+.compact-presentation figure img { object-position: center 56%; }
 
 .presentation-copy {
   max-width: 580px;
