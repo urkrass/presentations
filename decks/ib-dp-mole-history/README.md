@@ -1,6 +1,6 @@
 # The mole and its history
 
-IB DP Year 1 chemistry, English, **two 45-minute lessons**. A separate deck at `/ib-dp/mole-history/`, listed under IB DP on the shared site. The old `/grade-8/mole-history/` links redirect here, preserving slide numbers and query state. The existing Grade 8 stoichiometry deck is unchanged.
+IB DP Year 1 chemistry, English, **four 45-minute lessons**. A separate deck at `/ib-dp/mole-history/`, listed under IB DP on the shared site. The old `/grade-8/mole-history/` links redirect here, preserving slide numbers and query state. The existing Grade 8 stoichiometry deck is unchanged.
 
 Audience: beginning DP chemistry. The five practice moments check prior fluency with units and entity counting; the history, dimensional reasoning, exact definitions versus measured quantities, and NOS prompts develop the DP-level argument. Preserve the accessible opening rather than assuming all students already understand amount of substance.
 
@@ -28,7 +28,25 @@ Core argument: chemists could weigh reproducible batches before they could count
 | CO₂ transfer, exit ticket, synthesis | 26–28 | 7 |
 | **Total** | **15–28** | **45** |
 
-The five mandatory practice moments are slides **5, 7, 10, 19 and 25**. Slides 13, 14, 26 and 27 add investigation/transfer/retrieval. The previously optional round-number and silicon-sphere topics are included in the main two-lesson route. All 28 slides have timed presenter notes, prompts and solutions.
+| Lesson 3: mass and amount | Slides | Minutes |
+| --- | --- | ---: |
+| Bridge, formula mass and parentheses exercise | 29–31 | 8 |
+| Grams → moles, practice, moles → grams | 32–34 | 12 |
+| Conversion workbench, reverse exercise, mg units | 35–37 | 9 |
+| Error clinic, zinc reaction, balancing exercise | 38–40 | 10 |
+| Mole-ratio reasoning and exit ticket | 41–42 | 6 |
+| **Total** | **29–42** | **45** |
+
+| Lesson 4: theoretical product mass | Slides | Minutes |
+| --- | --- | ---: |
+| Magnesium photograph, prediction, theoretical yield | 43–45 | 7 |
+| Worked Mg calculation, mass audit, O₂ exercise | 46–48 | 11 |
+| Reaction workbench, limestone case, purity exercise | 49–51 | 10 |
+| Zinc-to-hydrogen example and limiting reactant | 52–53 | 8 |
+| Yield data, new-reaction assessment, synthesis | 54–56 | 9 |
+| **Total** | **43–56** | **45** |
+
+The first five mandatory practice moments are slides **5, 7, 10, 19 and 25**. Slides 13, 14, 26 and 27 add investigation/transfer/retrieval. Exercises **6–12** appear on slides **31, 33, 36, 40, 48, 51 and 55**; additional prediction, error analysis and exit checks are interleaved. The round-number and silicon-sphere topics remain in the historical foundation. All **56 slides** have timed presenter notes, prompts and solutions. The original first 28 slide numbers are preserved.
 
 Preparation: calculators and paper. Slide 13 works as a paper investigation with explicitly constructed data. Optionally prepare ten identical washers, another batch, a balance and a tared container; replace the example readings with actual measured values. No chemical experiment is required.
 
@@ -42,6 +60,8 @@ Preparation: calculators and paper. Slide 13 works as a paper investigation with
 - Quizzes directly reuse the established IB `QuickCheck.vue`, wrapped with larger copy, fixed geometry and print answers. No changes to the original component or other decks.
 - Warm paper, Georgia headings, desaturated rust/green/blue, purposeful rounded fields. No decorative rules, line animations, added animation library, ambient motion or generated scientific geometry.
 - System reduced-motion preference is respected. No continuous simulation or off-slide loops exist in this deck.
+- New lecture reveals: slide 32 (1), 34 (2), 37 (1), 41 (1), 46 (3), 52 (2). Whole reasoning steps appear, not animated decorative connectors.
+- Slide 35: native substance selector and mass/amount input, reversible direction and reset. Slide 49: native reaction/starting-reactant selector and mass input, with one anchored three-step argument. Both handle invalid inputs, expose live accessible results and print a readable state. Four-significant-figure calculator display is not a claim of experimental precision.
 
 ## Scientific guardrails
 
@@ -52,6 +72,12 @@ Preparation: calculators and paper. Slide 13 works as a paper investigation with
 - Rounded atomic masses explain the magnitude and convenient size, not every digit of the exact chosen value. The 2019 value preserves continuity with prior measurement.
 - The 9.0 g water example reports 0.50 mol and 3.0 × 10²³ molecules, while retaining the calculator intermediate separately. The exact constant does not erase sample uncertainty.
 - The 2 g + 16 g = 18 g display is explicitly a mass ledger, not an unbalanced chemical equation.
+- Lessons 3–4 use a consistent rounded teaching table: H 1.01, C 12.01, O 16.00, Na 22.99, Mg 24.31, Cl 35.45, Ca 40.08, Zn 65.38. These are not exact constants. Calculations carry guard digits, then match given precision.
+- Every product-mass problem states purity, complete conversion and the excess/limiting reactant where applicable. Magnesium oxidation models only MgO; actual burning in air can have side products. Coefficients give mole ratios, not gram ratios.
+- CaCO₃ and Ca(OH)₂ are ionic solids: formula units, not discrete molecules. Limestone purity data and collected MgO masses are constructed teaching examples, not measurements from the photographs.
+- In the Zn/HCl reaction, Zn atoms enter ZnCl₂; hydrogen originates in acid. The 0.202 g hydrogen answer uses the stated 3-significant-figure M(H₂) = 2.02 g mol⁻¹.
+- The limestone purity exercise asks CaO mass (11.2 g), not total residue (16.2 g including inert material). Heated NaHCO₃ releases both CO₂ and water; total mass loss is not all CO₂.
+- No chemical practical is required. Burning Mg, acid/metal reactions and thermal decomposition are image/calculation cases, not unsupervised procedures. A future live demonstration requires a separate teacher risk assessment.
 
 ## Sources and image credits
 
@@ -62,6 +88,8 @@ URLs are in presenter notes, not in visible slide copy. Core sources:
 - Roberto Marquardt, *The mole and IUPAC: a brief history*, Chemistry International July 2019, print p. 50 onward, [IUPAC issue PDF](https://iupac.org/wp-content/uploads/sites/4/2020/01/Chem-Int-JULY_2019-IYPT.pdf).
 - Science History Institute, [Lavoisier](https://www.sciencehistory.org/education/scientific-biographies/antoine-laurent-lavoisier/), [Cannizzaro](https://www.sciencehistory.org/education/scientific-biographies/stanislao-cannizzaro/), [Setting the Table](https://www.sciencehistory.org/stories/magazine/setting-the-table/).
 - NIST, [Silicon spheres and the International Avogadro Project](https://www.nist.gov/si-redefinition/kilogram/kilogram-silicon-spheres-and-international-avogadro-project), and [2015 measurement](https://www.nist.gov/publications/improved-result-measurement-avogadro-constant-28si-crystal).
+- OpenStax Chemistry 2e: [Molar mass](https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept), [Balancing](https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations), [Reaction stoichiometry](https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry), [Reaction yields](https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields). Numerical examples and student prompts here are original.
+- Royal Society of Chemistry: [Mass change when Mg burns](https://edu.rsc.org/balanced-chemical-equations/the-change-in-mass-when-magnesium-burns/718.article), [CaCO₃ decomposition](https://edu.rsc.org/experiments/thermal-decomposition-of-calcium-carbonate/704.article).
 
 Local assets in `public/images/`:
 
@@ -71,7 +99,10 @@ Local assets in `public/images/`:
 - `silicon-sphere.png`: NIST photograph; source page above and direct image URL in slide 22 notes. NIST-authored work, public domain in the United States; see [NIST copyright policy](https://www.nist.gov/copyrights-disclaimers).
 - `analytical-balance.jpg`: Sarcyn, *Detail of antique analytical balance*, 26 June 2009, [Wikimedia Commons source](https://commons.wikimedia.org/wiki/File:Analyticalbalance2.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). The original photograph is reproduced without alteration, scaled by the browser. It is not attributed to Lavoisier and does not show the lesson's hypothetical 18 g water sample.
 
-No AI-generated image assets are used in this deck. The former generated cover has been removed from the source and published build; it remains recoverable in Git history. The replacement is used on slides 1 and 28 and the IB DP menu entry. [Published image credits](public/image-credits.html) are linked from both slides and the menu, so attribution is available without opening presenter notes. All source and licence pages were checked on 8 September 2026.
+- `magnesium-burning.jpg`: Capt. John Yossarian, [Magnesium ribbon burning](https://commons.wikimedia.org/wiki/File:Magnesium_ribbon_burning.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+- `limestone-quarry.jpg`: Richard Webb, [Limestone quarry, Dunbar Cement Works](https://commons.wikimedia.org/wiki/File:Limestone_quarry,_Dunbar_Cement_Works_-_geograph.org.uk_-_6833222.jpg), [Geograph source](https://www.geograph.org.uk/photo/6833222), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/). Reused from the repository's licensed assets.
+
+No AI-generated image assets are used. Original photos are unaltered; browser framing is used. [Published image credits](public/image-credits.html) are linked from every photographic story and the menu. Source and licence pages checked 8 September 2026. Existing cover replacement and first 28 slides are retained.
 
 ## Build and validation
 
@@ -81,9 +112,9 @@ npm run validate:mole
 npm run dev:mole
 ```
 
-Local preview: `http://127.0.0.1:3090/ib-dp/mole-history/1`; Lesson 2 starts at `/15`.
+Local preview: `http://127.0.0.1:3090/ib-dp/mole-history/1`. Lesson starts: **1, 15, 29, 43**.
 
-The browser validator extends the repository's `startStaticSite` + Playwright approach. It checks all 28 slides at 1366×768 and 1920×1080, initial/open layouts, missing images, raw math, keyboard flips, quiz explanations/layout stability, blur state, lecture steps forward/back/direct/refresh, reduced motion, console/page errors and all print states. Screenshots and a 28-page raster teacher-answer PDF are generated **outside the repository** under the OS temp directory, overridable with `MOLE_SCREENSHOTS`. The PDF is a review aid, not an accessible substitute for Slidev's MathML content.
+The browser validator extends the repository's `startStaticSite` + Playwright approach. It checks all **56 slides** at 1366×768 and 1920×1080, initial/open layouts, missing images, raw math, keyboard flips, quiz explanations/layout stability, blur state, lecture steps forward/back/direct/refresh, reduced motion, console/page errors and all print states. It also checks mass reversal, substance/reaction changes, proportional scaling, invalid inputs, reset and default refresh in both new workbenches. Static validation independently checks reaction atom inventories, numerical examples, purity/yield values and four 45-minute schedules. Screenshots and a **56-page** raster teacher-answer PDF are generated **outside the repository**, overridable with `MOLE_SCREENSHOTS`. The PDF is a review aid, not an accessible substitute for Slidev's MathML content.
 
 Browser plugin availability: absent in this session; regular Playwright used. Validation follows the frontend-testing skill. The native production build omits `/print` unless auto PDF download is enabled, so the validator follows the existing `export-experiments.mjs` final-state screenshot export pattern instead. No browser dependency or PDF generation added to the production build.
 

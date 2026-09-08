@@ -14,6 +14,8 @@ const required = [
   'dist/grade-8/mole-history/index.html',
   'dist/ib-dp/mole-history/index.html',
   'dist/ib-dp/mole-history/images/analytical-balance.jpg',
+  'dist/ib-dp/mole-history/images/magnesium-burning.jpg',
+  'dist/ib-dp/mole-history/images/limestone-quarry.jpg',
   'dist/ib-dp/mole-history/image-credits.html',
   'dist/grade-8/stoichiometry/images/fertilizer-works.jpg',
   'dist/grade-11/integration-control/index.html',
@@ -45,6 +47,7 @@ const moleEntry = fs.readFileSync(path.join(root, 'dist/ib-dp/mole-history/index
 if (!moleEntry.includes("searchParams.get('__slidev_redirect')")) failed = true
 if (!fs.readFileSync(path.join(root, 'vercel.json'), 'utf8').includes('/ib-dp/mole-history/:path*')) failed = true
 const ibMenu = landing.split('id="ib-dp-deck"')[1] || ''
+if (!ibMenu.includes('Four 45-minute lessons') || !ibMenu.includes('56 slides')) failed = true
 const grade8Menu = (landing.split('id="grade-8-deck"')[1] || '').split('</section>')[0]
 const audienceCorrect = ibMenu.includes('IB DP Year 1') && ibMenu.includes('/ib-dp/mole-history/') && !grade8Menu.includes('mole-history')
 if (!audienceCorrect) failed = true

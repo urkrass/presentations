@@ -3,8 +3,8 @@ theme: default
 title: How do you count what you cannot see?
 titleTemplate: '%s · The mole and its history'
 info: |
-  IB DP Year 1 chemistry. Two 45-minute lessons.
-  History, the atomic-mass bridge, the exact Avogadro constant, and particle calculations.
+  IB DP Year 1 chemistry. Four 45-minute lessons.
+  History, the atomic-mass bridge, particle calculations, grams and moles, reactions and theoretical yield.
 canvasWidth: 1280
 drawings:
   persist: false
@@ -577,8 +577,482 @@ Sources: https://www.bipm.org/en/history-si/mole ; Marquardt2019 https://iupac.o
 </div>
 
 <!--
-L2 · 1 min · cumulative45/45. Two lessons complete,90minutes total.
+L2 · 1 min · cumulative45/45. Historical foundation complete; next come two applied lessons.
 Return to18gwater: using roundedM18g/mol gives1mol, about6.022e23molecules. The mass is approximate, so the actual sample particle count is not known exactly. Ask a volunteer for the full spoken chain.
-Next step for IB DP Year 1: extend amount-of-substance reasoning to equations, limiting reactants and solution stoichiometry. The five checks diagnose prerequisite fluency, while the historical argument, measurement uncertainty and NOS discussion develop the DP-level interpretation.
+Next: Lesson3 starts at slide29, Lesson4 at slide43. Students now use the historical bridge to make quantitative predictions about actual chemical reactions. Solution stoichiometry is a later unit, not needed here.
 The opening photograph returns for narrative closure. Sarcyn, Detail of antique analytical balance (2009), CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Analyticalbalance2.jpg ; https://creativecommons.org/licenses/by-sa/3.0/ . Reproduced without alteration. Scientific summary supported by https://www.bipm.org/en/history-si/mole
+-->
+
+---
+class: lesson-break
+---
+
+<p class="kicker">Lesson 3 · 45 minutes · from mass to chemical amount</p>
+
+# The balance speaks grams.<br>Chemistry speaks moles.
+
+<p class="lede">How do we translate between them—and prepare to use a reaction equation?</p>
+<div class="bridge-pair"><span>mass, <em>m</em></span><span class="missing">↔</span><span>amount, <em>n</em></span></div>
+<p class="caption" style="color:#d8d4ca;margin-top:44px">Today: molar mass · grams ↔ moles · coefficients as mole ratios</p>
+
+<!--
+L3 · 2 min · cumulative2/45.
+Retrieve the meaning of M before naming an algorithm: one mole of a specified substance has a characteristic mass. Ask how to prepare0.1000molMg with a balance; defer calculation. Four-lesson unit: L1history,L2scale,L3conversions,L4reaction predictions.
+New numerical examples use one stated rounded atomic-mass table: H1.01,C12.01,O16.00,Na22.99,Mg24.31,Cl35.45,Ca40.08,Zn65.38. These are classroom approximations, not exact constants or a claim about all isotopic compositions.
+Conceptual source: https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Read the formula before reaching for the calculator</p>
+
+# Molar mass counts every atom in the formula.
+
+<p class="reaction-equation"><MoleMath tex="\mathrm{CaCO_3}\qquad M=40.08+12.01+3(16.00)" /></p>
+<div class="open-ledger">
+<div><strong>40.08</strong><span>one Ca</span></div><b>+</b><div><strong>60.01</strong><span>one C + three O</span></div><b>=</b><div><strong>100.09</strong><span>g mol⁻¹ of CaCO₃</span></div>
+</div>
+<div class="claim-field">Relative formula mass is a ratio.<br>Molar mass has a unit: g mol⁻¹.</div>
+<p class="caption">Atomic masses used here: Ca 40.08 · C 12.01 · O 16.00. CaCO₃ is ionic: count formula units, not discrete CaCO₃ molecules.</p>
+
+<!--
+L3 · 3 min · cumulative5/45.
+Students identify3oxygen before arithmetic. Relative formula mass100.09 is dimensionless; M≈100.09g/mol. The extraordinarily close correspondence was established in L2; don't reintroduce an exact u-to-g/mol equality. A formula unit specifies the simplest ratio in the ionic solid.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Exercise 6 · parentheses matter</p>
+
+# How much does one mole of Ca(OH)₂ weigh?
+
+<p class="lede">Ca 40.08 · O 16.00 · H 1.01. Write the atom count first.</p>
+<p class="thesis"><MoleMath tex="\mathrm{Ca(OH)_2}" /></p>
+<MoleReveal label="Which atoms does the 2 multiply?">One Ca, <strong>two O and two H</strong>.<br><MoleMath tex="M=40.08+2(16.00+1.01)=74.10\ \mathrm{g\,mol^{-1}}" /></MoleReveal>
+
+<!--
+L3 · 3 min · cumulative8/45. Exercise6.
+Individual30seconds, compare atom counts before reveal. Wrong57.09 usually forgets the multiplier;73.09 often doubles oxygen but not hydrogen. Contrast CaOH2, which would not encode the same grouping. Calcium hydroxide is an ionic solid, so relative formula mass is preferable to molecular mass.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Worked example · grams to moles</p>
+
+# What amount of Mg is in 2.431 g?
+
+<p class="lede">One mole of Mg has a mass of 24.31 g.</p>
+<div class="working">
+<div><span class="small-label">Choose the relation</span><MoleMath tex="n=\frac{m}{M}" /></div>
+<div v-click><span class="small-label">Let units decide</span><MoleMath tex="n=\frac{2.431\ \mathrm g}{24.31\ \mathrm{g\,mol^{-1}}}=0.1000\ \mathrm{mol}" /></div>
+</div>
+<div class="claim-field">A tenth of the mass of one mole is a tenth of a mole.</div>
+<p class="caption">Grams cancel. The remaining unit is mol—not g, and not particles.</p>
+
+<!--
+L3 · 4 min · cumulative12/45. One reasoning click.
+Estimate before calculate:2.431 is a tenth of24.31. Show g/(g/mol)=mol, then0.1000mol4sf. Ask why multiplying would give the wrong dimension. This is same-substance conversion, not yet a reaction ratio. Retain guard digits in later multistep problems.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Exercise 7 · estimate, calculate, check the unit</p>
+
+# Different masses. How many moles?
+
+<p class="lede">Use <MoleMath tex="n=m/M" />. Predict whether each answer is smaller or larger than one mole.</p>
+<MoleFlipCards :cards="[
+  {front:'4.862 g Mg · M = 24.31 g mol⁻¹',back:'4.862 ÷ 24.31 = 0.2000 mol Mg. One fifth of a mole.',tone:'blue'},
+  {front:'3.60 g H₂O · M = 18.02 g mol⁻¹',back:'3.60 ÷ 18.02 = 0.200 mol H₂O, to 3 significant figures.',tone:'green'},
+  {front:'22.0 g CO₂ · M = 44.01 g mol⁻¹',back:'22.0 ÷ 44.01 = 0.500 mol CO₂, to 3 significant figures.',tone:'rust'}
+]" />
+
+<!--
+L3 · 4 min · cumulative16/45. Exercise7.
+All write all3answers, then flip independently. Water andMg amounts nearly equal despite different masses. M(H2O)=18.02 from new teaching tableH1.01,O16; L2used18.0 in a2sfexample. CO2=44.01,unrounded n=.499886... . Never infer equal moles from equal grams of different substances.
+Own examples using https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Worked example · reverse the translation</p>
+
+# What mass is 0.125 mol of CO₂?
+
+<div class="working">
+<div><span class="small-label">Rearrange</span><MoleMath tex="m=nM" /></div>
+<div v-click><span class="small-label">Substitute</span><MoleMath tex="m=0.125\ \mathrm{mol}\times44.01\ \mathrm{g\,mol^{-1}}" /></div>
+<div v-click><span class="small-label">Report</span><MoleMath tex="m=5.50\ \mathrm g" /></div>
+</div>
+<p class="worked-note">An eighth of a mole should weigh an eighth of 44.01 g.</p>
+<p class="caption">Mol cancels. The result is a mass. Carry 5.50125 g internally; report 5.50 g to 3 significant figures.</p>
+
+<!--
+L3 · 4 min · cumulative20/45. Two lecture clicks.
+Students derive m=nM by multiplying n=m/M byM. Check estimate before revealing. No assumption about gas volume or pressure is needed for this mass calculation. Distinguish amount from volume; do not introduce24dm3/mol shortcuts.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Prediction workbench · same substance, two descriptions</p>
+
+# Change the mass. Predict the amount.
+
+<MassAmountExplorer />
+
+<!--
+L3 · 3 min · cumulative23/45.
+Predict2.431gMg→.1000mol, double input4.862g→.2000mol. Reverse direction without changing the physical sample: input becomes.2000mol and output4.862g. Keep mass4.862g and change substance: differentM changesn. Native keyboard-operable select and numeric input; Reset restores starting case. Print shows the current readable calculation; default fresh export uses starting case. Calculator displays4sf but that is not an instruction to overreport precision.
+Scientific model n=m/M,m=nM; src lib/stoichiometry.ts. No particle simulation. https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<MoleCheck label="Exercise 8 · reverse conversion" question="You need 0.150 mol of Zn. M(Zn) = 65.38 g mol⁻¹. Which mass should you predict?" :options="['0.00229 g, because amount must be divided by M', '9.81 g, because mass is amount multiplied by M', '436 g, because M must be divided by amount', '65.38 g, because every sample is one mole']" :answer="1" explanation="m = nM = 0.150 × 65.38 = 9.807 g, reported as 9.81 g. The units mol × g mol⁻¹ leave grams. Since 0.150 mol is less than one mole, the mass must be less than 65.38 g." />
+
+<!--
+L3 · 3 min · cumulative26/45. Exercise8.
+Students explain unit cancellation and reasonableness, not just optionB. Follow-up inverse9.81/65.38≈.150mol. This is a calculation, not a direction to distribute zinc metal for unsupervised work.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Small sample · the unit prefix is part of the data</p>
+
+# The balance reads 250.0 mg of Mg.
+
+<div class="working">
+<div><span class="small-label">Convert the unit</span><MoleMath tex="250.0\ \mathrm{mg}=0.2500\ \mathrm g" /></div>
+<div v-click><span class="small-label">Then convert to mol</span><MoleMath tex="n=\frac{0.2500}{24.31}=0.01028\ \mathrm{mol}" /></div>
+</div>
+<MoleReveal label="Why is 10.28 mol impossible here?">That answer treats <strong>milligrams as grams</strong>. It overestimates the amount by a factor of 1 000.</MoleReveal>
+
+<!--
+L3 · 3 min · cumulative29/45.
+The1000mg/g conversion is exact;250.0mg and24.31g/mol justify4sf:0.010283833...→.01028. Could useM24310mg/mol instead, if units stay consistent. Ask which unit conversion students would need forkg. Do not call a balance's display resolution its accuracy.
+https://openstax.org/books/chemistry-2e/pages/3-1-formula-mass-and-the-mole-concept
+-->
+
+---
+
+<p class="kicker">Error clinic · the units expose the mistake</p>
+
+# “4.40 × 44.01 = 193.6 mol of CO₂.”
+
+<p class="lede">A student has 4.40 g of CO₂. Their arithmetic works.<br>Their physical reasoning does not.</p>
+<p class="reaction-equation rust"><MoleMath tex="\mathrm g\times\mathrm{g\,mol^{-1}}=\mathrm{g^2\,mol^{-1}}\ne\mathrm{mol}" /></p>
+<MoleReveal label="Repair the method—not just the number."><MoleMath tex="n=\frac{4.40\ \mathrm g}{44.01\ \mathrm{g\,mol^{-1}}}=0.100\ \mathrm{mol}" /><br>A mass close to one tenth of 44.01 g must be close to one tenth of a mole.</MoleReveal>
+
+<!--
+L3 · 3 min · cumulative32/45.
+Ask learners to annotate the incorrect expression before opening explanation. Calculator product193.644 rounds193.6 to4sf but even perfect arithmetic cannot make the unitsmol. Correct value.099977... rounds.100mol3sf. NOS link: internal dimensional consistency is necessary, not sufficient, for a model to be right.
+-->
+
+---
+
+<p class="kicker">A real reaction · zinc and hydrochloric acid</p>
+
+# Bubbles are evidence.<br>The equation tells us what to count.
+
+<p class="reaction-equation"><MoleMath tex="\mathrm{Zn(s)}+2\mathrm{HCl(aq)}\rightarrow\mathrm{ZnCl_2(aq)}+\mathrm{H_2(g)}" /></p>
+<div class="split top">
+<div><h2>Observation</h2><p>Zinc is consumed and gas bubbles form.</p><p class="caption">The appearance of bubbles alone does not identify the gas.</p></div>
+<div><h2>Reaction model</h2><p>One mole of Zn reacts with two moles of HCl to produce one mole of H₂.</p><p class="caption">(s) solid · (aq) dissolved in water · (g) gas</p></div>
+</div>
+
+<!--
+L3 · 3 min · cumulative35/45.
+CountZn1,H2,Cl2 on each side. The chloride remains in aqueous zinc chloride; the gaseous product is hydrogen. Chemical formulas represent composition; aqueous species are not necessarily intact molecules. Need independent evidence to identify gas; do not direct an unassessed hydrogen ignition test. This lesson requires no chemical practical. Any later demonstration needs teacher risk assessment and school controls.
+Balancing and state notation: https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations
+-->
+
+---
+
+<MoleCheck label="Exercise 9 · change coefficients, not identities" question="Magnesium reacts with oxygen to form magnesium oxide. Which equation conserves every atom?" :options="['Mg + O₂ → MgO', 'Mg + O₂ → MgO₂', '2Mg + O₂ → 2MgO', '2Mg + 2O₂ → 2MgO']" :answer="2" explanation="2Mg + O₂ → 2MgO has 2 Mg atoms and 2 O atoms on each side. A coefficient multiplies the whole formula. Changing MgO to MgO₂ changes the substance; it does not balance the intended reaction." />
+
+<!--
+L3 · 4 min · cumulative39/45. Exercise9.
+Write Mg(s),O2(g),MgO(s) in notebooks after selecting. Students explain why changing subscripts is forbidden. In the simplified quantitative model the metal forms onlyMgO with oxygen; real burning in air may have side reactions such as nitride formation. No student burning experiment is instructed.
+https://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations
+RSC magnesium source: https://edu.rsc.org/balanced-chemical-equations/the-change-in-mass-when-magnesium-burns/718.article
+-->
+
+---
+
+<p class="kicker">An equation is a recipe in moles</p>
+
+# The 2 : 1 : 2 ratio scales to any amount.
+
+<p class="reaction-equation"><MoleMath tex="2\mathrm{Mg(s)}+\mathrm{O_2(g)}\rightarrow2\mathrm{MgO(s)}" /></p>
+<div class="open-ledger">
+<div><strong>2 mol</strong><span>Mg</span></div><b>+</b><div><strong>1 mol</strong><span>O₂</span></div><b>→</b><div><strong>2 mol</strong><span>MgO</span></div>
+</div>
+<div v-click class="claim-field"><MoleMath tex="0.100\ \mathrm{mol\ O_2}\times\frac{2\ \mathrm{mol\ MgO}}{1\ \mathrm{mol\ O_2}}=0.200\ \mathrm{mol\ MgO}" /></div>
+<p class="caption">Magnesium is in excess; all the oxygen reacts. Coefficients relate amounts, not masses in grams.</p>
+
+<!--
+L3 · 3 min · cumulative42/45. One click.
+Students write product coefficient/given-reactant coefficient. Doubling amount ofO2 doubles predictedMgO if excessMg assumption remains true. Explain why ratios also apply to particles/formula units. They do not directly apply to masses because substances have differentM.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">Lesson 3 exit · explain each operation</p>
+
+# Which bridge do you need?
+
+<div class="exit-grid">
+<MoleReveal label="1 · 6.00 g water; M = 18.02 g mol⁻¹. Find n.">Divide by M:<br><MoleMath tex="n=6.00/18.02=0.333\ \mathrm{mol}" />.</MoleReveal>
+<MoleReveal label="2 · 0.200 mol CO₂; M = 44.01 g mol⁻¹. Find m.">Multiply by M:<br><MoleMath tex="m=0.200(44.01)=8.80\ \mathrm g" />.</MoleReveal>
+<MoleReveal label="3 · 0.300 mol HCl reacts with excess Zn. Find n(H₂).">Use <MoleMath tex="\mathrm{Zn}+2\mathrm{HCl}\rightarrow\mathrm{ZnCl_2}+\mathrm{H_2}" />.<br><MoleMath tex="n(\mathrm{H_2})=0.300\times\frac12=0.150\ \mathrm{mol}" />. The equation ratio is not a grams-to-grams shortcut.</MoleReveal>
+</div>
+
+<!--
+L3 · 3 min · cumulative45/45.
+Collect three short answers plus named operation.6/18.02=.332963→.333mol; .200×44.01=8.802→8.80g; .300/2=.150mol. Reaction assumed complete withZn excess. Use exit slips to decide whether to reteach unit conversion at next lesson start.
+-->
+
+---
+class: lesson-break photo-act
+---
+
+<figure class="balance-photo"><img :src="'images/magnesium-burning.jpg'" alt="Real photograph of a magnesium ribbon burning brightly, with pale solid product forming beside it." /><figcaption><a href="image-credits.html#magnesium" target="_blank" rel="noopener" @click.stop>Capt. John Yossarian · CC BY-SA 3.0</a></figcaption></figure>
+<div><p class="kicker">Lesson 4 · 45 minutes · predicting product mass</p>
+
+# Bright light.<br>A new solid.<br>How much?
+
+<p class="lede">A reaction changes substances.<br>Can a balance and an equation predict what we will obtain?</p></div>
+
+<!--
+L4 · 2 min · cumulative2/45.
+Image story: magnesium ribbon burns, solidoxide forms. Retrieve conservation of atoms; invite predictions about product mass before formula manipulation. Photograph not a quantitative measurement or a practical instruction; do not stare directly at burningMg. Any live demonstration requires teacher risk assessment. Ideal calculation modelsMgO only; air can permit otherproducts.
+Photograph Capt. John Yossarian, Magnesium ribbon burning, CC BY-SA3.0, https://commons.wikimedia.org/wiki/File:Magnesium_ribbon_burning.jpg ; https://creativecommons.org/licenses/by-sa/3.0/ . Original file unaltered, browser-framed.
+Reaction source https://edu.rsc.org/balanced-chemical-equations/the-change-in-mass-when-magnesium-burns/718.article
+-->
+
+---
+
+<MoleCheck label="Prediction · before calculating" question="2.431 g of pure Mg reacts completely with excess oxygen to form only MgO. The theoretical MgO mass is…" :options="['less than 2.431 g: burning always removes mass', 'exactly 2.431 g: the product can contain only the starting mass of Mg', 'greater than 2.431 g: oxygen becomes part of the solid', 'unrelated to the amount of Mg used']" :answer="2" explanation="Oxygen from outside the weighed metal joins the magnesium. The MgO mass includes both elements. Total mass is conserved when the consumed oxygen is included; the mass of the solid alone can increase." />
+
+<!--
+L4 · 2 min · cumulative4/45.
+Separate system boundary from law: initialMg mass is not initialtotalreactant mass. Oxygen is matter, not merely a condition for combustion. Ask whether same reasoning applies to rusting. Prediction constrains the coming numericalanswer.
+https://edu.rsc.org/balanced-chemical-equations/the-change-in-mass-when-magnesium-burns/718.article
+-->
+
+---
+
+<p class="kicker">Theoretical yield · a prediction with conditions</p>
+
+# How much product could this reaction make?
+
+<p class="thesis" style="font-size:52px">The calculated maximum<br>for the specified reaction<br>and available reactants.</p>
+<p class="lede">Our first model: pure Mg, oxygen in excess, complete conversion to MgO.</p>
+<MoleReveal label="Is this a promise about the mass we will collect?">No. Incomplete reaction, side reactions and collection losses can lower the actual yield. Wet or impure product can give a misleadingly high measured mass.</MoleReveal>
+
+<!--
+L4 · 3 min · cumulative7/45.
+Definitiontheoreticalyield maximum product under specifiedstoichiometry and limitingreactant. Do not equate all collected mass to pureproduct. Explainexcess: moreO2 is available than needed to consume allMg; its exact amount neednot be known in this first model. LaterL4slides relaxpurity andexcess assumptions.
+https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields
+-->
+
+---
+
+<p class="kicker">Worked reaction · 2.431 g Mg, oxygen in excess</p>
+
+# Grams cannot cross the equation directly.
+
+<p class="reaction-equation"><MoleMath tex="2\mathrm{Mg(s)}+\mathrm{O_2(g)}\rightarrow2\mathrm{MgO(s)}" /></p>
+<div class="working" style="gap:28px">
+<div v-click><span class="small-label">1 · Mg grams → mol</span><MoleMath tex="n(\mathrm{Mg})=\frac{2.431}{24.31}=0.1000\ \mathrm{mol}" /></div>
+<div v-click><span class="small-label">2 · Apply 2 : 2</span><MoleMath tex="n(\mathrm{MgO})=0.1000\times\frac22=0.1000\ \mathrm{mol}" /></div>
+<div v-click><span class="small-label">3 · MgO mol → grams</span><MoleMath tex="m(\mathrm{MgO})=0.1000\times40.31=4.031\ \mathrm g" /></div>
+</div>
+<p class="caption">M(Mg) = 24.31; M(MgO) = 40.31 g mol⁻¹. Predicted oxygen gain: 4.031 − 2.431 = 1.600 g.</p>
+
+<!--
+L4 · 5 min · cumulative12/45. Three lecture clicks; students predict each next operation.
+Firstdivide startingmass bystartingM, thentransfer in molesusingproduct/givencoefficients, thenmultiplyproductamount byproductM. Coefficients2/2 are exact countrelations;M andmassrounded4sf. Check massincrease1.600g equals.05000molO2×32.00g/mol. AllMg→MgO assumed; no nitride sideproduct.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">Same reaction · now audit conservation</p>
+
+# 2 : 1 : 2 in moles is not 2 : 1 : 2 in grams.
+
+<div class="open-ledger" style="margin-top:62px">
+<div><strong>48.62 g</strong><span>2 mol Mg</span></div><b>+</b><div><strong>32.00 g</strong><span>1 mol O₂</span></div><b>=</b><div><strong>80.62 g</strong><span>2 mol MgO</span></div>
+</div>
+<div class="claim-field">The mole ratio conserves atoms.<br>The corresponding masses add up.</div>
+<p class="lede">One mole of Mg and one mole of MgO contain the same amount of Mg atoms—but have different masses.</p>
+
+<!--
+L4 · 2 min · cumulative14/45.
+Scaling46 by20 produces48.62+32=80.62g. Showincorrect shortcutmMgO=mMg×2/2 would give2.431g and omit oxygenmass. Numbers use sameroundedMtable, so displayedmassbalance closes exactly at shownprecision.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">Exercise 10 · begin with the other reactant</p>
+
+# 4.00 g O₂ reacts with excess magnesium.
+
+<p class="reaction-equation"><MoleMath tex="2\mathrm{Mg}+\mathrm{O_2}\rightarrow2\mathrm{MgO}" /></p>
+<p class="lede">Predict the theoretical MgO mass.<br>M(O₂) = 32.00; M(MgO) = 40.31 g mol⁻¹.</p>
+<MoleReveal label="Check the coefficient ratio before checking the final mass."><MoleMath tex="n(\mathrm{O_2})=4.00/32.00=0.125\ \mathrm{mol}" /><br><MoleMath tex="n(\mathrm{MgO})=0.125\times2=0.250\ \mathrm{mol}" /><br><MoleMath tex="m(\mathrm{MgO})=0.250(40.31)=10.1\ \mathrm g" /></MoleReveal>
+
+<!--
+L4 · 4 min · cumulative18/45. Exercise10.
+Independent2minutes plus pairedexplanation. Unroundedproduct10.0775g→10.1g3sf. If answer5.04g, learnerused1:1 instead2:1. Productmass>4g becauseMg alsojoins. Coefficients chosen for givenspeciesO2 nowb/a=2/1, not2/2 frompriorMg example.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">Reaction workbench · one method, different chemistry</p>
+
+# Keep the route. Change the reaction.
+
+<ProductMassExplorer />
+
+<!--
+L4 · 3 min · cumulative21/45.
+Default2.431gMg→4.031gMgO. Doublemass andpredictdoublingoutput. Switch toO2 startingreactant,set4.00g: ratiochanges2/1 andtheory10.08gcalculator (report10.1g3sf). Then CaCO3 orZn: studentsidentifywhatM andratiochange. Native select/input accessible; no effect masquerading as moleculargeometry. Print exports readablecurrentstate; freshloaddefault. Allcases conditionalcomplete/purereaction withstatedexcess asneeded. UnitsM g/mol.
+Sources https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry ; https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields
+-->
+
+---
+
+<p class="kicker">Case study · limestone to lime</p>
+
+# The solid gets lighter. Where did the mass go?
+
+<div class="reaction-story">
+<figure class="balance-photo"><img class="reaction-photo" :src="'images/limestone-quarry.jpg'" alt="Limestone quarry beside Dunbar Cement Works: exposed rock benches with the plant in the background." /><figcaption><a href="image-credits.html#limestone" target="_blank" rel="noopener" @click.stop>Richard Webb · CC BY-SA 2.0</a></figcaption></figure>
+<div><p><MoleMath tex="\mathrm{CaCO_3(s)}\xrightarrow{\Delta}\mathrm{CaO(s)}+\mathrm{CO_2(g)}" /></p><p>Heat <strong>10.0 g of pure CaCO₃</strong> until decomposition is complete.</p><p class="caption">M: CaCO₃ 100.09 · CaO 56.08 · CO₂ 44.01 g mol⁻¹</p><MoleReveal label="Predict both products."><strong>5.60 g CaO</strong> remains.<br><strong>4.40 g CO₂</strong> leaves as gas.<br>The total is still 10.0 g.</MoleReveal></div>
+</div>
+
+<!--
+L4 · 4 min · cumulative25/45.
+Workedcase, not anexperimentprocedure.10/100.09=.09991008mol; bothproducts1:1 soCaO5.602957→5.60g;CO24.39704→4.40g. The actualrockphotois illustrative; no purity claim about thatquarry. Limeproduction is relevant tocement manufacture, butcement is not simplyCaO. Δmeansheating, notadditionalreactant.
+Reaction https://edu.rsc.org/experiments/thermal-decomposition-of-calcium-carbonate/704.article
+Image Richard Webb, Limestone quarry,Dunbar Cement Works,12April2021, https://commons.wikimedia.org/wiki/File:Limestone_quarry,_Dunbar_Cement_Works_-_geograph.org.uk_-_6833222.jpg ; https://www.geograph.org.uk/photo/6833222 ; CC BY-SA2.0 https://creativecommons.org/licenses/by-sa/2.0/ . Reusedphoto unaltered,browserframed.
+-->
+
+---
+
+<p class="kicker">Exercise 11 · a real rock is not a pure reagent</p>
+
+# Only 80.0% of this 25.0 g rock is CaCO₃.
+
+<p class="lede">The rest is inert. All the CaCO₃ decomposes.<br>What is the theoretical mass of <strong>CaO produced</strong>?</p>
+<p class="reaction-equation"><MoleMath tex="\mathrm{CaCO_3}\xrightarrow{\Delta}\mathrm{CaO}+\mathrm{CO_2}" /></p>
+<MoleReveal label="Which mass belongs at the start of the mole calculation?"><MoleMath tex="m(\mathrm{CaCO_3})=25.0(0.800)=20.0\ \mathrm g" /><br><MoleMath tex="m(\mathrm{CaO})=\frac{20.0}{100.09}\times56.08=11.2\ \mathrm g" /></MoleReveal>
+<p class="caption">M(CaCO₃) = 100.09; M(CaO) = 56.08 g mol⁻¹. CaO mass is not the mass of the whole residue.</p>
+
+<!--
+L4 · 3 min · cumulative28/45. Exercise11.
+Purity is massfraction by givenproblemstatement. Reacting20g, inert5g. CaO11.2059→11.2g3sf; residueCaO+inert=16.2g; evolvedCO28.79g3sf. Optionalextension asksresidue toforceentityspecification. Data inventedforcalculation, not measuredcomposition ofpicturedrock.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">A metal can produce a much smaller mass of gas</p>
+
+# 6.538 g Zn: how much hydrogen?
+
+<p class="reaction-equation"><MoleMath tex="\mathrm{Zn(s)}+2\mathrm{HCl(aq)}\rightarrow\mathrm{ZnCl_2(aq)}+\mathrm{H_2(g)}" /></p>
+<div class="working">
+<div><span class="small-label">Zn grams → mol</span><MoleMath tex="n(\mathrm{Zn})=6.538/65.38=0.1000\ \mathrm{mol}" /></div>
+<div v-click><span class="small-label">Zn : H₂ = 1 : 1</span><MoleMath tex="n(\mathrm{H_2})=0.1000\ \mathrm{mol}" /></div>
+<div v-click><span class="small-label">H₂ mol → grams</span><MoleMath tex="m(\mathrm{H_2})=0.1000(2.02)=0.202\ \mathrm g" /></div>
+</div>
+<p class="caption">Pure Zn reacts completely; HCl is in excess. M(Zn) = 65.38; M(H₂) = 2.02 g mol⁻¹. The Zn atoms finish in ZnCl₂—not in H₂.</p>
+
+<!--
+L4 · 4 min · cumulative32/45. Twolectureclicks.
+Usecoefficient ratioH2/Zn=1/1, not2fromHCl. Thehydrogenatoms originateinacid, notmetalturningintohydrogen. Predicted0.202g3sf islimitedbygivenM(H2)2.02; guardvalue.2020. If fineratomicdatawereused, answerdiffersslightly: teachconsistentprovideddata. Theproductgas representsonlyonepartoftotalproductmass.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">Remove an assumption · neither reactant is guaranteed to be in excess</p>
+
+# Which reactant sets the ceiling?
+
+<p class="reaction-equation"><MoleMath tex="\mathrm{Zn}+2\mathrm{HCl}\rightarrow\mathrm{ZnCl_2}+\mathrm{H_2}" /></p>
+<div class="split top" style="margin-top:20px">
+<div class="soft-field blue-field"><h2>0.100 mol Zn</h2><p>Could produce<br><strong>0.100 mol H₂</strong><br>if enough acid were available.</p></div>
+<div class="soft-field rust-field"><h2>0.120 mol HCl</h2><p>Could produce<br><strong>0.0600 mol H₂</strong><br>because two HCl are needed per H₂.</p></div>
+</div>
+<div style="margin-top:24px"><MoleReveal label="Both supplies must support the same reaction. Which runs out first?">HCl limits the reaction: <strong>0.0600 mol H₂ ≈ 0.121 g</strong>.<br>Zn left: <MoleMath tex="0.100-0.0600=0.040\ \mathrm{mol}" />.</MoleReveal></div>
+
+<!--
+L4 · 4 min · cumulative36/45.
+Introductorylimitingcase avoidsconfoundingmassconversions. Independentcapacitiescompare n/a oramountofsameproduct: min(.100/1,.120/2)=.0600mol reactionextent. H2.0600×2.02=.1212→.121g. Znresidual .040mol reportedtolessprecise.001molgivenZn; internal.0400. Wrong'Znlimitsbecause.100<.120' ignores2:1. No water/hydrogenlaunch orgasapparatusanimationneeded.
+https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields
+-->
+
+---
+
+<p class="kicker">Data interpretation · prediction is not collection</p>
+
+# We predicted 4.031 g MgO. We collected 3.63 g.
+
+<p class="reaction-equation"><MoleMath tex="\%\ \mathrm{yield}=\frac{m_\mathrm{actual}}{m_\mathrm{theoretical}}\times100" /></p>
+<MoleReveal label="Calculate the yield. Then explain what it does—and does not—tell us."><MoleMath tex="\frac{3.63}{4.031}\times100=90.1\%" /><br>It compares collected product with the prediction. It does not identify which loss or side reaction occurred.</MoleReveal>
+<p class="worked-note">NOS question: another group reports 4.20 g. Has conservation of mass failed—or should we inspect the sample and assumptions?</p>
+<p class="caption">Constructed teaching data. Assume the 3.63 g sample is dry, pure MgO.</p>
+
+<!--
+L4 · 3 min · cumulative39/45.
+3.63/4.031×100=90.0521→90.1%3sf.4.20/4.031=104.19%4sf (~104%3sf) flags wet/contaminatedsample,tareerror,incorrectcompositionorprediction. Cannot inferaunique cause fromyieldalone. Discuss distinguishesobservedmass frominferredpureproductmass, linkL1measurementandNOS. Lowerobservedyield mayreflectincompleteconversion,sidereaction,handlingloss. Assumeddrypure lowercase; don'toverclaim90.1%reactionconversion.
+https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields
+-->
+
+---
+
+<p class="kicker">Exercise 12 · transfer to an unfamiliar equation</p>
+
+# Heating 8.40 g NaHCO₃: predict the CO₂ mass.
+
+<p class="reaction-equation" style="font-size:27px"><MoleMath tex="2\mathrm{NaHCO_3(s)}\xrightarrow{\Delta}\mathrm{Na_2CO_3(s)}+\mathrm{CO_2(g)}+\mathrm{H_2O(g)}" /></p>
+<p class="lede">Pure sodium hydrogencarbonate decomposes completely.<br>M(NaHCO₃) = 84.01; M(CO₂) = 44.01 g mol⁻¹.</p>
+<MoleReveal label="Write the three-step route before revealing the result."><MoleMath tex="n(\mathrm{NaHCO_3})=8.40/84.01" /><br><MoleMath tex="n(\mathrm{CO_2})=n(\mathrm{NaHCO_3})\times\frac12" /><br><MoleMath tex="m(\mathrm{CO_2})=\frac{8.40}{84.01}\times\frac12\times44.01=2.20\ \mathrm g" /></MoleReveal>
+
+<!--
+L4 · 4 min · cumulative43/45. Exercise12. Transferassessment: no newreactionprocedure.
+BalancedNa2,H2,C2,O6eachside. nNaHCO3=.0999881...;CO2=.0499940...;mass2.200238→2.20g3sf.2:1 is theinverse ratiofromO2→MgO,soforcesreadingratherthanmemorizingdoubling. Wateralsoescapesonheating;do nottreatallmasslossasCO2alone. Collectmethodwithunits;fullmarksrequirebalanced-ratio reasoning, notonlycorrectfinalnumber.
+Reaction andstoichiometry principles: https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry
+-->
+
+---
+
+<p class="kicker">The historical bridge becomes a working method</p>
+
+# Weigh. Convert. Use the ratio. Predict.
+
+<div class="working" style="margin-top:40px">
+<div><span class="small-label" style="text-transform:none">For aA → bB</span><MoleMath tex="m_B=\frac{m_A}{M_A}\times\frac{b}{a}\times M_B" /></div>
+</div>
+<p class="major">The equation links amounts.<br>Molar masses link those amounts to the balance.</p>
+<MoleReveal label="Why did these product-mass calculations not need the Avogadro constant?">The particle-count factor cancels when we compare amounts. Balanced coefficients already give the <strong>mole ratio</strong>.</MoleReveal>
+<p class="caption">Always state the reaction, limiting reactant and assumptions. A theoretical mass is a conditional prediction.</p>
+
+<!--
+L4 · 2 min · cumulative45/45. Fourlessonscomplete:180min,total56slides.
+Ask studentexplainwhy masscannotgodirectlyacrossequationwithoutmolar-massfactors. DerivationnB/nA=(NB/NAconstant)/(NAentities/NAconstant)=b/a for reactionstoichiometry; avoidambiguousNA symbol verbally. Generalformula assumesA is limiting or othersufficient,andknownpurityandconversion. Routeworkssharedstoichiometryacrossallstudiedcases, butnot blindlyforunknownmixtures orcompetingreactions.
+Finalretrievalprompt: giveadifferentMgstartingmass andask forspokenmethod,notfurtherarithmetic. Futureunit: solutionconcentration,experimentaluncertainty andmorecomplexlimitingreagents.
+https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry ; https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields
 -->
