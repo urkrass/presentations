@@ -27,6 +27,10 @@
   ],
   "rewrites": [
     {
+      "source": "/grade-8/mole-history/:path*",
+      "destination": "/grade-8/mole-history/index.html"
+    },
+    {
       "source": "/grade-7/lab-measurement/:path*",
       "destination": "/grade-7/lab-measurement/index.html"
     },

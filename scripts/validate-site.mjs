@@ -11,6 +11,8 @@ const required = [
   'dist/grade-7/lab-measurement/index.html',
   'dist/grade-7/lab-measurement/images/graduated-cylinders.jpg',
   'dist/grade-8/stoichiometry/index.html',
+  'dist/grade-8/mole-history/index.html',
+  'dist/grade-8/mole-history/images/counting-balance.png',
   'dist/grade-8/stoichiometry/images/fertilizer-works.jpg',
   'dist/grade-11/integration-control/index.html',
   'dist/grade-11/integration-control/images/nervous-system.svg',
@@ -31,6 +33,15 @@ for (const file of required) {
 }
 
 const landing = fs.readFileSync(path.join(root, 'dist', 'index.html'), 'utf8')
+for (const file of ['index.html', '404.html']) {
+  const content = fs.readFileSync(path.join(root, 'dist', file), 'utf8')
+  const valid = content.includes('/grade-8/mole-history/')
+  if (!valid) failed = true
+  console.log(`${valid ? 'PASS' : 'FAIL'} ${file} includes mole route`)
+}
+const moleEntry = fs.readFileSync(path.join(root, 'dist/grade-8/mole-history/index.html'), 'utf8')
+if (!moleEntry.includes("searchParams.get('__slidev_redirect')")) failed = true
+if (!fs.readFileSync(path.join(root, 'vercel.json'), 'utf8').includes('/grade-8/mole-history/:path*')) failed = true
 for (const expected of ['Grade 7', 'Grade 8', 'Grade 11', 'IB DP', '/grade-7/lab-measurement/', '/grade-8/stoichiometry/', '/grade-11/integration-control/', '/ib-dp/a2-cells-viruses/', '/ib-dp/chemistry-kinetics/', 'https://presentations-lime.vercel.app/og-v2.png']) {
   const valid = landing.includes(expected)
   if (!valid) failed = true

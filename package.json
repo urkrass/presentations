@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node scripts/build-site.mjs && node serve-dist.cjs",
     "dev:grade8": "slidev slides.md --port 3030",
+    "dev:mole": "node scripts/build-mole.mjs && node scripts/serve-mole.mjs",
     "dev:grade7": "slidev decks/grade-7-lab-measurement/slides.md --port 3040",
     "dev:grade11": "slidev decks/grade-11-integration-control/slides.md --port 3050",
     "dev:ib-a2": "node scripts/build-ib-a2.mjs && node scripts/serve-ib-a2.mjs",
@@ -14,6 +15,7 @@
     "build": "node scripts/build-site.mjs",
     "build:experiments": "node scripts/build-experiments.mjs",
     "build:ib-a2": "node scripts/build-ib-a2.mjs",
+    "build:mole": "node scripts/build-mole.mjs",
     "build:ib-chem-kinetics": "node scripts/build-ib-chem-kinetics.mjs",
     "serve:dist": "node serve-dist.cjs",
     "export": "slidev export slides.md",
@@ -24,7 +26,8 @@
     "validate:ib-a2": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-a2-cells-viruses/tsconfig.json && node scripts/validate-ib-a2-condenser-model.mjs && node scripts/validate-ib-a2.mjs && node scripts/validate-ib-a2-browser.mjs",
     "validate:ib-a2:browser": "node scripts/validate-ib-a2-browser.mjs",
     "validate:ib-chem-kinetics": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-chemistry-kinetics/tsconfig.json && node scripts/validate-ib-chem-kinetics.mjs && node scripts/validate-ib-chem-kinetics-browser.mjs",
-    "validate:site": "node scripts/validate-site.mjs"
+    "validate:site": "node scripts/validate-site.mjs",
+    "validate:mole": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/grade-8-mole-history/tsconfig.json && node scripts/validate-mole.mjs && node scripts/validate-mole-browser.mjs"
   },
   "devDependencies": {
     "@slidev/cli": "52.15.2",
