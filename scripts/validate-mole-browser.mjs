@@ -13,8 +13,8 @@ const root = process.cwd()
 if (process.env.MOLE_SKIP_BUILD !== '1') execFileSync(process.execPath,['scripts/build-mole.mjs'],{stdio:'inherit'})
 const output = process.env.MOLE_SCREENSHOTS || path.join(os.tmpdir(),'presentations-mole-qa')
 fs.mkdirSync(output,{recursive:true})
-const site = await startStaticSite(root,'grade-8/mole-history/index.html')
-const base = `${site.origin}/grade-8/mole-history`
+const site = await startStaticSite(root,'ib-dp/mole-history/index.html')
+const base = `${site.origin}/ib-dp/mole-history`
 const browser = await chromium.launch({headless:true})
 const failures=[]
 function check(ok,label){console.log(`${ok?'PASS':'FAIL'} ${label}`);if(!ok)failures.push(label)}

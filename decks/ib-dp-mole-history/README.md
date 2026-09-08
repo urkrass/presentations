@@ -1,6 +1,8 @@
 # The mole and its history
 
-Grade 8–9, English, **two 45-minute lessons**. A separate deck at `/grade-8/mole-history/`; the existing stoichiometry deck is unchanged. Both appear under Grade 8 on the shared site.
+IB DP Year 1 chemistry, English, **two 45-minute lessons**. A separate deck at `/ib-dp/mole-history/`, listed under IB DP on the shared site. The old `/grade-8/mole-history/` links redirect here, preserving slide numbers and query state. The existing Grade 8 stoichiometry deck is unchanged.
+
+Audience: beginning DP chemistry. The five practice moments check prior fluency with units and entity counting; the history, dimensional reasoning, exact definitions versus measured quantities, and NOS prompts develop the DP-level argument. Preserve the accessible opening rather than assuming all students already understand amount of substance.
 
 Core argument: chemists could weigh reproducible batches before they could count atoms. The historic mole connected relative particle masses to gram-scale masses. The exact modern count preserves that bridge.
 
@@ -66,10 +68,10 @@ Local assets in `public/images/`:
 - `lavoisier.jpg`: reused original Grade 8 asset; Jacques-Louis David, public-domain painting. Source page in slide 3 notes.
 - `avogadro.jpg`: reused original Grade 8 public-domain portrait; source page in slide 6 notes.
 - `dalton.jpg`: Thomas Phillips, 1835, public-domain painting, National Portrait Gallery, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:John_Dalton_by_Thomas_Phillips,_1835.jpg).
-- `silicon-sphere.png`: NIST photograph; source page above and direct image URL in slide 22 notes.
-- `counting-balance.png`: created with the **built-in image-generation tool**, 8 September 2026. Conceptual illustration, not documentary evidence. Final saved here, not referenced from an external temporary folder.
+- `silicon-sphere.png`: NIST photograph; source page above and direct image URL in slide 22 notes. NIST-authored work, public domain in the United States; see [NIST copyright policy](https://www.nist.gov/copyrights-disclaimers).
+- `analytical-balance.jpg`: Sarcyn, *Detail of antique analytical balance*, 26 June 2009, [Wikimedia Commons source](https://commons.wikimedia.org/wiki/File:Analyticalbalance2.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). The original photograph is reproduced without alteration, scaled by the browser. It is not attributed to Lavoisier and does not show the lesson's hypothetical 18 g water sample.
 
-Generation prompt: “Wide 3:2 conceptual cover illustration for a warm-paper academic chemistry slide. One classical two-pan laboratory balance, front-on, restrained charcoal and desaturated brass, isolated on warm ivory paper #fbfaf6. Left pan: tiny muted blue symbolic spheres fading into invisibility. Right pan: white laboratory weighing boat holding water marked 18 g. Level pans, generous margins, elegant editorial scientific illustration, no sketched linework, frame, arrows, heading, person or clutter.” Correction prompt: “Remove the separate brass 18 g weight. Put ‘18 g’ on the front of the white water boat. Preserve balance, framing, paper, water and symbolic particles.” The image-generation skill kept generation confined to this metaphor; historical and measurement images remain sourced.
+No AI-generated image assets are used in this deck. The former generated cover has been removed from the source and published build; it remains recoverable in Git history. The replacement is used on slides 1 and 28 and the IB DP menu entry. [Published image credits](public/image-credits.html) are linked from both slides and the menu, so attribution is available without opening presenter notes. All source and licence pages were checked on 8 September 2026.
 
 ## Build and validation
 
@@ -79,7 +81,7 @@ npm run validate:mole
 npm run dev:mole
 ```
 
-Local preview: `http://127.0.0.1:3090/grade-8/mole-history/1`; Lesson 2 starts at `/15`.
+Local preview: `http://127.0.0.1:3090/ib-dp/mole-history/1`; Lesson 2 starts at `/15`.
 
 The browser validator extends the repository's `startStaticSite` + Playwright approach. It checks all 28 slides at 1366×768 and 1920×1080, initial/open layouts, missing images, raw math, keyboard flips, quiz explanations/layout stability, blur state, lecture steps forward/back/direct/refresh, reduced motion, console/page errors and all print states. Screenshots and a 28-page raster teacher-answer PDF are generated **outside the repository** under the OS temp directory, overridable with `MOLE_SCREENSHOTS`. The PDF is a review aid, not an accessible substitute for Slidev's MathML content.
 
@@ -89,7 +91,7 @@ On this Windows host, npm's child shell may not resolve Node even with PATH prep
 
 ```powershell
 & 'C:/Program Files/nodejs/node.exe' scripts/build-mole.mjs
-& 'C:/Program Files/nodejs/node.exe' node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/grade-8-mole-history/tsconfig.json
+& 'C:/Program Files/nodejs/node.exe' node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-mole-history/tsconfig.json
 & 'C:/Program Files/nodejs/node.exe' scripts/validate-mole.mjs
 $env:MOLE_SKIP_BUILD='1'
 & 'C:/Program Files/nodejs/node.exe' scripts/validate-mole-browser.mjs

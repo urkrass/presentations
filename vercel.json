@@ -5,6 +5,11 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/grade-8/mole-history/:path*",
+      "destination": "/ib-dp/mole-history/:path*",
+      "permanent": true
+    },
+    {
       "source": "/grade-7",
       "destination": "/grade-7/lab-measurement/",
       "permanent": false
@@ -27,8 +32,8 @@
   ],
   "rewrites": [
     {
-      "source": "/grade-8/mole-history/:path*",
-      "destination": "/grade-8/mole-history/index.html"
+      "source": "/ib-dp/mole-history/:path*",
+      "destination": "/ib-dp/mole-history/index.html"
     },
     {
       "source": "/grade-7/lab-measurement/:path*",

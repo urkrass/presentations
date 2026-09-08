@@ -3,7 +3,7 @@ theme: default
 title: How do you count what you cannot see?
 titleTemplate: '%s · The mole and its history'
 info: |
-  Grade 8–9 chemistry. Two 45-minute lessons.
+  IB DP Year 1 chemistry. Two 45-minute lessons.
   History, the atomic-mass bridge, the exact Avogadro constant, and particle calculations.
 canvasWidth: 1280
 drawings:
@@ -18,20 +18,20 @@ fonts:
 
 <div class="cover-layout">
 <div>
-<p class="kicker">Lesson 1 · The count came later</p>
+<p class="kicker">IB DP Year 1 · Chemistry</p>
 
 # How do you count what you cannot see?
 
 <p class="lede">The strange history of the mole and <MoleMath tex="6.022\times10^{23}" />.</p>
-<p class="caption">Mole · Avogadro constant<br>microscopic ↔ macroscopic</p>
+<p class="caption">Lesson 1 · The count came later<br>Mole · Avogadro constant · microscopic ↔ macroscopic</p>
 </div>
-<img class="cover-art" :src="'images/counting-balance.png'" alt="Conceptual balance: symbolic particles fade from view on one pan; a water boat marked 18 g sits on the other." />
+<figure class="balance-photo"><img class="cover-art" :src="'images/analytical-balance.jpg'" alt="Photograph of an antique analytical balance with two suspended pans inside a glass case." /><figcaption>Mass was measurable before atoms were countable.<br><a href="image-credits.html" target="_blank" rel="noopener" @click.stop>Photograph: Sarcyn · CC BY-SA 3.0</a></figcaption></figure>
 </div>
 
 <!--
 L1 · 3 min · cumulative 3/45.
 Ask: Suppose I give you 18 g of water. Can you find the number of water molecules without seeing even one? Collect proposals, do not give the answer yet. Prerequisite: formula subscripts and simple mass ratios; scientific notation will be supported.
-Cover is an AI-generated conceptual metaphor, not a historical instrument record or a literal atom-scale balance. The 18 g labels the water sample, ignoring/taring its container. Prompt and generation credit: README.md, assets section. Image created with the built-in image-generation tool, 2026-09-08.
+Photograph: Sarcyn, Detail of antique analytical balance, 26 June 2009. https://commons.wikimedia.org/wiki/File:Analyticalbalance2.jpg ; CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/ . Original photograph reproduced without alteration. This is an illustrative historical instrument, not an instrument attributed to Lavoisier or a photographed 18 g water sample. Full downloadable-image credits: image-credits.html.
 Learning destinations: explain why the count is enormous; explain why it is this count; distinguish relative mass, molar mass and amount; calculate specified entities.
 -->
 
@@ -573,12 +573,12 @@ Sources: https://www.bipm.org/en/history-si/mole ; Marquardt2019 https://iupac.o
 
 <div class="split" style="grid-template-columns:.9fr 1.1fr;margin-top:0">
 <div><p class="major">Weigh the sample.<br>Use its molar mass.<br>Count the entities.</p><p class="lede">The exact modern count preserves a bridge chemists built through measurement.</p></div>
-<img style="width:600px;mix-blend-mode:multiply" :src="'images/counting-balance.png'" alt="The conceptual balance from the opening slide, linking unseen particles to a weighed sample." />
+<figure class="balance-photo"><img class="closing-art" :src="'images/analytical-balance.jpg'" alt="The real analytical balance from the opening slide: two suspended weighing pans in a glass case." /><figcaption><a href="image-credits.html" target="_blank" rel="noopener" @click.stop>Photograph: Sarcyn · CC BY-SA 3.0</a></figcaption></figure>
 </div>
 
 <!--
 L2 · 1 min · cumulative45/45. Two lessons complete,90minutes total.
 Return to18gwater: using roundedM18g/mol gives1mol, about6.022e23molecules. The mass is approximate, so the actual sample particle count is not known exactly. Ask a volunteer for the full spoken chain.
-Next lesson link: existing Grade8 stoichiometry deck at../stoichiometry/ builds formulas, equations, mole ratios and mass-mass reasoning.
-Cover illustration repeated for narrative closure; AI-generated conceptual metaphor, source/prompt recorded in README.md. Scientific summary supported by https://www.bipm.org/en/history-si/mole
+Next step for IB DP Year 1: extend amount-of-substance reasoning to equations, limiting reactants and solution stoichiometry. The five checks diagnose prerequisite fluency, while the historical argument, measurement uncertainty and NOS discussion develop the DP-level interpretation.
+The opening photograph returns for narrative closure. Sarcyn, Detail of antique analytical balance (2009), CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Analyticalbalance2.jpg ; https://creativecommons.org/licenses/by-sa/3.0/ . Reproduced without alteration. Scientific summary supported by https://www.bipm.org/en/history-si/mole
 -->

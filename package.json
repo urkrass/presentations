@@ -27,7 +27,7 @@
     "validate:ib-a2:browser": "node scripts/validate-ib-a2-browser.mjs",
     "validate:ib-chem-kinetics": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-chemistry-kinetics/tsconfig.json && node scripts/validate-ib-chem-kinetics.mjs && node scripts/validate-ib-chem-kinetics-browser.mjs",
     "validate:site": "node scripts/validate-site.mjs",
-    "validate:mole": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/grade-8-mole-history/tsconfig.json && node scripts/validate-mole.mjs && node scripts/validate-mole-browser.mjs"
+    "validate:mole": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-mole-history/tsconfig.json && node scripts/validate-mole.mjs && node scripts/validate-mole-browser.mjs"
   },
   "devDependencies": {
     "@slidev/cli": "52.15.2",

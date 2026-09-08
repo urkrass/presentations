@@ -11,6 +11,8 @@ const types = {
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
   '.json': 'application/json',
   '.woff': 'font/woff',
@@ -32,6 +34,9 @@ function sendFile(response, file) {
 }
 
 function fallbackFile(pathname) {
+  if (pathname.startsWith('/ib-dp/mole-history/')) {
+    return path.join(root, 'ib-dp', 'mole-history', 'index.html')
+  }
   if (pathname.startsWith('/grade-8/mole-history/')) {
     return path.join(root, 'grade-8', 'mole-history', 'index.html')
   }
