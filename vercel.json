@@ -32,6 +32,10 @@
   ],
   "rewrites": [
     {
+      "source": "/grade-8/empirical-formula/:path*",
+      "destination": "/grade-8/empirical-formula/index.html"
+    },
+    {
       "source": "/ib-dp/mole-history/:path*",
       "destination": "/ib-dp/mole-history/index.html"
     },

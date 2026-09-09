@@ -34,6 +34,9 @@ function sendFile(response, file) {
 }
 
 function fallbackFile(pathname) {
+  if (pathname.startsWith('/grade-8/empirical-formula/')) {
+    return path.join(root, 'grade-8', 'empirical-formula', 'index.html')
+  }
   if (pathname.startsWith('/ib-dp/mole-history/')) {
     return path.join(root, 'ib-dp', 'mole-history', 'index.html')
   }

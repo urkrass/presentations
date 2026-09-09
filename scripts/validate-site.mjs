@@ -37,6 +37,16 @@ for (const file of required) {
 }
 
 const landing = fs.readFileSync(path.join(root, 'dist', 'index.html'), 'utf8')
+for (const file of ['dist/grade-8/empirical-formula/index.html','dist/grade-8/empirical-formula/images/copper-oxide.jpg','dist/grade-8/empirical-formula/image-credits.html']) {
+  const valid = fs.existsSync(path.join(root,file)) && fs.statSync(path.join(root,file)).size > 100
+  if (!valid) failed = true
+  console.log(`${valid ? 'PASS' : 'FAIL'} ${file}`)
+}
+for (const file of ['index.html','404.html']) {
+  const valid = fs.readFileSync(path.join(root,'dist',file),'utf8').includes('/grade-8/empirical-formula/')
+  if (!valid) failed = true
+  console.log(`${valid ? 'PASS' : 'FAIL'} ${file} includes empirical-formula route`)
+}
 for (const file of ['index.html', '404.html']) {
   const content = fs.readFileSync(path.join(root, 'dist', file), 'utf8')
   const valid = content.includes('/ib-dp/mole-history/')
@@ -49,6 +59,9 @@ if (!fs.readFileSync(path.join(root, 'vercel.json'), 'utf8').includes('/ib-dp/mo
 const ibMenu = landing.split('id="ib-dp-deck"')[1] || ''
 if (!ibMenu.includes('Four 45-minute lessons') || !ibMenu.includes('56 slides')) failed = true
 const grade8Menu = (landing.split('id="grade-8-deck"')[1] || '').split('</section>')[0]
+const empiricalMenu = grade8Menu.includes('/grade-8/empirical-formula/') && grade8Menu.includes('30 slides')
+if (!empiricalMenu) failed = true
+console.log(`${empiricalMenu ? 'PASS' : 'FAIL'} empirical formula is in Grade 8 menu`)
 const audienceCorrect = ibMenu.includes('IB DP Year 1') && ibMenu.includes('/ib-dp/mole-history/') && !grade8Menu.includes('mole-history')
 if (!audienceCorrect) failed = true
 console.log(`${audienceCorrect ? 'PASS' : 'FAIL'} mole lesson belongs to IB DP Year 1, not Grade 8`)

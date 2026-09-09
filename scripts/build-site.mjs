@@ -16,6 +16,7 @@ function publicPath(route) {
 
 const deckRoutes = [
   '/grade-8/stoichiometry/',
+  '/grade-8/empirical-formula/',
   '/ib-dp/mole-history/',
   '/grade-7/lab-measurement/',
   '/grade-11/integration-control/',
@@ -42,6 +43,7 @@ fs.rmSync(dist, { recursive: true, force: true })
 fs.mkdirSync(dist, { recursive: true })
 
 buildDeck('slides.md', publicPath('/grade-8/stoichiometry/'), path.join(dist, 'grade-8', 'stoichiometry'))
+buildDeck('decks/grade-8-empirical-formula/slides.md', publicPath('/grade-8/empirical-formula/'), path.join(dist, 'grade-8', 'empirical-formula'))
 buildDeck('decks/ib-dp-mole-history/slides.md', publicPath('/ib-dp/mole-history/'), path.join(dist, 'ib-dp', 'mole-history'))
 buildDeck('decks/grade-7-lab-measurement/slides.md', publicPath('/grade-7/lab-measurement/'), path.join(dist, 'grade-7', 'lab-measurement'))
 buildDeck('decks/grade-11-integration-control/slides.md', publicPath('/grade-11/integration-control/'), path.join(dist, 'grade-11', 'integration-control'))
@@ -50,6 +52,7 @@ buildDeck('decks/ib-dp-chemistry-kinetics/slides.md', publicPath('/ib-dp/chemist
 buildDeck('decks/visual-lab/slides.md', publicPath('/experiments/visual-lab/'), path.join(dist, 'experiments', 'visual-lab'))
 
 addRouteRecovery(path.join(dist, 'grade-8', 'stoichiometry'))
+addRouteRecovery(path.join(dist, 'grade-8', 'empirical-formula'))
 addRouteRecovery(path.join(dist, 'ib-dp', 'mole-history'))
 addRouteRecovery(path.join(dist, 'grade-7', 'lab-measurement'))
 addRouteRecovery(path.join(dist, 'grade-11', 'integration-control'))
