@@ -1,5 +1,5 @@
-import {pages,units} from './content.js?v=phaser1';
-import {simulationReport} from './simulations.js?v=phaser1';
+import {pages,units} from './content.js?v=phaser2';
+import {simulationReport} from './simulations.js?v=phaser2';
 import {blockHtml} from './pagination.js';
 import {drawingSvg} from '../rate-expressions/drawing.js';
 import {escapeHtml as E,formulaLines,downloadFile} from '../rate-expressions/format.js';

@@ -1,10 +1,10 @@
-import {SimulationDialog} from './simulations.js?v=phaser1';
+import {SimulationDialog} from './simulations.js?v=phaser2';
 import {SIMULATION_PAGES} from './models.js';
-import {pages,units,questions,independentMarks} from './content.js?v=phaser1';
-import {freshState,emptyAnswer,validateState,readStored,STORAGE_KEY,progress,hasAnswer} from './state.js?v=phaser1';
-import {Reader} from './pagination.js?v=phaser1';
+import {pages,units,questions,independentMarks} from './content.js?v=phaser2';
+import {freshState,emptyAnswer,validateState,readStored,STORAGE_KEY,progress,hasAnswer} from './state.js?v=phaser2';
+import {Reader} from './pagination.js?v=phaser2';
 import {Editor} from './editor.js';
-import {downloadSubmission,printSubmission,fileStem} from './export.js?v=phaser1';
+import {downloadSubmission,printSubmission,fileStem} from './export.js?v=phaser2';
 import {escapeHtml as E,downloadFile} from '../rate-expressions/format.js';
 const $=s=>document.querySelector(s);
 let state,index=0,editor=null,view='read',saveTimer,toastTimer,paused=false,readLayoutTimer;

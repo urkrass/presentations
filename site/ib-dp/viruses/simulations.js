@@ -9,7 +9,7 @@ export function simulationReport(name,record=freshRun(name),legacy){
  return dynamicReport(name,record)+previous;
 }
 let engineImport;
-const loadEngine=()=>engineImport??=(import('./runtime/engine-v1.js').catch(error=>{engineImport=null;throw error;}));
+const loadEngine=()=>engineImport??=(import('./runtime/engine-v1.js?v=phaser2').catch(error=>{engineImport=null;throw error;}));
 export class SimulationDialog{
  constructor({getState,getSaveStatus,onChange,onRecord}){
   Object.assign(this,{getState,getSaveStatus,onChange,onRecord,ticket:0});this.clock=new FixedClock();
