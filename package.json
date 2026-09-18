@@ -30,7 +30,8 @@
     "validate:ib-chem-kinetics": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-chemistry-kinetics/tsconfig.json && node scripts/validate-ib-chem-kinetics.mjs && node scripts/validate-ib-chem-kinetics-browser.mjs",
     "validate:site": "node scripts/validate-site.mjs",
     "validate:mole": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/ib-dp-mole-history/tsconfig.json && node scripts/validate-mole.mjs && node scripts/validate-mole-browser.mjs",
-    "validate:empirical": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/grade-8-empirical-formula/tsconfig.json && node scripts/validate-empirical.mjs && node scripts/validate-empirical-browser.mjs"
+    "validate:empirical": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p decks/grade-8-empirical-formula/tsconfig.json && node scripts/validate-empirical.mjs && node scripts/validate-empirical-browser.mjs",
+    "build:virus": "node scripts/build-virus-engine.mjs"
   },
   "devDependencies": {
     "@slidev/cli": "52.15.2",
@@ -50,6 +51,7 @@
     "vue-tsc": "^3.3.11"
   },
   "dependencies": {
+    "phaser": "3.90.0",
     "pixi.js": "^8.20.0"
   }
 }

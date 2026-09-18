@@ -24,9 +24,12 @@ Applies to newly created online worksheets in this repository. Established 18 Se
 ## Robust simulations
 
 - Add a model only when its rules and limits can be stated accurately. Distinguish qualitative concept models from measured or predictive simulations.
-- Keep transitions deterministic and bounded unless randomness is an explicit, reproducible learning goal. Prevent impossible states and give a clear reset.
+- A dynamic simulation must evolve continuously under explicit model rules; swapping diagrams or dragging schematic objects alone is not a dynamic model. Use a locally bundled engine when it materially improves interaction and rendering.
+- Keep numerical rules separate from rendering. Use a fixed timestep and seeded randomness; frame rate and playback speed must not change the result at a given model tick. Prevent impossible states, bound populations/history, and offer a repeatable reset.
+- Provide Play/Pause and pause when the document is hidden or a separate notes/results view is opened. Reset or a change of conditions must be explicit. State invented rates and omitted biology.
+- Lazy-load heavier engines, provide a supported rendering fallback, release scenes when closed, and make loading/rendering failures visible without losing written answers.
 - Use native keyboard- and touch-accessible controls. No animation or timing race may determine a student's result.
-- Preserve model state through reloads and validated backups. Let students record an observation without overwriting their answer; include a static model snapshot in printable submissions.
-- Keep model notes paginated and all controls within one viewport. Test every reachable state, boundary, and resize, including short landscape and small phones.
+- Preserve model state through reloads and validated backups. Let students record an observation without overwriting their answer; include a self-contained static result plot or snapshot, conditions and model limits in printable submissions.
+- Keep model notes paginated and all controls within one viewport. Test model invariants and parameter boundaries, including conservation/segment identity where applicable. Verify moving frames, pause/reset, saved replay, renderer fallback, repeated open/close, short landscape and small phones in a browser.
 
 Reference implementation: `site/ib-dp/viruses/`.

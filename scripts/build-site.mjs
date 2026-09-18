@@ -60,6 +60,7 @@ addRouteRecovery(path.join(dist, 'ib-dp', 'a2-cells-viruses'))
 addRouteRecovery(path.join(dist, 'ib-dp', 'chemistry-kinetics'))
 addRouteRecovery(path.join(dist, 'experiments', 'visual-lab'))
 
+execFileSync(process.execPath, ['scripts/build-virus-engine.mjs'], { cwd: root, stdio: 'inherit' })
 fs.cpSync(path.join(root, 'site'), dist, { recursive: true })
 if (siteBase) {
   const landingPath = path.join(dist, 'index.html')

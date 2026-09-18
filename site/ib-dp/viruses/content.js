@@ -69,7 +69,7 @@ page('induction',1,'A switch in the life cycle',[
  p('During stable lysogeny, the prophage is copied as the bacterial DNA is copied. Integration is therefore not the same as absence of viral DNA replication.')],
  'A bacterial lineage carries lambda DNA for many generations. After a stress, free phages appear and many cells lyse. Explain the sequence from lysogeny to lysis.',4),
 page('lambda-lab',1,'Lab · Follow a phage',[
- p('Follow the lytic route. Reset, then follow lysogeny through host division and induction. Use Model notes to see the assumptions; Save observation records your current state in this answer.'),
+ p('Run a moving phage culture. Compare available and blocked receptors, then lytic and lysogenic infection. Try a stress pulse after lysogens appear. Results shows a live record of host outcomes; Save observation records your trial.'),
  simulation('lambda')],
  'Compare an observation from lysogeny with one from the lytic route. Explain where the phage DNA is and what happens to the host. State one limit of the model.',0,'Simulation investigation'),
 page('cycle-compare',1,'Compare the two outcomes',[
@@ -122,9 +122,9 @@ page('reassortment',3,'Follow the genome segments',[
  p('Both parental viruses must infect the same cell for this mixture of segments to be assembled into progeny. Not every combination is viable or has an advantage.')],
  'Explain how the mixed progeny differs from a virus with a single new point mutation. State one condition needed for reassortment.',3),
 page('segment-lab',3,'Lab · Mix whole segments',[
- p('Compare A-only infection with A + B in the same cell. Switch the source of individual segments and save two observations. Open Model notes for the assumptions and limits.'),
+ p('Watch RNA–protein segments move, assemble into complete genomes and leave the cell in new particles. Compare A-only infection with A + B in the same cell. Pause to inspect a genome, then save observations and compare the Results plots.'),
  simulation('reassortment')],
- 'Use two model genomes to explain reassortment. What remains unchanged when a segment switches source? Why can this model not predict whether a mixed virus will survive?',0,'Simulation investigation'),
+ 'Use two model genomes to explain reassortment. What is retained when a whole segment is packaged from either parent? Why can this model not predict whether a mixed virus will survive?',0,'Simulation investigation'),
 page('coronavirus',3,'An exception improves the model',[
  p('Coronaviruses encode proofreading activity associated with nsp14. Their copying therefore cannot be described simply as “RNA means no proofreading”.'),
  p('SARS-CoV-2 can still evolve through mutation, recombination and selection. A change in a spike-protein sequence does not automatically make a variant more transmissible.')],

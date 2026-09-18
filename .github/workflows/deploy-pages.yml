@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check worksheet models and saved work
+        run: node --test scripts/virus-workbook.test.mjs scripts/virus-models.test.mjs scripts/virus-dynamics.test.mjs
+
       - name: Build the presentation site
         run: npm run build
         env:

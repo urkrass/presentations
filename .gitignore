@@ -7,3 +7,5 @@ output/playwright/
 output/*.pdf
 *.local
 *.log
+
+site/ib-dp/viruses/runtime/

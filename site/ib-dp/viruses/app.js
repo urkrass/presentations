@@ -1,10 +1,10 @@
-import {SimulationDialog} from './simulations.js?v=20260918-sim2';
+import {SimulationDialog} from './simulations.js?v=phaser1';
 import {SIMULATION_PAGES} from './models.js';
-import {pages,units,questions,independentMarks} from './content.js';
-import {freshState,emptyAnswer,validateState,readStored,STORAGE_KEY,progress,hasAnswer} from './state.js';
-import {Reader} from './pagination.js';
+import {pages,units,questions,independentMarks} from './content.js?v=phaser1';
+import {freshState,emptyAnswer,validateState,readStored,STORAGE_KEY,progress,hasAnswer} from './state.js?v=phaser1';
+import {Reader} from './pagination.js?v=phaser1';
 import {Editor} from './editor.js';
-import {downloadSubmission,printSubmission,fileStem} from './export.js';
+import {downloadSubmission,printSubmission,fileStem} from './export.js?v=phaser1';
 import {escapeHtml as E,downloadFile} from '../rate-expressions/format.js';
 const $=s=>document.querySelector(s);
 let state,index=0,editor=null,view='read',saveTimer,toastTimer,paused=false,readLayoutTimer;
@@ -16,7 +16,7 @@ function updateProgress(){const p=progress(state);$('#progress').value=p.done;$(
 const narrow=()=>matchMedia('(max-width:850px),(max-height:520px)').matches;
 const reader=new Reader($('#reading-body'),$('#reading-prev'),$('#reading-next'),$('#reading-count'));
 reader.onChange=updateNav;
-const simulationDialog=new SimulationDialog({getState:()=>state.simulations,getSaveStatus:()=>$('#save-status').textContent,onChange:changed,onRecord:(name,snapshot)=>{
+const simulationDialog=new SimulationDialog({getState:()=>state.experiments,getSaveStatus:()=>$('#save-status').textContent,onChange:changed,onRecord:(name,snapshot)=>{
  const id=SIMULATION_PAGES[name],a=state.answers[id]??=emptyAnswer();
  if(a.text.includes(snapshot))return 'This observation is already in your answer.';
  const next=a.text+(a.text?'\n\n':'')+snapshot;

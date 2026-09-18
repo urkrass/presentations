@@ -24,6 +24,10 @@ const required = [
   'dist/ib-dp/a2-cells-viruses/images/stromatolites.jpg',
   'dist/ib-dp/chemistry-kinetics/index.html',
   'dist/ib-dp/chemistry-kinetics/images/iodine-clock.jpg',
+  'dist/ib-dp/viruses/index.html',
+  'dist/ib-dp/viruses/dynamics.js',
+  'dist/ib-dp/viruses/runtime/engine-v1.js',
+  'dist/ib-dp/viruses/runtime/PHASER-LICENSE.txt',
   'dist/experiments/visual-lab/index.html',
   'dist/og-v2.png',
 ]
