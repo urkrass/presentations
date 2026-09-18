@@ -1,4 +1,4 @@
-import {SimulationDialog} from './simulations.js';
+import {SimulationDialog} from './simulations.js?v=20260918-sim2';
 import {SIMULATION_PAGES} from './models.js';
 import {pages,units,questions,independentMarks} from './content.js';
 import {freshState,emptyAnswer,validateState,readStored,STORAGE_KEY,progress,hasAnswer} from './state.js';
