@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rate expressions · Chemistry workbook</title>
+  <meta name="description" content="An interactive IB DP Chemistry workbook: rate expressions, initial-rate experiments and reaction orders. Write, calculate, draw and export your work.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./vendor/katex.min.js"></script>
+  <script defer src="./vendor/mhchem.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to worksheet</a>
+  <header class="topbar">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Show workbook sections" aria-expanded="false">☰</button>
+    <a class="app-title" href="../../">Chemistry workbook</a>
+    <span class="save-status" id="save-status" role="status" aria-live="polite">Ready to begin</span>
+    <div class="top-actions"><button id="open-backup">Open backup</button><button class="primary" id="export-work">Export work <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-heading"><h1>Rate expressions</h1><p>IB DP Chemistry · Grade 11 · HL</p></div>
+    <nav id="section-nav" aria-label="Workbook sections"></nav>
+    <div class="student-details">
+      <label for="student-name">Student name</label><input id="student-name" autocomplete="name" placeholder="Enter your name" maxlength="100">
+      <div class="identity-row"><div><label for="student-class">Class</label><input id="student-class" placeholder="e.g. 11A" maxlength="60"></div><div><label for="work-date">Date</label><input id="work-date" type="date"></div></div>
+      <p id="progress-label" class="small">Your progress</p><progress id="progress" value="0" max="100" aria-label="Responses with work"></progress>
+      <p class="privacy-note">Answers save on this browser. Download a backup before changing devices or clearing browser data.</p>
+    </div>
+  </aside>
+  <main id="main" tabindex="-1"><div id="section-content"></div><footer class="section-footer"><button id="previous">← Previous</button><span id="section-count"></span><button class="primary" id="next">Next section →</button></footer></main>
+  <dialog id="export-dialog" aria-labelledby="export-title"><div class="dialog-heading"><h2 id="export-title">Take your work with you</h2><button class="icon-button" data-close aria-label="Close export options">×</button></div>
+    <p>Your submission includes every response, equation, table entry and drawing, together with its question.</p>
+    <div class="export-choice"><h3>Submission</h3><p>A self-contained HTML file to open, print or send to your teacher. No internet needed to read it.</p><button class="primary" id="download-submission">Download submission</button><button id="print-submission">Print / Save PDF</button></div>
+    <div class="export-choice"><h3>Editable backup</h3><p>Download your answers as a workbook file. Use <strong>Open backup</strong> to continue on another device.</p><button id="download-backup">Download backup</button></div>
+    <p class="small">Sharing the app’s link opens a blank workbook for someone else. To hand in your work, send your downloaded submission or PDF.</p>
+    <p id="export-message" role="status"></p>
+  </dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">Writing equations & formulae</h2><button data-close class="icon-button" aria-label="Close equation help">×</button></div>
+    <p>Write your explanation in <strong>Text</strong>. Use <strong>Equation</strong> for typeset calculations, or <strong>Chemistry</strong> for chemical formulae. All three are saved together. Each new line is a separate equation.</p>
+    <table><thead><tr><th>Type</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[A]^2</code></td><td>Squared concentration</td></tr><tr><td><code>\\frac{rate}{[A]^2}</code></td><td>A fraction</td></tr><tr><td><code>3.20 \\times 10^{-4}</code></td><td>Scientific notation</td></tr><tr><td><code>\\sqrt{x}</code></td><td>Square root</td></tr><tr><td><code>\\mathrm{mol\\,dm^{-3}}</code></td><td>Units</td></tr></tbody></table>
+    <p>In <strong>Chemistry</strong>, type <code>H2SO4</code>, <code>SO4^2-</code> or <code>2H2 + O2 -> 2H2O</code>. Numbers, charges and reaction arrows are formatted automatically.</p><p>Symbol buttons insert at the cursor. Select a value first to put it into a fraction or exponent. You can also write or draw on the Sketch tab.</p>
+  </dialog>
+  <input type="file" id="backup-file" accept=".json,application/json" hidden>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript>This workbook needs JavaScript to save answers and draw graphs. Enable JavaScript in your browser to continue.</noscript>
+</body></html>
