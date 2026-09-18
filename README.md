@@ -61,3 +61,14 @@ Preview only the workbook with `python3 -m http.server 8765 --directory site` an
 ## Design
 
 The menu follows the decks’ warm-paper editorial system: one grade choice, one visible presentation, generous typography, restrained color, and no dashboard-style chrome.
+
+
+## Interactive Biology HL viruses workbook
+
+`site/ib-dp/viruses/` is published at `/ib-dp/viruses/`. It contains 44 activities, 35 response areas, and seven independent questions worth 32 practice marks. Teaching material is adapted from the five supplied Kognity A2.3 readings; activities and SVG diagrams are original. The public app contains no teacher key. See its Sources & notes for scientific clarifications and reference links.
+
+**New worksheet rule: no scrolling.** [WORKSHEET_APP_STANDARD.md](docs/WORKSHEET_APP_STANDARD.md) defines the reusable pipeline. Reading automatically paginates; smaller or shorter screens separate reading from answering. Long text automatically flows across answer pages, retaining whitespace and all characters when resized. The static app shares the chemistry workbook's licensed fonts, KaTeX/mhchem and drawing tools through relative imports; preserve `site/ib-dp/rate-expressions/` when publishing it.
+
+Each worksheet has a separate storage key and backup identifier. Responses never leave the browser automatically. Students can download an editable JSON backup, download a self-contained HTML submission, and use browser Print / Save PDF. Opening a backup validates its format before replacing work. Another tab's changes pause autosave to protect conflicting copies.
+
+Run `node --test scripts/virus-workbook.test.mjs`. Preview using a static server pointed at `site/`. Test reading continuation pages and all answer modes, not just document scrollbar visibility.
