@@ -26,7 +26,7 @@ try{
  async function notes(){await page.locator('[data-view="notes"]').click();let i=0;do{await check('model notes '+i++);if(!await page.locator('[data-note="1"]').isEnabled())break;await page.locator('[data-note="1"]').click();}while(i<8);await page.locator('[data-view="explore"]').click();}
  for(const size of [{width:1440,height:900},{width:1280,height:720},{width:390,height:844},{width:375,height:667},{width:320,height:568},{width:844,height:390},{width:568,height:320},{width:667,height:375}]){
   await page.setViewportSize(size);await open('lambda-lab');await act('reset');await check(`${size.width} attached`);
-  for(const action of ['enter','lytic','assemble','lyse']){await act(action);await check(`${size.width} lytic ${action}`);}
+  for(const action of ['enter','lytic','assemble','lyse']){await act(action);if(action==='enter')assert.equal(await page.locator('[data-action="lytic"]').evaluate(e=>e===document.activeElement),true,'focus follows the next action');await check(`${size.width} lytic ${action}`);}
   await act('reset');await act('enter');await act('integrate');await check(`${size.width} integrated`);
   for(let i=1;i<=3;i++){await act('divide');await check(`${size.width} divided ${i}`);}assert.equal(await page.locator('[data-action="divide"]').isEnabled(),false);
   if(size.width===1440)await page.screenshot({path:path.join(out,'lambda-desktop.png')});
