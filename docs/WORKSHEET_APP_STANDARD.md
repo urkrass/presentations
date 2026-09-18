@@ -21,4 +21,12 @@ Applies to newly created online worksheets in this repository. Established 18 Se
 - Provide a validated editable backup and a self-contained submission. Include student identity, prompts, answers and diagrams in printable exports. State clearly how students hand in work.
 - Do not describe local storage as a teacher submission system. No account or student-data transmission is needed for the static workflow.
 
+## Robust simulations
+
+- Add a model only when its rules and limits can be stated accurately. Distinguish qualitative concept models from measured or predictive simulations.
+- Keep transitions deterministic and bounded unless randomness is an explicit, reproducible learning goal. Prevent impossible states and give a clear reset.
+- Use native keyboard- and touch-accessible controls. No animation or timing race may determine a student's result.
+- Preserve model state through reloads and validated backups. Let students record an observation without overwriting their answer; include a static model snapshot in printable submissions.
+- Keep model notes paginated and all controls within one viewport. Test every reachable state, boundary, and resize, including short landscape and small phones.
+
 Reference implementation: `site/ib-dp/viruses/`.

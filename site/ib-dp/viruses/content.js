@@ -2,6 +2,7 @@ export const units=['Structure','Replication cycles','Origins','Evolution','Inde
 const p=text=>({type:'p',text});
 const fig=(name,caption)=>({type:'figure',name,caption});
 const table=(head,rows)=>({type:'table',head,rows});
+const simulation=name=>({type:'simulation',name});
 const eq=tex=>({type:'math',tex});
 const page=(id,unit,title,blocks,question='',marks=0,kind='Guided question')=>({id,unit,title,blocks,question,marks,kind});
 export const pages=[
@@ -55,7 +56,7 @@ page('entry',1,'Attachment comes before entry',[
  p('Attachment depends on compatible receptors. Animal viruses may enter by endocytosis or, when enveloped, by membrane fusion. Lambda phage injects DNA into a bacterium; it has no envelope to fuse.')],
  'Predict what could happen if a bacterium’s receptor changes shape. Explain your prediction without assuming every receptor change has the same effect.',2),
 page('lytic',1,'The lytic route',[
- fig('lytic','A simplified lambda lytic sequence. Viral DNA is magenta; bacterial DNA is gray.'),
+ fig('lytic','Follow the numbered sequence: synthesis, assembly, then rupture and release.'),
  p('After entry, viral DNA is copied and viral proteins are produced. New virions are assembled. Lysis breaks open the host cell and releases them.')]),
 page('lytic-order',1,'Reconstruct the sequence',[
  p('These events are out of order: A — release by lysis; B — synthesis of viral DNA and proteins; C — attachment and DNA entry; D — assembly of new virions.')],
@@ -67,6 +68,10 @@ page('induction',1,'A switch in the life cycle',[
  p('A temperate phage such as lambda can follow either route. Certain stresses, including DNA damage, can induce the prophage to leave the chromosome and enter the lytic cycle.'),
  p('During stable lysogeny, the prophage is copied as the bacterial DNA is copied. Integration is therefore not the same as absence of viral DNA replication.')],
  'A bacterial lineage carries lambda DNA for many generations. After a stress, free phages appear and many cells lyse. Explain the sequence from lysogeny to lysis.',4),
+page('lambda-lab',1,'Lab · Follow a phage',[
+ p('Follow the lytic route. Reset, then follow lysogeny through host division and induction. Use Model notes to see the assumptions; Save observation records your current state in this answer.'),
+ simulation('lambda')],
+ 'Compare an observation from lysogeny with one from the lytic route. Explain where the phage DNA is and what happens to the host. State one limit of the model.',0,'Simulation investigation'),
 page('cycle-compare',1,'Compare the two outcomes',[
  table(['Feature to compare','Your focus'],[['Location of lambda DNA','Separate or integrated'],['New virions','Immediate production or no immediate production'],['Host cell','Lysis or continued division'],['Viral inheritance','Release or copying into daughter cells']])],
  'Compare the lytic and lysogenic routes of lambda using all four features in the table. You can draw a branching diagram instead of writing a paragraph.',4),
@@ -113,9 +118,13 @@ page('influenza',3,'Influenza: changes in antigens',[
  p('Antigenic drift involves accumulated changes. Reassortment can occur when different influenza viruses infect the same cell and progeny inherit a new combination of segments.'),
  p('Reassortment exchanges whole segments. It is distinct from a nucleotide substitution and from recombination within a segment.')]),
 page('reassortment',3,'Follow the genome segments',[
- fig('reassortment','Illustrative reassortment of eight segments. Colour records their parental source.'),
+ fig('reassortment','Illustrative reassortment of eight segments. Numbers identify segment types; letters and colours identify parental source.'),
  p('Both parental viruses must infect the same cell for this mixture of segments to be assembled into progeny. Not every combination is viable or has an advantage.')],
  'Explain how the mixed progeny differs from a virus with a single new point mutation. State one condition needed for reassortment.',3),
+page('segment-lab',3,'Lab · Mix whole segments',[
+ p('Compare A-only infection with A + B in the same cell. Switch the source of individual segments and save two observations. Open Model notes for the assumptions and limits.'),
+ simulation('reassortment')],
+ 'Use two model genomes to explain reassortment. What remains unchanged when a segment switches source? Why can this model not predict whether a mixed virus will survive?',0,'Simulation investigation'),
 page('coronavirus',3,'An exception improves the model',[
  p('Coronaviruses encode proofreading activity associated with nsp14. Their copying therefore cannot be described simply as “RNA means no proofreading”.'),
  p('SARS-CoV-2 can still evolve through mutation, recombination and selection. A change in a spike-protein sequence does not automatically make a variant more transmissible.')],

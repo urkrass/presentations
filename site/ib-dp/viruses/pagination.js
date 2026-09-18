@@ -1,5 +1,6 @@
 import {escapeHtml as E,mathMarkup} from '../rate-expressions/format.js';
 import {figureSvg} from './figures.js';
+import {SIMULATION_TITLES} from './models.js';
 // Preserve every character. Prefer word boundaries; fall back to a character boundary.
 export function splitToFit(text,fits){
  if(!text)return [''];const result=[];let rest=text;
@@ -12,6 +13,7 @@ export function splitToFit(text,fits){
  }return result;
 }
 export function blockHtml(b){
+ if(b.type==='simulation')return `<div class="reading-block simulation-card"><strong>${E(SIMULATION_TITLES[b.name])}</strong><p>A step-controlled concept model.</p><button class="primary" data-simulation="${E(b.name)}">Open simulation ↗</button></div>`;
  if(b.type==='p')return `<div class="reading-block"><p>${E(b.text)}</p></div>`;
  if(b.type==='math')return `<div class="reading-block math-block">${mathMarkup(b.tex)}</div>`;
  if(b.type==='figure')return `<div class="reading-block"><figure class="science-figure">${figureSvg(b.name)}<figcaption>${E(b.caption)}</figcaption></figure></div>`;
@@ -27,6 +29,7 @@ export class Reader{
  const fits=html=>{probe.innerHTML=html;return probe.scrollHeight<=height+1&&probe.scrollWidth<=width+1;};
  const parts=[];let current='',queue=this.blocks.map(b=>({...b}));let guard=0;
  while(queue.length&&guard++<400){const b=queue.shift(),html=blockHtml(b);if(fits(current+html)){current+=html;continue;}if(current){parts.push(current);current='';queue.unshift(b);continue;}
+ if(b.type==='simulation')return `<div class="reading-block simulation-card"><strong>${E(SIMULATION_TITLES[b.name])}</strong><p>A step-controlled concept model.</p><button class="primary" data-simulation="${E(b.name)}">Open simulation ↗</button></div>`;
  if(b.type==='p'){const pieces=splitToFit(b.text,t=>fits(blockHtml({...b,text:t})));parts.push(blockHtml({...b,text:pieces.shift()}));queue.unshift(...pieces.map(text=>({...b,text})));}
  else if(b.type==='table'&&b.rows.length>1){queue.unshift(...b.rows.map(row=>({...b,rows:[row]})));}
  else {parts.push(html);}

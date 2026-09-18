@@ -65,10 +65,12 @@ The menu follows the decks’ warm-paper editorial system: one grade choice, one
 
 ## Interactive Biology HL viruses workbook
 
-`site/ib-dp/viruses/` is published at `/ib-dp/viruses/`. It contains 44 activities, 35 response areas, and seven independent questions worth 32 practice marks. Teaching material is adapted from the five supplied Kognity A2.3 readings; activities and SVG diagrams are original. The public app contains no teacher key. See its Sources & notes for scientific clarifications and reference links.
+`site/ib-dp/viruses/` is published at `/ib-dp/viruses/`. It contains 46 activities, 37 response areas, and seven independent questions worth 32 practice marks. Teaching material is adapted from the five supplied Kognity A2.3 readings; activities and SVG diagrams are original. The public app contains no teacher key. See its Sources & notes for scientific clarifications and reference links.
 
 **New worksheet rule: no scrolling.** [WORKSHEET_APP_STANDARD.md](docs/WORKSHEET_APP_STANDARD.md) defines the reusable pipeline. Reading automatically paginates; smaller or shorter screens separate reading from answering. Long text automatically flows across answer pages, retaining whitespace and all characters when resized. The static app shares the chemistry workbook's licensed fonts, KaTeX/mhchem and drawing tools through relative imports; preserve `site/ib-dp/rate-expressions/` when publishing it.
 
 Each worksheet has a separate storage key and backup identifier. Responses never leave the browser automatically. Students can download an editable JSON backup, download a self-contained HTML submission, and use browser Print / Save PDF. Opening a backup validates its format before replacing work. Another tab's changes pause autosave to protect conflicting copies.
 
-Run `node --test scripts/virus-workbook.test.mjs`. Preview using a static server pointed at `site/`. Test reading continuation pages and all answer modes, not just document scrollbar visibility.
+The two concept simulations cover lambda’s lytic/lysogenic routes and influenza reassortment. Both use bounded, deterministic state transitions and paginated model notes. Models autosave, accept keyboard/touch input, and can append a labelled observation to an answer. Reset retains those observations. Backups include model states; submissions include static diagrams and model limits. Older backups remain compatible.
+
+Run `node --test scripts/virus-workbook.test.mjs scripts/virus-models.test.mjs`. Run `node scripts/validate-virus-simulations-browser.mjs` with Chromium installed to exercise both models at eight viewport sizes, reload/backup/export, keyboard controls, and diagram bounds. Preview using a static server pointed at `site/`. Test reading continuation pages and all answer modes, not just document scrollbar visibility.
